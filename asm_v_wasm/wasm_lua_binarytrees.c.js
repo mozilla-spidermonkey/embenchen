@@ -183,7 +183,11 @@ function integrateWasmJS(Module) {
     info['env'] = env;
     var instance;
     try {
-      instance = new WebAssembly.Instance(new WebAssembly.Module(getBinary()), info)
+      let binary = getBinary();
+      let then = Date.now();
+      let module = new WebAssembly.Module(binary);
+      print("WASM COMPILE TIME: " + (Date.now() - then));
+      instance = new WebAssembly.Instance(module, info)
     } catch (e) {
       Module['printErr']('failed to compile wasm module: ' + e);
       if (e.toString().indexOf('imported Memory with incompatible size') >= 0) {
@@ -6029,7 +6033,9 @@ Module['callMain'] = Module.callMain = function callMain(args) {
 
   try {
 
+    let then = Date.now();
     var ret = Module['_main'](argc, argv, 0);
+    print("WASM RUN TIME: " + (Date.now() - then));
 
 
     // if we're not running an evented main loop, it's time to exit

@@ -11,6 +11,13 @@
 # A lower result is always better.  Linpack and SciMark outputs are
 # inverted to make this consistent.
 #
+# Note, we measure the running time for the wasm code, not the
+# end-to-end time including startup and compilation.  The difference
+# in ratios is actually not large, but running time is probably the
+# best measure.
+#
+# Times are in ms, linpack is 1000/mflops, scimark is 100/score.
+#
 # TODO: run each benchmark k times for some configurable k and report
 #       median, mean, range
 #
@@ -29,16 +36,16 @@ function fail {
 
 # Run without checking output
 function run_nocheck {
-  /usr/bin/time -p $JS_SHELL $1 "$2" 2>&1 | egrep '^real' | awk '{ print $2 }'
+  $JS_SHELL $1 "$2" 2>&1 | egrep '^WASM RUN TIME:' | awk '{ print $4 }'
 }
 
 # Check that the output contains a particular known pattern.
 function run_match1 {
-  /usr/bin/time -p $JS_SHELL $1 "$2" > output.tmp 2>&1
+  $JS_SHELL $1 "$2" > output.tmp 2>&1
   if [ $(egrep -c "$3" output.tmp) == 0 ]; then 
     fail $2
   fi
-  egrep '^real' output.tmp | awk '{ print $2 }'
+  egrep '^WASM RUN TIME:' output.tmp | awk '{ print $4 }'
 }
 
 function run_box2d {
