@@ -12,7 +12,7 @@
 JS_SHELL=~/moz/mozilla-inbound/js/src/build-release/dist/bin/js
 
 function run_vanilla {
-  /usr/bin/time $JS_SHELL $1 "$2" 2>&1 | egrep 'real.*user.*sys' | awk '{ print $1 }'
+  /usr/bin/time -p $JS_SHELL $1 "$2" 2>&1 | egrep '^real' | awk '{ print $2 }'
 }
 
 function run_box2d {
@@ -40,14 +40,14 @@ function run_ifs {
   run_vanilla "$1" wasm_ifs.js
 }
 function run_linpack {
-  mflops=$(/usr/bin/time -p $JS_SHELL $1 wasm_linpack_float.c.js 2>&1 | egrep 'Unrolled +Single +Precision.*Mflops' | awk '{ print $4 }')
+  mflops=$($JS_SHELL $1 wasm_linpack_float.c.js 2>&1 | egrep 'Unrolled +Single +Precision.*Mflops' | awk '{ print $4 }')
   echo "scale=4;1000/$mflops" | bc -l
 }
 function run_lua_binarytrees {
   run_vanilla "$1" wasm_lua_binarytrees.c.js
 }
 function run_lua_scimark {
-  mark=$(/usr/bin/time -p $JS_SHELL $1 wasm_lua_scimark.c.js 2>&1 | egrep 'SciMark.*small' | awk '{ print $2 }')
+  mark=$($JS_SHELL $1 wasm_lua_scimark.c.js 2>&1 | egrep 'SciMark.*small' | awk '{ print $2 }')
   echo "scale=3;100/$mark" | bc -l
 }
 function run_memops {
