@@ -1,14 +1,38 @@
 #!/bin/bash
 #
-# Usage: wasm_bench.sh [-n numruns] [ pattern ]
+# Run wasm benchmarks in two configurations and report the times.
 #
-# The numruns value should be odd, if not 1 then we report the median.
+# Usage: wasm_bench.sh [-n numruns] [-a argument] [-m mode] [ pattern ]
 #
-# The pattern is a regex that will match against a test case name.
+# `pattern` is a regex that will match against a test case name.
 #
-# Runs the shell without and with --wasm-always-baseline and prints:
+# Options:
+#
+#   -a   The problem size argument.  The default is 3.  With size=0
+#        we effectively only compile the code and compilation time is
+#        reported instead.  The max is 5.
+#
+#        If -a is given we do not check that the output matches the
+#        expected.
+#
+#   -m mode
+#        Compare the output of two different shells.  In this case,
+#        the environment variables JS_SHELL1 and JS_SHELL2 must
+#        be set.  `mode` must be "ion" or "baseline".
+#
+#   -n   The number of iterations to run.  We report the median time.
+#        The value should be odd.
+#
+#
+# In the default mode, runs the shell without and with --wasm-always-baseline
+# and prints:
 #
 #  Ion-result  Baseline-result  Ion/Baseline
+#
+# In the other modes, runs the two shells with the same argument (depending
+# on the mode) and prints:
+#
+#  shell1-result  shell2-result  shell1-result/shell2-result
 #
 # Times are in ms.  Linpack is 1000000/mflops, scimark is 10000/score,
 # always as integer values (bash does not do floating point).
@@ -21,39 +45,85 @@
 # in ratios is actually not large, but running time is probably the
 # best measure.
 #
-# TODO: more interesting statistics when running more than once.
+# TODO: Also check the output for other arguments than the default.
 #
-# TODO: in several cases below we'd like to check the entire output,
+# TODO: More interesting statistics when running more than once.
+#
+# TODO: In several cases below we'd like to check the entire output,
 #       not just one line of it (and we might like for the output
 #       not to contain any other lines)
 
-if [[ $JS_SHELL == "" ]]; then
-  JS_SHELL=~/moz/mozilla-inbound/js/src/build-release/dist/bin/js
-fi
+LOOKFOR='^WASM RUN TIME:'
+DEFAULT_SHELL=~/moz/mozilla-inbound/js/src/build-release/dist/bin/js
 
+MODE="IonVsBaseline"
 NUMRUNS=1
-if [[ $1 == "-n" ]]; then
-  NUMRUNS=$2
-  shift 2
-fi
+ARGUMENT=""
+MODE=""
 
-function fail {
-  echo "Bad output for " $1
-  exit 1
-}
+while true; do
+  case $1 in
+    -a) ARGUMENT=$2
+        shift 2
+        if [[ $ARGUMENT == "0" ]]; then
+          LOOKFOR='^WASM COMPILE TIME:'
+        fi
+	;;
+    -m) case $2 in
+          baseline) MODE="BaselineVsBaseline" ;;
+          ion)      MODE="IonVsIon" ;;
+          *)        >&2 echo "Bad argument for -c" ; exit 1 ;;
+        esac
+        shift 2
+        ;;
+    -n) NUMRUNS=$2
+        shift 2
+        ;;
+    *)  break
+        ;;
+  esac
+done
 
-# Run without checking output
-function run_nocheck {
-  $JS_SHELL $1 "$2" 2>&1 | egrep '^WASM RUN TIME:' | awk '{ print $4 }'
-}
+case $MODE in
+  IonVsBaseline)
+    if [[ $JS_SHELL == "" ]]; then
+      JS_SHELL=$DEFAULT_SHELL
+    fi
+    if [[ ! -x $JS_SHELL ]]; then
+      >&2 echo "JS_SHELL $JS_SHELL is not executable"
+      exit 1
+    fi
+    ;;
+  *)
+    if [[ $JS_SHELL1 == "" ]]; then
+      >&2 echo "JS_SHELL1 not set"
+      exit 1
+    fi
+    if [[ ! -x $JS_SHELL1 ]]; then
+      >&2 echo "JS_SHELL1 $JS_SHELL1 is not executable"
+      exit 1
+    fi
+    if [[ $JS_SHELL2 == "" ]]; then
+      >&2 echo "JS_SHELL2 not set"
+      exit 1
+    fi
+    if [[ ! -x $JS_SHELL2 ]]; then
+      >&2 echo "JS_SHELL2 $JS_SHELL2 is not executable"
+      exit 1
+    fi
+    ;;
+esac
 
-# Check that the output contains a particular known pattern.
 function run_match1 {
-  $JS_SHELL $1 "$2" > output.tmp 2>&1
-  if [ $(egrep -c "$3" output.tmp) == 0 ]; then 
-    fail $2
+  rm -f output.tmp
+  $JS_SHELL $1 "$2" $ARGUMENT > output.tmp 2>&1
+  if [[ $ARGUMENT == "" ]]; then
+    if [[ $(egrep -c "$3" output.tmp) == 0 ]]; then 
+      >&2 echo "Bad output for " $2
+      exit 1
+    fi
   fi
-  egrep '^WASM RUN TIME:' output.tmp | awk '{ print $4 }'
+  egrep "$LOOKFOR" output.tmp | awk '{ print $4 }'
 }
 
 function run_box2d {
@@ -84,7 +154,7 @@ function run_ifs {
 }
 function run_linpack {
   # We assume linpack checks itself, and that matching the output line is good enough
-  mflops=$($JS_SHELL $1 wasm_linpack_float.c.js 2>&1 | egrep '^Unrolled +Single +Precision.*Mflops' | awk '{ print $4 }')
+  mflops=$($JS_SHELL $1 wasm_linpack_float.c.js $ARGUMENT 2>&1 | egrep '^Unrolled +Single +Precision.*Mflops' | awk '{ print $4 }')
   echo "scale=0;10000000/$mflops" | bc -l
 }
 function run_lua_binarytrees {
@@ -93,7 +163,7 @@ function run_lua_binarytrees {
 }
 function run_lua_scimark {
   # We assume scimark checks itself, and that matching the output line is good enough
-  mark=$($JS_SHELL $1 wasm_lua_scimark.c.js 2>&1 | egrep '^SciMark.*small' | awk '{ print $2 }')
+  mark=$($JS_SHELL $1 wasm_lua_scimark.c.js $ARGUMENT 2>&1 | egrep '^SciMark.*small' | awk '{ print $2 }')
   echo "scale=0;100000/$mark" | bc -l
 }
 function run_memops {
@@ -112,15 +182,31 @@ function run_zlib {
 declare -a as
 declare -a bs
 
-echo "# $NUMRUNS runs per program"
+echo "# mode=$MODE, runs=$NUMRUNS, problem size=$ARGUMENT"
 
 for test in box2d bullet conditionals copy corrections fannkuch fasta ifs linpack lua_binarytrees lua_scimark memops primes skinning zlib
 do
   if [[ $1 == "" || $test =~ $1 ]]; then
     for (( i=0 ; $i <  $NUMRUNS ; ++i )); do
-      as[$i]=$("run_$test")
+
+      ARG=""
+      if [[ $MODE != "IonVsBaseline" ]]; then
+        JS_SHELL=$JS_SHELL1
+        if [[ $MODE == "BaselineVsBaseline" ]]; then
+          ARG="--wasm-always-baseline"
+        fi
+      fi
+      as[$i]=$("run_$test" $ARG)
       if [[ $? != 0 ]]; then echo $a; exit 1; fi
-      bs[$i]=$("run_$test" --wasm-always-baseline)
+
+      ARG="--wasm-always-baseline"
+      if [[ $MODE != "IonVsBaseline" ]]; then
+        JS_SHELL=$JS_SHELL2
+        if [[ $MODE == "IonVsIon" ]]; then
+          ARG=""
+        fi
+      fi
+      bs[$i]=$("run_$test" $ARG)
       if [[ $? != 0 ]]; then echo $a; exit 1; fi
     done
 
