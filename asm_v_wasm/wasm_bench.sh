@@ -2,7 +2,7 @@
 #
 # Run wasm benchmarks in two configurations and report the times.
 #
-# Usage: wasm_bench.sh [-n numruns] [-a argument] [-m mode] [ pattern ]
+# Usage: wasm_bench.sh [-n numruns] [-a argument] [-m mode] [-v] [ pattern ]
 #
 # `pattern` is a regex that will match against a test case name.
 #
@@ -23,27 +23,29 @@
 #   -n   The number of iterations to run.  We report the median time.
 #        The value should be odd.
 #
+#   -v   Verbose.  Echo commands and other information on stderr.
 #
 # In the default mode, runs the shell without and with --wasm-always-baseline
-# and prints:
+# and prints three tab-separated columns:
 #
 #  Ion-result  Baseline-result  Ion/Baseline
 #
 # In the other modes, runs the two shells with the same argument (depending
-# on the mode) and prints:
+# on the mode) and prints three tab-separated columns:
 #
 #  shell1-result  shell2-result  shell1-result/shell2-result
 #
-# Times are in ms.  Linpack is 1000000/mflops, scimark is 10000/score,
-# always as integer values (bash does not do floating point).
+# Results are mostly running times in ms, except that linpack is 1000000/mflops
+# and scimark is 10000/score, always as integer values (bash does not do
+# floating point).
 #
 # A lower result is always better.  Linpack and SciMark outputs are
 # inverted to make this consistent.
 #
-# Note, we measure the running time for the wasm code, not the
-# end-to-end time including startup and compilation.  The difference
-# in ratios is actually not large, but running time is probably the
-# best measure.
+# Note, we measure the running time for the compiled wasm code, not
+# the end-to-end time including startup and compilation.  The
+# difference in ratios is actually not large, but running time is the
+# best measure.  (However for argument 0 we report compilation time.)
 #
 # TODO: Also check the output for other arguments than the default.
 #
@@ -53,13 +55,13 @@
 #       not just one line of it (and we might like for the output
 #       not to contain any other lines)
 
-LOOKFOR='^WASM RUN TIME:'
 DEFAULT_SHELL=~/moz/mozilla-inbound/js/src/build-release/dist/bin/js
 
+LOOKFOR='^WASM RUN TIME:'
 MODE="IonVsBaseline"
 NUMRUNS=1
 ARGUMENT=""
-MODE=""
+VERBOSE=0
 
 while true; do
   case $1 in
@@ -78,6 +80,9 @@ while true; do
         ;;
     -n) NUMRUNS=$2
         shift 2
+        ;;
+    -v) VERBOSE=1
+        shift
         ;;
     *)  break
         ;;
@@ -116,6 +121,9 @@ esac
 
 function run_match1 {
   rm -f output.tmp
+  if [[ $VERBOSE != 0 ]]; then
+    >&2 echo "# $JS_SHELL $1 $2 $ARGUMENT"
+  fi
   $JS_SHELL $1 "$2" $ARGUMENT > output.tmp 2>&1
   if [[ $ARGUMENT == "" ]]; then
     if [[ $(egrep -c "$3" output.tmp) == 0 ]]; then 
@@ -154,6 +162,9 @@ function run_ifs {
 }
 function run_linpack {
   # We assume linpack checks itself, and that matching the output line is good enough
+  if [[ $VERBOSE != 0 ]]; then
+    >&2 echo "# $JS_SHELL $1 wasm_linpack_float.c.js $ARGUMENT"
+  fi
   mflops=$($JS_SHELL $1 wasm_linpack_float.c.js $ARGUMENT 2>&1 | egrep '^Unrolled +Single +Precision.*Mflops' | awk '{ print $4 }')
   echo "scale=0;10000000/$mflops" | bc -l
 }
@@ -163,6 +174,9 @@ function run_lua_binarytrees {
 }
 function run_lua_scimark {
   # We assume scimark checks itself, and that matching the output line is good enough
+  if [[ $VERBOSE != 0 ]]; then
+    >&2 echo "# $JS_SHELL $1 wasm_lua_scimark.c.js $ARGUMENT"
+  fi
   mark=$($JS_SHELL $1 wasm_lua_scimark.c.js $ARGUMENT 2>&1 | egrep '^SciMark.*small' | awk '{ print $2 }')
   echo "scale=0;100000/$mark" | bc -l
 }
