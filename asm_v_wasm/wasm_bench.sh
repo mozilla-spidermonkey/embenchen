@@ -35,17 +35,20 @@
 #
 #  shell1-result  shell2-result  shell1-result/shell2-result
 #
-# Results are mostly running times in ms, except that linpack is 1000000/mflops
-# and scimark is 10000/score, always as integer values (bash does not do
-# floating point).
+# When measuring compile times (argument = 0) results are compile
+# times in ms.
+#
+# When measuring run times (argument > 0) results are mostly running
+# times in ms, except that linpack is 1000000/mflops and scimark is
+# 10000/score, always as integer values.
 #
 # A lower result is always better.  Linpack and SciMark outputs are
 # inverted to make this consistent.
 #
-# Note, we measure the running time for the compiled wasm code, not
-# the end-to-end time including startup and compilation.  The
+# We measure the running time only for the already-compiled wasm code,
+# not the end-to-end time including startup and compilation.  The
 # difference in ratios is actually not large, but running time is the
-# best measure.  (However for argument 0 we report compilation time.)
+# best measure.
 #
 # TODO: Also check the output for other arguments than the default.
 #
@@ -165,8 +168,12 @@ function run_linpack {
   if [[ $VERBOSE != 0 ]]; then
     >&2 echo "# $JS_SHELL $1 wasm_linpack_float.c.js $ARGUMENT"
   fi
-  mflops=$($JS_SHELL $1 wasm_linpack_float.c.js $ARGUMENT 2>&1 | egrep '^Unrolled +Single +Precision.*Mflops' | awk '{ print $4 }')
-  echo "scale=0;10000000/$mflops" | bc -l
+  if [[ $ARGUMENT == 0 ]]; then
+    run_match1 "$1" wasm_linpack_float.c.js "dummy"
+  else
+    mflops=$($JS_SHELL $1 wasm_linpack_float.c.js $ARGUMENT 2>&1 | egrep '^Unrolled +Single +Precision.*Mflops' | awk '{ print $4 }')
+    echo "scale=0;10000000/$mflops" | bc -l
+  fi
 }
 function run_lua_binarytrees {
   # TODO: Check the entire output, this is just a spot check
@@ -177,8 +184,12 @@ function run_lua_scimark {
   if [[ $VERBOSE != 0 ]]; then
     >&2 echo "# $JS_SHELL $1 wasm_lua_scimark.c.js $ARGUMENT"
   fi
-  mark=$($JS_SHELL $1 wasm_lua_scimark.c.js $ARGUMENT 2>&1 | egrep '^SciMark.*small' | awk '{ print $2 }')
-  echo "scale=0;100000/$mark" | bc -l
+  if [[ $ARGUMENT == 0 ]]; then
+    run_match1 "$1" wasm_lua_scimark.c.js "dummy"
+  else
+    mark=$($JS_SHELL $1 wasm_lua_scimark.c.js $ARGUMENT 2>&1 | egrep '^SciMark.*small' | awk '{ print $2 }')
+    echo "scale=0;100000/$mark" | bc -l
+  fi
 }
 function run_memops {
   run_match1 "$1" wasm_memops.js "^final: 400.$"
