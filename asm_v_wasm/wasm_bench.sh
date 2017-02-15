@@ -2,13 +2,14 @@
 #
 # Run wasm benchmarks in two configurations and report the times.
 #
-# Usage: wasm_bench.sh [-n numruns] [-a argument] [-m mode] [-v] [ pattern ]
+# Usage: wasm_bench.sh [-n numruns] [-a argument] [-m mode] [-v] [-b] [ pattern ]
 #
 # `pattern` is a regex that will match against a test case name.
 #
 # Options:
 #
-#   -a   The problem size argument.  The default is 3.  With size=0
+#   -a argument
+#        The problem size argument.  The default is 3.  With size=0
 #        we effectively only compile the code and compilation time is
 #        reported instead.  The max is 5.
 #
@@ -20,8 +21,12 @@
 #        the environment variables JS_SHELL1 and JS_SHELL2 must
 #        be set.  `mode` must be "ion" or "baseline".
 #
-#   -n   The number of iterations to run.  We report the median time.
-#        The value should be odd.
+#   -n numruns
+#        The number of iterations to run.  The default is 1.  The value
+#        should be odd.  We report the median time (but see -b).
+#
+#   -b   Benchmark mode.  Discard the slowest time and print the
+#        mean of the remaining times.
 #
 #   -v   Verbose.  Echo commands and other information on stderr.
 #
@@ -65,143 +70,147 @@ MODE="IonVsBaseline"
 NUMRUNS=1
 ARGUMENT=""
 VERBOSE=0
+BENCHMARK=0
 
 while true; do
-  case $1 in
-    -a) ARGUMENT=$2
-        shift 2
-        if [[ $ARGUMENT == "0" ]]; then
-          LOOKFOR='^WASM COMPILE TIME:'
-        fi
-	;;
-    -m) case $2 in
-          baseline) MODE="BaselineVsBaseline" ;;
-          ion)      MODE="IonVsIon" ;;
-          *)        >&2 echo "Bad argument for -c" ; exit 1 ;;
-        esac
-        shift 2
-        ;;
-    -n) NUMRUNS=$2
-        shift 2
-        ;;
-    -v) VERBOSE=1
-        shift
-        ;;
-    *)  break
-        ;;
-  esac
+    case $1 in
+	-a) ARGUMENT=$2
+            shift 2
+            if [[ $ARGUMENT == "0" ]]; then
+		LOOKFOR='^WASM COMPILE TIME:'
+            fi
+	    ;;
+	-m) case $2 in
+		baseline) MODE="BaselineVsBaseline" ;;
+		ion)      MODE="IonVsIon" ;;
+		*)        >&2 echo "Bad argument for -c" ; exit 1 ;;
+            esac
+            shift 2
+            ;;
+	-n) NUMRUNS=$2
+            shift 2
+            ;;
+	-b) BENCHMARK=1
+	    shift
+	    ;;
+	-v) VERBOSE=1
+            shift
+            ;;
+	*)  break
+            ;;
+    esac
 done
 
 case $MODE in
-  IonVsBaseline)
-    if [[ $JS_SHELL == "" ]]; then
-      JS_SHELL=$DEFAULT_SHELL
-    fi
-    if [[ ! -x $JS_SHELL ]]; then
-      >&2 echo "JS_SHELL $JS_SHELL is not executable"
-      exit 1
-    fi
-    ;;
-  *)
-    if [[ $JS_SHELL1 == "" ]]; then
-      >&2 echo "JS_SHELL1 not set"
-      exit 1
-    fi
-    if [[ ! -x $JS_SHELL1 ]]; then
-      >&2 echo "JS_SHELL1 $JS_SHELL1 is not executable"
-      exit 1
-    fi
-    if [[ $JS_SHELL2 == "" ]]; then
-      >&2 echo "JS_SHELL2 not set"
-      exit 1
-    fi
-    if [[ ! -x $JS_SHELL2 ]]; then
-      >&2 echo "JS_SHELL2 $JS_SHELL2 is not executable"
-      exit 1
-    fi
-    ;;
+    IonVsBaseline)
+	if [[ $JS_SHELL == "" ]]; then
+	    JS_SHELL=$DEFAULT_SHELL
+	fi
+	if [[ ! -x $JS_SHELL ]]; then
+	    >&2 echo "JS_SHELL $JS_SHELL is not executable"
+	    exit 1
+	fi
+	;;
+    *)
+	if [[ $JS_SHELL1 == "" ]]; then
+	    >&2 echo "JS_SHELL1 not set"
+	    exit 1
+	fi
+	if [[ ! -x $JS_SHELL1 ]]; then
+	    >&2 echo "JS_SHELL1 $JS_SHELL1 is not executable"
+	    exit 1
+	fi
+	if [[ $JS_SHELL2 == "" ]]; then
+	    >&2 echo "JS_SHELL2 not set"
+	    exit 1
+	fi
+	if [[ ! -x $JS_SHELL2 ]]; then
+	    >&2 echo "JS_SHELL2 $JS_SHELL2 is not executable"
+	    exit 1
+	fi
+	;;
 esac
 
 function run_match1 {
-  rm -f output.tmp
-  if [[ $VERBOSE != 0 ]]; then
-    >&2 echo "# $JS_SHELL $1 $2 $ARGUMENT"
-  fi
-  $JS_SHELL $1 "$2" $ARGUMENT > output.tmp 2>&1
-  if [[ $ARGUMENT == "" ]]; then
-    if [[ $(egrep -c "$3" output.tmp) == 0 ]]; then 
-      >&2 echo "Bad output for " $2
-      exit 1
+    rm -f output.tmp
+    if [[ $VERBOSE != 0 ]]; then
+	>&2 echo "# $JS_SHELL $1 $2 $ARGUMENT"
     fi
-  fi
-  egrep "$LOOKFOR" output.tmp | awk '{ print $4 }'
+    $JS_SHELL $1 "$2" $ARGUMENT > output.tmp 2>&1
+    if [[ $ARGUMENT == "" ]]; then
+	if [[ $(egrep -c "$3" output.tmp) == 0 ]]; then 
+	    >&2 echo "Bad output for " $2
+	    exit 1
+	fi
+    fi
+    egrep "$LOOKFOR" output.tmp | awk '{ print $4 }'
 }
 
 function run_box2d {
-  run_match1 "$1" wasm_box2d.js "^frame averages:.*, range:.* to "
+    run_match1 "$1" wasm_box2d.js "^frame averages:.*, range:.* to "
 }
 function run_bullet {
-  run_match1 "$1" wasm_bullet.js "^ok.$"
+    run_match1 "$1" wasm_bullet.js "^ok.$"
 }
 function run_conditionals {
-  run_match1 "$1" wasm_conditionals.js "^ok 144690090$"
+    run_match1 "$1" wasm_conditionals.js "^ok 144690090$"
 }
 function run_copy {
-  run_match1 "$1" wasm_copy.js "^sum:2836$"
+    run_match1 "$1" wasm_copy.js "^sum:2836$"
 }
 function run_corrections {
-  run_match1 "$1" wasm_corrections.js "^final: 40006013:10225.$"
+    run_match1 "$1" wasm_corrections.js "^final: 40006013:10225.$"
 }
 function run_fannkuch {
-  # TODO: Check the entire output, this is just a spot check
-  run_match1 "$1" wasm_fannkuch.js "^4312567891011$"
+    # TODO: Check the entire output, this is just a spot check
+    run_match1 "$1" wasm_fannkuch.js "^4312567891011$"
 }
 function run_fasta {
-  # TODO: Check the entire output, this is just a spot check
-  run_match1 "$1" wasm_fasta.js "^CCACTGCACTCCAGCCTGGGCGACAGAGCGAGACTCCGTCTCAAAAAGGCCGGGCGCGGT$"
+    # TODO: Check the entire output, this is just a spot check
+    run_match1 "$1" wasm_fasta.js "^CCACTGCACTCCAGCCTGGGCGACAGAGCGAGACTCCGTCTCAAAAAGGCCGGGCGCGGT$"
 }
 function run_ifs {
-  run_match1 "$1" wasm_ifs.js "^ok$"
+    run_match1 "$1" wasm_ifs.js "^ok$"
 }
 function run_linpack {
-  # We assume linpack checks itself, and that matching the output line is good enough
-  if [[ $VERBOSE != 0 ]]; then
-    >&2 echo "# $JS_SHELL $1 wasm_linpack_float.c.js $ARGUMENT"
-  fi
-  if [[ $ARGUMENT == 0 ]]; then
-    run_match1 "$1" wasm_linpack_float.c.js "dummy"
-  else
-    mflops=$($JS_SHELL $1 wasm_linpack_float.c.js $ARGUMENT 2>&1 | egrep '^Unrolled +Single +Precision.*Mflops' | awk '{ print $4 }')
-    echo "scale=0;10000000/$mflops" | bc -l
-  fi
+    # We assume linpack checks itself, and that matching the output line is good enough
+    if [[ $VERBOSE != 0 ]]; then
+	>&2 echo "# $JS_SHELL $1 wasm_linpack_float.c.js $ARGUMENT"
+    fi
+    if [[ $ARGUMENT == 0 ]]; then
+	run_match1 "$1" wasm_linpack_float.c.js "dummy"
+    else
+	mflops=$($JS_SHELL $1 wasm_linpack_float.c.js $ARGUMENT 2>&1 | egrep '^Unrolled +Single +Precision.*Mflops' | awk '{ print $4 }')
+	echo "scale=0;10000000/$mflops" | bc -l
+    fi
 }
 function run_lua_binarytrees {
-  # TODO: Check the entire output, this is just a spot check
-  run_match1 "$1" wasm_lua_binarytrees.c.js "843	 trees of depth 10	 check: -842"
+    # TODO: Check the entire output, this is just a spot check
+    run_match1 "$1" wasm_lua_binarytrees.c.js "843	 trees of depth 10	 check: -842"
 }
 function run_lua_scimark {
-  # We assume scimark checks itself, and that matching the output line is good enough
-  if [[ $VERBOSE != 0 ]]; then
-    >&2 echo "# $JS_SHELL $1 wasm_lua_scimark.c.js $ARGUMENT"
-  fi
-  if [[ $ARGUMENT == 0 ]]; then
-    run_match1 "$1" wasm_lua_scimark.c.js "dummy"
-  else
-    mark=$($JS_SHELL $1 wasm_lua_scimark.c.js $ARGUMENT 2>&1 | egrep '^SciMark.*small' | awk '{ print $2 }')
-    echo "scale=0;100000/$mark" | bc -l
-  fi
+    # We assume scimark checks itself, and that matching the output line is good enough
+    if [[ $VERBOSE != 0 ]]; then
+	>&2 echo "# $JS_SHELL $1 wasm_lua_scimark.c.js $ARGUMENT"
+    fi
+    if [[ $ARGUMENT == 0 ]]; then
+	run_match1 "$1" wasm_lua_scimark.c.js "dummy"
+    else
+	mark=$($JS_SHELL $1 wasm_lua_scimark.c.js $ARGUMENT 2>&1 | egrep '^SciMark.*small' | awk '{ print $2 }')
+	echo "scale=0;100000/$mark" | bc -l
+    fi
 }
 function run_memops {
-  run_match1 "$1" wasm_memops.js "^final: 400.$"
+    run_match1 "$1" wasm_memops.js "^final: 400.$"
 }
 function run_primes {
-  run_match1 "$1" wasm_primes.js "^lastprime: 3043739.$"
+    run_match1 "$1" wasm_primes.js "^lastprime: 3043739.$"
 }
 function run_skinning {
-  run_match1 "$1" wasm_skinning.js "^blah=0.000000$"
+    run_match1 "$1" wasm_skinning.js "^blah=0.000000$"
 }
 function run_zlib {
-  run_match1 "$1" wasm_zlib.c.js "^sizes: 100000,25906$"
+    run_match1 "$1" wasm_zlib.c.js "^sizes: 100000,25906$"
 }
 
 declare -a as
@@ -211,51 +220,75 @@ echo "# mode=$MODE, runs=$NUMRUNS, problem size=$ARGUMENT"
 
 for test in box2d bullet conditionals copy corrections fannkuch fasta ifs linpack lua_binarytrees lua_scimark memops primes skinning zlib
 do
-  if [[ $1 == "" || $test =~ $1 ]]; then
-    for (( i=0 ; $i <  $NUMRUNS ; ++i )); do
+    if [[ $1 == "" || $test =~ $1 ]]; then
 
-      ARG=""
-      if [[ $MODE != "IonVsBaseline" ]]; then
-        JS_SHELL=$JS_SHELL1
-        if [[ $MODE == "BaselineVsBaseline" ]]; then
-          ARG="--wasm-always-baseline"
-        fi
-      fi
-      as[$i]=$("run_$test" $ARG)
-      if [[ $? != 0 ]]; then echo $a; exit 1; fi
+	# Run first one configuration, then the other, in order to
+	# make the most out of a warm cache.  This really only matters
+	# when pitting two builds against each other in the same mode.  
 
-      ARG="--wasm-always-baseline"
-      if [[ $MODE != "IonVsBaseline" ]]; then
-        JS_SHELL=$JS_SHELL2
-        if [[ $MODE == "IonVsIon" ]]; then
-          ARG=""
-        fi
-      fi
-      bs[$i]=$("run_$test" $ARG)
-      if [[ $? != 0 ]]; then echo $a; exit 1; fi
-    done
+	ARG=""
+	if [[ $MODE != "IonVsBaseline" ]]; then
+	    JS_SHELL=$JS_SHELL1
+	    if [[ $MODE == "BaselineVsBaseline" ]]; then
+		ARG="--wasm-always-baseline"
+	    fi
+	fi
+	for (( i=0 ; $i <  $NUMRUNS ; ++i )); do
+	    as[$i]=$("run_$test" $ARG)
+	    if [[ $? != 0 ]]; then echo $a; exit 1; fi
+	done
 
-    for (( i=0 ; $i < $NUMRUNS-1 ; ++i )); do
-      for (( j=$i+1 ; $j < $NUMRUNS ; ++j )); do
-        if (( ${as[i]} > ${as[j]} )); then
-          tmp=${as[i]}
-          as[i]=${as[j]}
-          as[j]=$tmp
-        fi
-        if (( ${bs[i]} > ${bs[j]} )); then
-          tmp=${bs[i]}
-          bs[i]=${bs[j]}
-          bs[j]=$tmp
-        fi
-      done
-    done
+	ARG="--wasm-always-baseline"
+	if [[ $MODE != "IonVsBaseline" ]]; then
+	    JS_SHELL=$JS_SHELL2
+	    if [[ $MODE == "IonVsIon" ]]; then
+		ARG=""
+	    fi
+	fi
+	for (( i=0 ; $i <  $NUMRUNS ; ++i )); do
+	    bs[$i]=$("run_$test" $ARG)
+	    if [[ $? != 0 ]]; then echo $a; exit 1; fi
+	done
 
-    mid=$(( $NUMRUNS/2 ))
-    a=${as[$mid]}
-    b=${bs[$mid]}
+	# Sort the results.  There has got to be a better way.
 
-    echo "$test		$a	$b	$(echo "scale=3;$a/$b" | bc -l)"
-    unset as[*]
-    unset bs[*]
-  fi
+	for (( i=0 ; $i < $NUMRUNS-1 ; ++i )); do
+	    for (( j=$i+1 ; $j < $NUMRUNS ; ++j )); do
+		if (( ${as[i]} > ${as[j]} )); then
+		    tmp=${as[i]}
+		    as[i]=${as[j]}
+		    as[j]=$tmp
+		fi
+		if (( ${bs[i]} > ${bs[j]} )); then
+		    tmp=${bs[i]}
+		    bs[i]=${bs[j]}
+		    bs[j]=$tmp
+		fi
+	    done
+	done
+
+	if [[ $BENCHMARK != 0 ]]; then
+	    if [[ $NUMRUNS == 1 ]]; then
+		a=${as[0]}
+		b=${bs[0]}
+	    else
+		a=0
+		b=0
+		for (( i=0 ; $i < $NUMRUNS-1 ; ++i )); do
+		    a=$(( $a + ${as[$i]} ))
+		    b=$(( $b + ${bs[$i]} ))
+		done
+		a=$(( $a/($NUMRUNS-1) ))
+		b=$(( $b/($NUMRUNS-1) ))
+	    fi
+	else
+	    mid=$(( $NUMRUNS/2 ))
+	    a=${as[$mid]}
+	    b=${bs[$mid]}
+	fi
+
+	echo "$test		$a	$b	$(echo "scale=3;$a/$b" | bc -l)"
+	unset as[*]
+	unset bs[*]
+    fi
 done
