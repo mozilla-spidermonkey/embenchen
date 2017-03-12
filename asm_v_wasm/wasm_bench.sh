@@ -2,7 +2,7 @@
 #
 # Run wasm benchmarks in two configurations and report the times.
 #
-# Usage: wasm_bench.sh [-n numruns] [-a argument] [-m mode] [-v] [-b] [ pattern ]
+# Usage: wasm_bench.sh [-n numruns] [-a argument] [-m mode] [-c mode] [-v] [-b] [ pattern ]
 #
 # `pattern` is a regex that will match against a test case name.
 #
@@ -16,6 +16,13 @@
 #        If -a is given we do not check that the output matches the
 #        expected.
 #
+#   -b   Benchmark mode.  Discard the slowest time and print the
+#        mean of the remaining times.
+#
+#   -c mode
+#        Run only one shell (typically for sanity testing).  `mode` must
+#        be "ion" or "baseline".
+#
 #   -m mode
 #        Compare the output of two different shells.  In this case,
 #        the environment variables JS_SHELL1 and JS_SHELL2 must
@@ -24,9 +31,6 @@
 #   -n numruns
 #        The number of iterations to run.  The default is 1.  The value
 #        should be odd.  We report the median time (but see -b).
-#
-#   -b   Benchmark mode.  Discard the slowest time and print the
-#        mean of the remaining times.
 #
 #   -v   Verbose.  Echo commands and other information on stderr.
 #
@@ -68,6 +72,7 @@ DEFAULT_SHELL=~/moz/mozilla-inbound/js/src/build-release/dist/bin/js
 LOOKFOR='^WASM RUN TIME:'
 MODE="IonVsBaseline"
 NUMRUNS=1
+CHECKONLY=0
 ARGUMENT=""
 VERBOSE=0
 BENCHMARK=0
@@ -80,19 +85,27 @@ while true; do
 		LOOKFOR='^WASM COMPILE TIME:'
             fi
 	    ;;
+	-b) BENCHMARK=1
+	    shift
+	    ;;
+	-c) case $2 in
+		baseline) MODE="BaselineCheck" ;;
+		ion)      MODE="IonCheck" ;;
+		*)        >&2 echo "Bad argument for -c" ; exit 1 ;;
+            esac
+	    CHECKONLY=1
+	    shift 2
+	    ;;
 	-m) case $2 in
 		baseline) MODE="BaselineVsBaseline" ;;
 		ion)      MODE="IonVsIon" ;;
-		*)        >&2 echo "Bad argument for -c" ; exit 1 ;;
+		*)        >&2 echo "Bad argument for -m" ; exit 1 ;;
             esac
             shift 2
             ;;
 	-n) NUMRUNS=$2
             shift 2
             ;;
-	-b) BENCHMARK=1
-	    shift
-	    ;;
 	-v) VERBOSE=1
             shift
             ;;
@@ -102,7 +115,7 @@ while true; do
 done
 
 case $MODE in
-    IonVsBaseline)
+    IonVsBaseline | IonCheck | BaselineCheck)
 	if [[ $JS_SHELL == "" ]]; then
 	    JS_SHELL=$DEFAULT_SHELL
 	fi
@@ -227,7 +240,11 @@ do
 	# when pitting two builds against each other in the same mode.  
 
 	ARG=""
-	if [[ $MODE != "IonVsBaseline" ]]; then
+	if [[ $MODE == "IonCheck" || $MODE == "BaselineCheck" ]]; then
+	    if [[ $MODE == "BaselineCheck" ]]; then
+		ARG="--wasm-always-baseline"
+	    fi
+	elif [[ $MODE != "IonVsBaseline" ]]; then
 	    JS_SHELL=$JS_SHELL1
 	    if [[ $MODE == "BaselineVsBaseline" ]]; then
 		ARG="--wasm-always-baseline"
@@ -237,58 +254,64 @@ do
 	    as[$i]=$("run_$test" $ARG)
 	    if [[ $? != 0 ]]; then echo $a; exit 1; fi
 	done
-
-	ARG="--wasm-always-baseline"
-	if [[ $MODE != "IonVsBaseline" ]]; then
-	    JS_SHELL=$JS_SHELL2
-	    if [[ $MODE == "IonVsIon" ]]; then
-		ARG=""
+	
+	if [[ $MODE != "IonCheck" && $MODE != "BaselineCheck" ]]; then
+	    ARG="--wasm-always-baseline"
+	    if [[ $MODE != "IonVsBaseline" ]]; then
+		JS_SHELL=$JS_SHELL2
+		if [[ $MODE == "IonVsIon" ]]; then
+		    ARG=""
+		fi
 	    fi
+	    for (( i=0 ; $i <  $NUMRUNS ; ++i )); do
+		bs[$i]=$("run_$test" $ARG)
+		if [[ $? != 0 ]]; then echo $a; exit 1; fi
+	    done
 	fi
-	for (( i=0 ; $i <  $NUMRUNS ; ++i )); do
-	    bs[$i]=$("run_$test" $ARG)
-	    if [[ $? != 0 ]]; then echo $a; exit 1; fi
-	done
 
 	# Sort the results.  There has got to be a better way.
 
-	for (( i=0 ; $i < $NUMRUNS-1 ; ++i )); do
-	    for (( j=$i+1 ; $j < $NUMRUNS ; ++j )); do
-		if (( ${as[i]} > ${as[j]} )); then
-		    tmp=${as[i]}
-		    as[i]=${as[j]}
-		    as[j]=$tmp
-		fi
-		if (( ${bs[i]} > ${bs[j]} )); then
-		    tmp=${bs[i]}
-		    bs[i]=${bs[j]}
-		    bs[j]=$tmp
-		fi
-	    done
-	done
-
-	if [[ $BENCHMARK != 0 ]]; then
-	    if [[ $NUMRUNS == 1 ]]; then
-		a=${as[0]}
-		b=${bs[0]}
-	    else
-		a=0
-		b=0
-		for (( i=0 ; $i < $NUMRUNS-1 ; ++i )); do
-		    a=$(( $a + ${as[$i]} ))
-		    b=$(( $b + ${bs[$i]} ))
+	if [[ $MODE != "IonCheck" && $MODE != "BaselineCheck" ]]; then
+	    for (( i=0 ; $i < $NUMRUNS-1 ; ++i )); do
+		for (( j=$i+1 ; $j < $NUMRUNS ; ++j )); do
+		    if (( ${as[i]} > ${as[j]} )); then
+			tmp=${as[i]}
+			as[i]=${as[j]}
+			as[j]=$tmp
+		    fi
+		    if (( ${bs[i]} > ${bs[j]} )); then
+			tmp=${bs[i]}
+			bs[i]=${bs[j]}
+			bs[j]=$tmp
+		    fi
 		done
-		a=$(( $a/($NUMRUNS-1) ))
-		b=$(( $b/($NUMRUNS-1) ))
-	    fi
-	else
-	    mid=$(( $NUMRUNS/2 ))
-	    a=${as[$mid]}
-	    b=${bs[$mid]}
-	fi
+	    done
 
-	echo "$test		$a	$b	$(echo "scale=3;$a/$b" | bc -l)"
-	unset as[*]
-	unset bs[*]
+	    if [[ $BENCHMARK != 0 ]]; then
+		if [[ $NUMRUNS == 1 ]]; then
+		    a=${as[0]}
+		    b=${bs[0]}
+		else
+		    a=0
+		    b=0
+		    for (( i=0 ; $i < $NUMRUNS-1 ; ++i )); do
+			a=$(( $a + ${as[$i]} ))
+			b=$(( $b + ${bs[$i]} ))
+		    done
+		    a=$(( $a/($NUMRUNS-1) ))
+		    b=$(( $b/($NUMRUNS-1) ))
+		fi
+	    else
+		mid=$(( $NUMRUNS/2 ))
+		a=${as[$mid]}
+		b=${bs[$mid]}
+	    fi
+
+	    echo "$test		$a	$b	$(echo "scale=3;$a/$b" | bc -l)"
+	    unset as[*]
+	    unset bs[*]
+	else
+	    echo "$test"
+	fi
     fi
 done
