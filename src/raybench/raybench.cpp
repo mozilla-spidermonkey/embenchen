@@ -82,17 +82,20 @@ typedef double Float;
 #  define ANTIALIAS true
 #endif
 
-const bool g_partitioning = PARTITIONING;
-
 const uint32_t g_height = HEIGHT;
 const uint32_t g_width = WIDTH;
 
-const bool g_shadows = SHADOWS;	                // Compute object shadows
+// Normally these configuration knobs would be constant, but for benchmarking they
+// are made variable and affected by command line arguments.  See main().
 
-const bool g_reflection = (REFLECTION != 0);    // Compute object reflections
-const uint32_t g_reflection_depth = REFLECTION; //   to this depth
+bool g_partitioning = PARTITIONING;
 
-const bool g_antialias = ANTIALIAS;             // Antialias the image (expensive but very pretty)
+bool g_shadows = SHADOWS;	                 // Compute object shadows
+
+bool g_reflection = (REFLECTION != 0);           // Compute object reflections
+uint32_t g_reflection_depth = REFLECTION;        //   to this depth
+
+bool g_antialias = ANTIALIAS;                    // Antialias the image (expensive but very pretty)
 
 // Viewport
 const Float g_left = -2;
@@ -609,6 +612,34 @@ void trace(uint32_t ymin, uint32_t ylim, uint32_t xmin, uint32_t xlim, V3P eye, 
 
 int main(int argc, char** argv)
 {
+    int arg = 3;
+    if (argc > 1) {
+	char c = argv[1][0];
+	if (c >= '0' && c <= '5')
+	    arg = c-'0';
+	else
+	    arg = 0;
+    }
+    switch (arg) {
+    case 0:
+	return 0;
+    case 1:
+	g_partitioning = true;  g_shadows = false; g_reflection = false; g_reflection_depth = 0; g_antialias = false;
+	break;
+    case 2:
+	g_partitioning = true;  g_shadows = true;  g_reflection = true;  g_reflection_depth = 1; g_antialias = false;
+	break;
+    case 3:
+	g_partitioning = false; g_shadows = true;  g_reflection = true;  g_reflection_depth = 2; g_antialias = false;
+	break;
+    case 4:
+	g_partitioning = true;  g_shadows = true;  g_reflection = true;  g_reflection_depth = 2; g_antialias = true;
+	break;
+    case 5:
+	g_partitioning = false;	g_shadows = true;  g_reflection = true;  g_reflection_depth = 3; g_antialias = true;
+	break;
+    }
+
     Vec3 eye;
     Vec3 light;
     Vec3 background;
