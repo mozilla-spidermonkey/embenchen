@@ -219,6 +219,9 @@ function run_memops {
 function run_primes {
     run_match1 "$1" wasm_primes.js "^lastprime: 3043739.$"
 }
+function run_raybench {
+    run_match1 "$1" raybench.js "^Render time: .*$"
+}
 function run_skinning {
     run_match1 "$1" wasm_skinning.js "^blah=0.000000$"
 }
@@ -231,7 +234,7 @@ declare -a bs
 
 echo "# mode=$MODE, runs=$NUMRUNS, problem size=$ARGUMENT"
 
-for test in box2d bullet conditionals copy corrections fannkuch fasta ifs linpack lua_binarytrees lua_scimark memops primes skinning zlib
+for test in box2d bullet conditionals copy corrections fannkuch fasta ifs linpack lua_binarytrees lua_scimark memops primes raybench skinning zlib
 do
     if [[ $1 == "" || $test =~ $1 ]]; then
 
