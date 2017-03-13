@@ -1,6 +1,6 @@
 # Output options:
 #
-#   HEADLESS    = just print timing info on stderr
+#   HEADLESS    = just print timing info and status values on stdout
 #   PPM_STDOUT  = dump a ppm on stdout (plus timing info on stderr)
 #   SDL_BROWSER = render to a browser canvas using SDL (plus timing info on stderr)
 

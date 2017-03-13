@@ -49,35 +49,35 @@
   (global $threwValue (mut i32) (i32.const 0))
   (global $tempRet0 (mut i32) (i32.const 0))
   (elem (get_global $tableBase) $b0 $___stdio_write $___stdio_seek $___stdout_write $_sn_write $__ZNK10__cxxabiv117__class_type_info9can_catchEPKNS_16__shim_type_infoERPv $b0 $b0 $b1 $__ZNK10__cxxabiv117__class_type_info16search_below_dstEPNS_19__dynamic_cast_infoEPKvib $__ZNK10__cxxabiv120__si_class_type_info16search_below_dstEPNS_19__dynamic_cast_infoEPKvib $b1 $b2 $___unlockfile $__ZN10__cxxabiv117__class_type_infoD0Ev $___unlockfile $___unlockfile $__ZN10__cxxabiv117__class_type_infoD0Ev $___unlockfile $__ZN10__cxxabiv117__class_type_infoD0Ev $_cleanup_387 $b2 $b2 $b2 $b2 $b2 $b2 $b2 $b3 $__ZN8Triangle9intersectERK4Vec3S2_ddPd $__ZN6Jumble9intersectERK4Vec3S2_ddPd $__ZN6Volume9intersectERK4Vec3S2_ddPd $__ZN6Sphere9intersectERK4Vec3S2_ddPd $b3 $b3 $b3 $b4 $__ZN8Triangle6boundsEv $__ZN8Triangle6centerEv $__ZN6Jumble6boundsEv $__ZN6Jumble6centerEv $__ZN6Volume6boundsEv $__ZN6Volume6centerEv $__ZN6Sphere6boundsEv $__ZN6Sphere6centerEv $b4 $b4 $b4 $b4 $b4 $b4 $b4 $b5 $___stdio_close $__ZNKSt9bad_alloc4whatEv $b5 $b6 $__ZN8Triangle6normalERK4Vec3 $__ZN8Triangle5debugEPFvPKcEj $__ZN6Jumble6normalERK4Vec3 $__ZN6Jumble5debugEPFvPKcEj $__ZN6Volume6normalERK4Vec3 $__ZN6Volume5debugEPFvPKcEj $__ZN6Sphere6normalERK4Vec3 $__ZN6Sphere5debugEPFvPKcEj $b6 $b6 $b6 $b6 $b6 $b6 $b6 $b7 $b8 $__ZNK10__cxxabiv117__class_type_info16search_above_dstEPNS_19__dynamic_cast_infoEPKvS4_ib $__ZNK10__cxxabiv120__si_class_type_info16search_above_dstEPNS_19__dynamic_cast_infoEPKvS4_ib $b8 $b9 $__ZNK10__cxxabiv117__class_type_info27has_unambiguous_public_baseEPNS_19__dynamic_cast_infoEPvi $__ZNK10__cxxabiv120__si_class_type_info27has_unambiguous_public_baseEPNS_19__dynamic_cast_infoEPvi $b9)
-  (data (i32.const 1024) "\aeG\e1z\14\ae\df?\e1z\14\aeG\e1\ea?\'1\08\ac\1cZ\e4??5^\baI\0c\da?9\b4\c8v\be\9f\9a?\1b/\dd$\06\81\e1?%\06\81\95C\8b\cc?\bct\93\18\04V\d6?L7\89A`\e5\a0?\fa~j\bct\93\e4?B`\e5\d0\"\db\e1?b\10X9\b4\c8\de?+\87\16\d9\ce\f7\a3?ffffff\c6?o\12\83\c0\ca\a1\c5?1\08\ac\1cZd\e3?\d1\"\db\f9~j\e4?\b2\9d\ef\a7\c6K\d7?\e3\a5\9b\c4 \b0\e6??5^\baI\0c\ea?\91\ed|?5^\ca?\be\9f\1a/\dd$\d6?\96C\8bl\e7\fb\e9?\b2\9d\ef\a7\c6K\e3?5^\baI\0c\02\ef?\d1\"\db\f9~j\ec?7\89A`\e5\d0\d2?\91\ed|?5^\ea?=\n\d7\a3p=\da?\17\d9\ce\f7S\e3\dd?\19\04V\0e-\b2\9d?d;\dfO\8d\97\e6?\7fj\bct\93\18\d4?\cc\08\00\00\89\t\00\00\f4\08\00\00\7f\t\00\00\08\05\00\00\00\00\00\00\f4\08\00\00\b7\t\00\00\08\05\00\00\00\00\00\00\f4\08\00\00%\n\00\00\08\05\00\00\00\00\00\00\f4\08\00\00z\n\00\00\08\05")
-  (data (i32.const 1363) "@\fb!\f9?\00\00\00\00-Dt>\00\00\00\80\98F\f8<\00\00\00`Q\ccx;\00\00\00\80\83\1b\f09\00\00\00@ %z8\00\00\00\80\"\82\e36\00\00\00\00\1d\f3i5\cc\08\00\00\91\14\00\00\f4\08\00\00\f1\14\00\00\a8\05\00\00\00\00\00\00\f4\08\00\00\9e\14\00\00\b8\05\00\00\00\00\00\00\cc\08\00\00\bf\14\00\00\f4\08\00\00\cc\14\00\00\98\05\00\00\00\00\00\00\f4\08\00\00\"\15\00\00\90\05\00\00\00\00\00\00\02\00\00\00\00\00\00\00\10\05\00\00\01\00\00\00\01\00\00\00\01\00\00\00\02\00\00\00\02\00\00\00\00\00\00\00 \05\00\00\02\00\00\00\03\00\00\00\03\00\00\00\04\00\00\00\04\00\00\00\00\00\00\000\05\00\00\03\00\00\00\05\00\00\00\05\00\00\00\06\00\00\00\06\00\00\00\00\00\00\00@\05\00\00\04\00\00\00\07\00\00\00\07\00\00\00\08\00\00\00\08\00\00\00X\06\00\00\05")
+  (data (i32.const 1024) "\aeG\e1z\14\ae\df?\e1z\14\aeG\e1\ea?\'1\08\ac\1cZ\e4??5^\baI\0c\da?9\b4\c8v\be\9f\9a?\1b/\dd$\06\81\e1?%\06\81\95C\8b\cc?\bct\93\18\04V\d6?L7\89A`\e5\a0?\fa~j\bct\93\e4?B`\e5\d0\"\db\e1?b\10X9\b4\c8\de?+\87\16\d9\ce\f7\a3?ffffff\c6?o\12\83\c0\ca\a1\c5?1\08\ac\1cZd\e3?\d1\"\db\f9~j\e4?\b2\9d\ef\a7\c6K\d7?\e3\a5\9b\c4 \b0\e6??5^\baI\0c\ea?\91\ed|?5^\ca?\be\9f\1a/\dd$\d6?\96C\8bl\e7\fb\e9?\b2\9d\ef\a7\c6K\e3?5^\baI\0c\02\ef?\d1\"\db\f9~j\ec?7\89A`\e5\d0\d2?\91\ed|?5^\ea?=\n\d7\a3p=\da?\17\d9\ce\f7S\e3\dd?\19\04V\0e-\b2\9d?d;\dfO\8d\97\e6?\7fj\bct\93\18\d4?\d0\08\00\00\8d\t\00\00\f8\08\00\00\83\t\00\00\08\05\00\00\00\00\00\00\f8\08\00\00\bb\t\00\00\08\05\00\00\00\00\00\00\f8\08\00\00)\n\00\00\08\05\00\00\00\00\00\00\f8\08\00\00~\n\00\00\08\05")
+  (data (i32.const 1363) "@\fb!\f9?\00\00\00\00-Dt>\00\00\00\80\98F\f8<\00\00\00`Q\ccx;\00\00\00\80\83\1b\f09\00\00\00@ %z8\00\00\00\80\"\82\e36\00\00\00\00\1d\f3i5\d0\08\00\00\95\14\00\00\f8\08\00\00\f5\14\00\00\a8\05\00\00\00\00\00\00\f8\08\00\00\a2\14\00\00\b8\05\00\00\00\00\00\00\d0\08\00\00\c3\14\00\00\f8\08\00\00\d0\14\00\00\98\05\00\00\00\00\00\00\f8\08\00\00&\15\00\00\90\05\00\00\00\00\00\00\02\00\00\00\00\00\00\00\10\05\00\00\01\00\00\00\01\00\00\00\01\00\00\00\02\00\00\00\02\00\00\00\00\00\00\00 \05\00\00\02\00\00\00\03\00\00\00\03\00\00\00\04\00\00\00\04\00\00\00\00\00\00\000\05\00\00\03\00\00\00\05\00\00\00\05\00\00\00\06\00\00\00\06\00\00\00\00\00\00\00@\05\00\00\04\00\00\00\07\00\00\00\07\00\00\00\08\00\00\00\08\00\00\00X\06\00\00\05")
   (data (i32.const 1636) "\01")
-  (data (i32.const 1660) "\01\00\00\00\02\00\00\00\ac\17")
+  (data (i32.const 1660) "\01\00\00\00\02\00\00\00\b4\17")
   (data (i32.const 1684) "\02")
   (data (i32.const 1699) "\ff\ff\ff\ff\ff")
-  (data (i32.const 1736) "\05")
-  (data (i32.const 1748) "\01")
-  (data (i32.const 1772) "\03\00\00\00\02\00\00\00\b4\17\00\00\00\04")
-  (data (i32.const 1796) "\01")
-  (data (i32.const 1811) "\n\ff\ff\ff\ff")
-  (data (i32.const 1848) "\c8\06")
-  (data (i32.const 1888) "\04")
-  (data (i32.const 1927) "\ff\ff\ff\ff\ff")
-  (data (i32.const 1964) "\03\00\00\00\04\00\00\00\04\00\00\00\06\00\00\00\83\f9\a2\00DNn\00\fc)\15\00\d1W\'\00\dd4\f5\00b\db\c0\00<\99\95\00A\90C\00cQ\fe\00\bb\de\ab\00\b7a\c5\00:n$\00\d2MB\00I\06\e0\00\t\ea.\00\1c\92\d1\00\eb\1d\fe\00)\b1\1c\00\e8>\a7\00\f55\82\00D\bb.\00\9c\e9\84\00\b4&p\00A~_\00\d6\919\00S\839\00\9c\f49\00\8b_\84\00(\f9\bd\00\f8\1f;\00\de\ff\97\00\0f\98\05\00\11/\ef\00\nZ\8b\00m\1fm\00\cf~6\00\t\cb\'\00FO\b7\00\9ef?\00-\ea_\00\ba\'u\00\e5\eb\c7\00={\f1\00\f79\07\00\92R\8a\00\fbk\ea\00\1f\b1_\00\08]\8d\000\03V\00{\fcF\00\f0\abk\00 \bc\cf\006\f4\9a\00\e3\a9\1d\00^a\91\00\08\1b\e6\00\85\99e\00\a0\14_\00\8d@h\00\80\d8\ff\00\'sM\00\06\061\00\caV\15\00\c9\a8s\00{\e2`\00k\8c\c0\00\00\00\00\00\98\05\00\00\01\00\00\00\02\00\00\00\03\00\00\00\04\00\00\00\05\00\00\00\01\00\00\00\01\00\00\00\01\00\00\00\00\00\00\00\c0\05\00\00\01\00\00\00\05\00\00\00\03\00\00\00\04\00\00\00\05\00\00\00\02\00\00\00\02\00\00\00\02\00\00\00\00\00\00\00\d0\05\00\00\06\00\00\00\07\00\00\00\02\00\00\00\01\01\01\01CRASH: %s\n\00WARNING: %s\n\00Setup time: %g ms\n\00Render time: %g ms\n\00Degenerate parition\008Triangle\007Surface\00[T (%g,%g,%g) (%g,%g,%g) (%g,%g,%g)]\006Jumble\00Normal not implemented for Jumble\00Bounds not implemented for Jumble\00Center not implemented for Jumble\006Volume\00Normal not implemented for Volume\00Center not implemented for Volume\00[\00,\n\00 \00]\006Sphere\00(S c=(%g,%g,%g) r=%g)\00\11\00\n\00\11\11\11\00\00\00\00\05\00\00\00\00\00\00\t\00\00\00\00\0b")
-  (data (i32.const 2744) "\11\00\0f\n\11\11\11\03\n\07\00\01\13\t\0b\0b\00\00\t\06\0b\00\00\0b\00\06\11\00\00\00\11\11\11")
-  (data (i32.const 2793) "\0b")
-  (data (i32.const 2802) "\11\00\n\n\11\11\11\00\n\00\00\02\00\t\0b\00\00\00\t\00\0b\00\00\0b")
-  (data (i32.const 2851) "\0c")
-  (data (i32.const 2863) "\0c\00\00\00\00\0c\00\00\00\00\t\0c\00\00\00\00\00\0c\00\00\0c")
-  (data (i32.const 2909) "\0e")
-  (data (i32.const 2921) "\0d\00\00\00\04\0d\00\00\00\00\t\0e\00\00\00\00\00\0e\00\00\0e")
-  (data (i32.const 2967) "\10")
-  (data (i32.const 2979) "\0f\00\00\00\00\0f\00\00\00\00\t\10\00\00\00\00\00\10\00\00\10\00\00\12\00\00\00\12\12\12")
-  (data (i32.const 3034) "\12\00\00\00\12\12\12\00\00\00\00\00\00\t")
-  (data (i32.const 3083) "\0b")
-  (data (i32.const 3095) "\n\00\00\00\00\n\00\00\00\00\t\0b\00\00\00\00\00\0b\00\00\0b")
-  (data (i32.const 3141) "\0c")
-  (data (i32.const 3153) "\0c\00\00\00\00\0c\00\00\00\00\t\0c\00\00\00\00\00\0c\00\00\0c\00\000123456789ABCDEF-+   0X0x\00(null)\00-0X+0X 0X-0x+0x 0x\00inf\00INF\00nan\00NAN\00.\00T!\"\19\0d\01\02\03\11K\1c\0c\10\04\0b\1d\12\1e\'hnopqb \05\06\0f\13\14\15\1a\08\16\07($\17\18\t\n\0e\1b\1f%#\83\82}&*+<=>?CGJMXYZ[\\]^_`acdefgijklrstyz{|\00Illegal byte sequence\00Domain error\00Result not representable\00Not a tty\00Permission denied\00Operation not permitted\00No such file or directory\00No such process\00File exists\00Value too large for data type\00No space left on device\00Out of memory\00Resource busy\00Interrupted system call\00Resource temporarily unavailable\00Invalid seek\00Cross-device link\00Read-only file system\00Directory not empty\00Connection reset by peer\00Operation timed out\00Connection refused\00Host is down\00Host is unreachable\00Address in use\00Broken pipe\00I/O error\00No such device or address\00Block device required\00No such device\00Not a directory\00Is a directory\00Text file busy\00Exec format error\00Invalid argument\00Argument list too long\00Symbolic link loop\00Filename too long\00Too many open files in system\00No file descriptors available\00Bad file descriptor\00No child process\00Bad address\00File too large\00Too many links\00No locks available\00Resource deadlock would occur\00State not recoverable\00Previous owner died\00Operation canceled\00Function not implemented\00No message of desired type\00Identifier removed\00Device not a stream\00No data available\00Device timeout\00Out of streams resources\00Link has been severed\00Protocol error\00Bad message\00File descriptor in bad state\00Not a socket\00Destination address required\00Message too large\00Protocol wrong type for socket\00Protocol not available\00Protocol not supported\00Socket type not supported\00Not supported\00Protocol family not supported\00Address family not supported by protocol\00Address not available\00Network is down\00Network unreachable\00Connection reset by network\00Connection aborted\00No buffer space available\00Socket is connected\00Socket not connected\00Cannot send after socket shutdown\00Operation already in progress\00Operation in progress\00Stale file handle\00Remote I/O error\00Quota exceeded\00No medium found\00Wrong medium type\00No error information\00\00!\"vector length_error\"\00/Users/lhansen/lib/emsdk_portable/emscripten/incoming/system/include/libcxx/vector\00__throw_length_error\00St9exception\00N10__cxxabiv116__shim_type_infoE\00St9type_info\00N10__cxxabiv120__si_class_type_infoE\00N10__cxxabiv117__class_type_infoE\00std::bad_alloc\00St9bad_alloc")
+  (data (i32.const 1736) "\cc\06\00\00\05")
+  (data (i32.const 1752) "\01")
+  (data (i32.const 1776) "\03\00\00\00\02\00\00\00\bc\17\00\00\00\04")
+  (data (i32.const 1800) "\01")
+  (data (i32.const 1815) "\n\ff\ff\ff\ff")
+  (data (i32.const 1852) "\cc\06")
+  (data (i32.const 1892) "\04")
+  (data (i32.const 1931) "\ff\ff\ff\ff\ff")
+  (data (i32.const 1968) "\03\00\00\00\04\00\00\00\04\00\00\00\06\00\00\00\83\f9\a2\00DNn\00\fc)\15\00\d1W\'\00\dd4\f5\00b\db\c0\00<\99\95\00A\90C\00cQ\fe\00\bb\de\ab\00\b7a\c5\00:n$\00\d2MB\00I\06\e0\00\t\ea.\00\1c\92\d1\00\eb\1d\fe\00)\b1\1c\00\e8>\a7\00\f55\82\00D\bb.\00\9c\e9\84\00\b4&p\00A~_\00\d6\919\00S\839\00\9c\f49\00\8b_\84\00(\f9\bd\00\f8\1f;\00\de\ff\97\00\0f\98\05\00\11/\ef\00\nZ\8b\00m\1fm\00\cf~6\00\t\cb\'\00FO\b7\00\9ef?\00-\ea_\00\ba\'u\00\e5\eb\c7\00={\f1\00\f79\07\00\92R\8a\00\fbk\ea\00\1f\b1_\00\08]\8d\000\03V\00{\fcF\00\f0\abk\00 \bc\cf\006\f4\9a\00\e3\a9\1d\00^a\91\00\08\1b\e6\00\85\99e\00\a0\14_\00\8d@h\00\80\d8\ff\00\'sM\00\06\061\00\caV\15\00\c9\a8s\00{\e2`\00k\8c\c0\00\00\00\00\00\98\05\00\00\01\00\00\00\02\00\00\00\03\00\00\00\04\00\00\00\05\00\00\00\01\00\00\00\01\00\00\00\01\00\00\00\00\00\00\00\c0\05\00\00\01\00\00\00\05\00\00\00\03\00\00\00\04\00\00\00\05\00\00\00\02\00\00\00\02\00\00\00\02\00\00\00\00\00\00\00\d0\05\00\00\06\00\00\00\07\00\00\00\02\00\00\00\01\01\01\01CRASH: %s\n\00WARNING: %s\n\00Setup time: %g ms\n\00Render time: %g ms\n\00Degenerate parition\008Triangle\007Surface\00[T (%g,%g,%g) (%g,%g,%g) (%g,%g,%g)]\006Jumble\00Normal not implemented for Jumble\00Bounds not implemented for Jumble\00Center not implemented for Jumble\006Volume\00Normal not implemented for Volume\00Center not implemented for Volume\00[\00,\n\00 \00]\006Sphere\00(S c=(%g,%g,%g) r=%g)\00\11\00\n\00\11\11\11\00\00\00\00\05\00\00\00\00\00\00\t\00\00\00\00\0b")
+  (data (i32.const 2748) "\11\00\0f\n\11\11\11\03\n\07\00\01\13\t\0b\0b\00\00\t\06\0b\00\00\0b\00\06\11\00\00\00\11\11\11")
+  (data (i32.const 2797) "\0b")
+  (data (i32.const 2806) "\11\00\n\n\11\11\11\00\n\00\00\02\00\t\0b\00\00\00\t\00\0b\00\00\0b")
+  (data (i32.const 2855) "\0c")
+  (data (i32.const 2867) "\0c\00\00\00\00\0c\00\00\00\00\t\0c\00\00\00\00\00\0c\00\00\0c")
+  (data (i32.const 2913) "\0e")
+  (data (i32.const 2925) "\0d\00\00\00\04\0d\00\00\00\00\t\0e\00\00\00\00\00\0e\00\00\0e")
+  (data (i32.const 2971) "\10")
+  (data (i32.const 2983) "\0f\00\00\00\00\0f\00\00\00\00\t\10\00\00\00\00\00\10\00\00\10\00\00\12\00\00\00\12\12\12")
+  (data (i32.const 3038) "\12\00\00\00\12\12\12\00\00\00\00\00\00\t")
+  (data (i32.const 3087) "\0b")
+  (data (i32.const 3099) "\n\00\00\00\00\n\00\00\00\00\t\0b\00\00\00\00\00\0b\00\00\0b")
+  (data (i32.const 3145) "\0c")
+  (data (i32.const 3157) "\0c\00\00\00\00\0c\00\00\00\00\t\0c\00\00\00\00\00\0c\00\00\0c\00\000123456789ABCDEF-+   0X0x\00(null)\00-0X+0X 0X-0x+0x 0x\00inf\00INF\00nan\00NAN\00.\00T!\"\19\0d\01\02\03\11K\1c\0c\10\04\0b\1d\12\1e\'hnopqb \05\06\0f\13\14\15\1a\08\16\07($\17\18\t\n\0e\1b\1f%#\83\82}&*+<=>?CGJMXYZ[\\]^_`acdefgijklrstyz{|\00Illegal byte sequence\00Domain error\00Result not representable\00Not a tty\00Permission denied\00Operation not permitted\00No such file or directory\00No such process\00File exists\00Value too large for data type\00No space left on device\00Out of memory\00Resource busy\00Interrupted system call\00Resource temporarily unavailable\00Invalid seek\00Cross-device link\00Read-only file system\00Directory not empty\00Connection reset by peer\00Operation timed out\00Connection refused\00Host is down\00Host is unreachable\00Address in use\00Broken pipe\00I/O error\00No such device or address\00Block device required\00No such device\00Not a directory\00Is a directory\00Text file busy\00Exec format error\00Invalid argument\00Argument list too long\00Symbolic link loop\00Filename too long\00Too many open files in system\00No file descriptors available\00Bad file descriptor\00No child process\00Bad address\00File too large\00Too many links\00No locks available\00Resource deadlock would occur\00State not recoverable\00Previous owner died\00Operation canceled\00Function not implemented\00No message of desired type\00Identifier removed\00Device not a stream\00No data available\00Device timeout\00Out of streams resources\00Link has been severed\00Protocol error\00Bad message\00File descriptor in bad state\00Not a socket\00Destination address required\00Message too large\00Protocol wrong type for socket\00Protocol not available\00Protocol not supported\00Socket type not supported\00Not supported\00Protocol family not supported\00Address family not supported by protocol\00Address not available\00Network is down\00Network unreachable\00Connection reset by network\00Connection aborted\00No buffer space available\00Socket is connected\00Socket not connected\00Cannot send after socket shutdown\00Operation already in progress\00Operation in progress\00Stale file handle\00Remote I/O error\00Quota exceeded\00No medium found\00Wrong medium type\00No error information\00\00!\"vector length_error\"\00/Users/lhansen/lib/emsdk_portable/emscripten/incoming/system/include/libcxx/vector\00__throw_length_error\00St9exception\00N10__cxxabiv116__shim_type_infoE\00St9type_info\00N10__cxxabiv120__si_class_type_infoE\00N10__cxxabiv117__class_type_infoE\00std::bad_alloc\00St9bad_alloc")
   (export "_sbrk" (func $_sbrk))
   (export "_free" (func $_free))
   (export "_main" (func $_main))
@@ -173,33 +173,33 @@
     (set_local $1
       (get_global $STACKTOP)
     )
-    ;; raybench.cpp:108
+    ;; raybench.cpp:114
     (set_global $STACKTOP
       (i32.add
         (get_global $STACKTOP)
         (i32.const 16)
       )
     )
-    ;; raybench.cpp:109
+    ;; raybench.cpp:115
     (set_local $2
       (i32.load
         (i32.const 1620)
       )
     )
-    ;; raybench.cpp:109
+    ;; raybench.cpp:115
     (i32.store
       (get_local $1)
       (get_local $0)
     )
-    ;; raybench.cpp:109
+    ;; raybench.cpp:115
     (drop
       (call $_fprintf
         (get_local $2)
-        (i32.const 2348)
+        (i32.const 2352)
         (get_local $1)
       )
     )
-    ;; raybench.cpp:110
+    ;; raybench.cpp:116
     (call $_exit
       (i32.const 1)
     )
@@ -255,32 +255,32 @@
         (i32.const 24)
       )
     )
-    ;; raybench.cpp:616
+    ;; raybench.cpp:617
     (set_local $3
       (get_local $4)
     )
     (block $__rjto$0
       (block $__rjti$0
-        ;; raybench.cpp:617
+        ;; raybench.cpp:618
         (br_if $__rjti$0
           (i32.le_s
             (get_local $0)
             (i32.const 1)
           )
         )
-        ;; raybench.cpp:617
+        ;; raybench.cpp:618
         (set_local $0
           (i32.load offset=4
             (get_local $1)
           )
         )
-        ;; raybench.cpp:617
+        ;; raybench.cpp:618
         (set_local $0
           (i32.load8_s
             (get_local $0)
           )
         )
-        ;; raybench.cpp:619
+        ;; raybench.cpp:620
         (set_local $1
           (i32.add
             (i32.shr_s
@@ -328,110 +328,110 @@
                     )
                     (br $__rjti$0)
                   )
-                  ;; raybench.cpp:627
+                  ;; raybench.cpp:628
                   (i32.store8
-                    (i32.const 2344)
+                    (i32.const 2348)
                     (i32.const 1)
                   )
-                  ;; raybench.cpp:627
+                  ;; raybench.cpp:628
                   (i32.store8
-                    (i32.const 2345)
+                    (i32.const 2349)
                     (i32.const 0)
                   )
-                  ;; raybench.cpp:627
+                  ;; raybench.cpp:628
                   (i32.store8
-                    (i32.const 2346)
+                    (i32.const 2350)
                     (i32.const 0)
                   )
-                  ;; raybench.cpp:627
+                  ;; raybench.cpp:628
                   (i32.store
                     (i32.const 1504)
                     (i32.const 0)
                   )
-                  ;; raybench.cpp:627
+                  ;; raybench.cpp:628
                   (i32.store8
-                    (i32.const 2347)
+                    (i32.const 2351)
                     (i32.const 0)
                   )
                   (br $__rjto$0)
                 )
-                ;; raybench.cpp:630
+                ;; raybench.cpp:631
                 (i32.store8
-                  (i32.const 2344)
+                  (i32.const 2348)
                   (i32.const 1)
                 )
-                ;; raybench.cpp:630
+                ;; raybench.cpp:631
                 (i32.store8
-                  (i32.const 2345)
+                  (i32.const 2349)
                   (i32.const 1)
                 )
-                ;; raybench.cpp:630
+                ;; raybench.cpp:631
                 (i32.store8
-                  (i32.const 2346)
+                  (i32.const 2350)
                   (i32.const 1)
                 )
-                ;; raybench.cpp:630
+                ;; raybench.cpp:631
                 (i32.store
                   (i32.const 1504)
                   (i32.const 1)
                 )
-                ;; raybench.cpp:630
+                ;; raybench.cpp:631
                 (i32.store8
-                  (i32.const 2347)
+                  (i32.const 2351)
                   (i32.const 0)
                 )
                 (br $__rjto$0)
               )
-              ;; raybench.cpp:636
+              ;; raybench.cpp:637
               (i32.store8
-                (i32.const 2344)
+                (i32.const 2348)
                 (i32.const 1)
               )
-              ;; raybench.cpp:636
+              ;; raybench.cpp:637
               (i32.store8
-                (i32.const 2345)
+                (i32.const 2349)
                 (i32.const 1)
               )
-              ;; raybench.cpp:636
+              ;; raybench.cpp:637
               (i32.store8
-                (i32.const 2346)
+                (i32.const 2350)
                 (i32.const 1)
               )
-              ;; raybench.cpp:636
+              ;; raybench.cpp:637
               (i32.store
                 (i32.const 1504)
                 (i32.const 2)
               )
-              ;; raybench.cpp:636
+              ;; raybench.cpp:637
               (i32.store8
-                (i32.const 2347)
+                (i32.const 2351)
                 (i32.const 1)
               )
               (br $__rjto$0)
             )
-            ;; raybench.cpp:639
+            ;; raybench.cpp:640
             (i32.store8
-              (i32.const 2344)
+              (i32.const 2348)
               (i32.const 0)
             )
-            ;; raybench.cpp:639
+            ;; raybench.cpp:640
             (i32.store8
-              (i32.const 2345)
+              (i32.const 2349)
               (i32.const 1)
             )
-            ;; raybench.cpp:639
+            ;; raybench.cpp:640
             (i32.store8
-              (i32.const 2346)
+              (i32.const 2350)
               (i32.const 1)
             )
-            ;; raybench.cpp:639
+            ;; raybench.cpp:640
             (i32.store
               (i32.const 1504)
               (i32.const 3)
             )
-            ;; raybench.cpp:639
+            ;; raybench.cpp:640
             (i32.store8
-              (i32.const 2347)
+              (i32.const 2351)
               (i32.const 1)
             )
             (br $__rjto$0)
@@ -445,29 +445,29 @@
         )
         (br $__rjto$0)
       )
-      ;; raybench.cpp:633
+      ;; raybench.cpp:634
       (i32.store8
-        (i32.const 2344)
+        (i32.const 2348)
         (i32.const 0)
       )
-      ;; raybench.cpp:633
+      ;; raybench.cpp:634
       (i32.store8
-        (i32.const 2345)
+        (i32.const 2349)
         (i32.const 1)
       )
-      ;; raybench.cpp:633
+      ;; raybench.cpp:634
       (i32.store8
-        (i32.const 2346)
+        (i32.const 2350)
         (i32.const 1)
       )
-      ;; raybench.cpp:633
+      ;; raybench.cpp:634
       (i32.store
         (i32.const 1504)
         (i32.const 2)
       )
-      ;; raybench.cpp:633
+      ;; raybench.cpp:634
       (i32.store8
-        (i32.const 2347)
+        (i32.const 2351)
         (i32.const 0)
       )
     )
@@ -479,7 +479,7 @@
       (get_local $6)
       (i64.const 0)
     )
-    ;; raybench.cpp:133
+    ;; raybench.cpp:134
     (i64.store offset=16
       (get_local $6)
       (i64.const 0)
@@ -492,7 +492,7 @@
       (get_local $7)
       (i64.const 0)
     )
-    ;; raybench.cpp:133
+    ;; raybench.cpp:134
     (i64.store offset=16
       (get_local $7)
       (i64.const 0)
@@ -505,31 +505,31 @@
       (get_local $3)
       (i64.const 0)
     )
-    ;; raybench.cpp:133
+    ;; raybench.cpp:134
     (i64.store offset=16
       (get_local $3)
       (i64.const 0)
     )
-    ;; raybench.cpp:124
+    ;; raybench.cpp:125
     (drop
       (call $_gettimeofday
         (get_local $2)
         (i32.const 0)
       )
     )
-    ;; raybench.cpp:125
+    ;; raybench.cpp:126
     (set_local $0
       (i32.load
         (get_local $2)
       )
     )
-    ;; raybench.cpp:125
+    ;; raybench.cpp:126
     (set_local $8
       (i32.load offset=4
         (get_local $2)
       )
     )
-    ;; raybench.cpp:650
+    ;; raybench.cpp:651
     (set_local $10
       (call $__Z8setStageP4Vec3S0_S0_
         (get_local $6)
@@ -537,32 +537,32 @@
         (get_local $3)
       )
     )
-    ;; raybench.cpp:124
+    ;; raybench.cpp:125
     (drop
       (call $_gettimeofday
         (get_local $2)
         (i32.const 0)
       )
     )
-    ;; raybench.cpp:125
+    ;; raybench.cpp:126
     (set_local $11
       (i32.load
         (get_local $2)
       )
     )
-    ;; raybench.cpp:125
+    ;; raybench.cpp:126
     (set_local $12
       (i32.load offset=4
         (get_local $2)
       )
     )
-    ;; raybench.cpp:661
+    ;; raybench.cpp:662
     (set_local $1
       (i32.load
-        (i32.const 1620)
+        (i32.const 1736)
       )
     )
-    ;; raybench.cpp:652
+    ;; raybench.cpp:653
     (f64.store
       (get_local $5)
       (f64.div
@@ -592,41 +592,41 @@
         (f64.const 1e3)
       )
     )
-    ;; raybench.cpp:652
+    ;; raybench.cpp:653
     (drop
       (call $_fprintf
         (get_local $1)
-        (i32.const 2372)
+        (i32.const 2376)
         (get_local $5)
       )
     )
-    ;; raybench.cpp:583
+    ;; raybench.cpp:584
     (i32.store
       (get_local $2)
       (i32.const 600)
     )
-    ;; raybench.cpp:584
+    ;; raybench.cpp:585
     (i32.store offset=4
       (get_local $2)
       (i32.const 800)
     )
-    ;; raybench.cpp:585
+    ;; raybench.cpp:586
     (set_local $8
       (call $__Znaj
         (i32.const 1920000)
       )
     )
-    ;; raybench.cpp:585
+    ;; raybench.cpp:586
     (i32.store offset=8
       (get_local $2)
       (get_local $8)
     )
-    ;; raybench.cpp:592
+    ;; raybench.cpp:593
     (set_local $0
       (i32.const 0)
     )
     (loop $while-in
-      ;; raybench.cpp:592
+      ;; raybench.cpp:593
       (i32.store
         (i32.add
           (get_local $8)
@@ -649,96 +649,96 @@
         )
       )
     )
-    ;; raybench.cpp:124
+    ;; raybench.cpp:125
     (drop
       (call $_gettimeofday
         (get_local $5)
         (i32.const 0)
       )
     )
-    ;; raybench.cpp:125
+    ;; raybench.cpp:126
     (set_local $0
       (i32.load
         (get_local $5)
       )
     )
-    ;; raybench.cpp:125
+    ;; raybench.cpp:126
     (set_local $8
       (i32.load offset=4
         (get_local $5)
       )
     )
     (i64.store
-      (i32.const 5424)
+      (i32.const 5432)
       (i64.load
         (get_local $6)
       )
     )
-    (i64.store
-      (i32.const 5432)
-      (i64.load offset=8
-        (get_local $6)
-      )
-    )
-    ;; raybench.cpp:719
     (i64.store
       (i32.const 5440)
-      (i64.load offset=16
-        (get_local $6)
-      )
-    )
-    (i64.store
-      (i32.const 5472)
-      (i64.load
-        (get_local $7)
-      )
-    )
-    (i64.store
-      (i32.const 5480)
       (i64.load offset=8
-        (get_local $7)
+        (get_local $6)
       )
     )
     ;; raybench.cpp:720
     (i64.store
+      (i32.const 5448)
+      (i64.load offset=16
+        (get_local $6)
+      )
+    )
+    (i64.store
+      (i32.const 5480)
+      (i64.load
+        (get_local $7)
+      )
+    )
+    (i64.store
       (i32.const 5488)
+      (i64.load offset=8
+        (get_local $7)
+      )
+    )
+    ;; raybench.cpp:721
+    (i64.store
+      (i32.const 5496)
       (i64.load offset=16
         (get_local $7)
       )
     )
     (i64.store
-      (i32.const 5448)
+      (i32.const 5456)
       (i64.load
         (get_local $3)
       )
     )
     (i64.store
-      (i32.const 5456)
+      (i32.const 5464)
       (i64.load offset=8
         (get_local $3)
       )
     )
-    ;; raybench.cpp:721
+    ;; raybench.cpp:722
     (i64.store
-      (i32.const 5464)
+      (i32.const 5472)
       (i64.load offset=16
         (get_local $3)
       )
     )
-    ;; raybench.cpp:722
-    (i32.store
-      (i32.const 5496)
-      (get_local $10)
-    )
     ;; raybench.cpp:723
     (i32.store
-      (i32.const 5500)
-      (get_local $2)
+      (i32.const 5504)
+      (get_local $10)
     )
     ;; raybench.cpp:724
+    (i32.store
+      (i32.const 5508)
+      (get_local $2)
+    )
+    ;; raybench.cpp:725
     (set_local $3
       (i32.load8_s
-        (i32.const 2347)
+        (i32.const 2351)
       )
     )
     (if
@@ -749,14 +749,14 @@
         )
         (i32.const 24)
       )
-      ;; raybench.cpp:725
+      ;; raybench.cpp:726
       (call $__Z18traceWithAntialiasjjjj
         (i32.const 0)
         (i32.const 600)
         (i32.const 0)
         (i32.const 800)
       )
-      ;; raybench.cpp:727
+      ;; raybench.cpp:728
       (call $__Z21traceWithoutAntialiasjjjj
         (i32.const 0)
         (i32.const 600)
@@ -764,26 +764,26 @@
         (i32.const 800)
       )
     )
-    ;; raybench.cpp:124
+    ;; raybench.cpp:125
     (drop
       (call $_gettimeofday
         (get_local $5)
         (i32.const 0)
       )
     )
-    ;; raybench.cpp:125
+    ;; raybench.cpp:126
     (set_local $3
       (i32.load
         (get_local $5)
       )
     )
-    ;; raybench.cpp:125
+    ;; raybench.cpp:126
     (set_local $2
       (i32.load offset=4
         (get_local $5)
       )
     )
-    ;; raybench.cpp:661
+    ;; raybench.cpp:662
     (f64.store
       (get_local $9)
       (f64.div
@@ -813,11 +813,11 @@
         (f64.const 1e3)
       )
     )
-    ;; raybench.cpp:661
+    ;; raybench.cpp:662
     (drop
       (call $_fprintf
         (get_local $1)
-        (i32.const 2391)
+        (i32.const 2395)
         (get_local $9)
       )
     )
@@ -857,7 +857,7 @@
         (i32.const 464)
       )
     )
-    ;; raybench.cpp:225
+    ;; raybench.cpp:226
     (f64.store
       (tee_local $5
         (i32.add
@@ -867,57 +867,57 @@
       )
       (f64.const 0.26406250000000003)
     )
-    ;; raybench.cpp:225
+    ;; raybench.cpp:226
     (f64.store offset=8
       (get_local $5)
       (f64.const 0.26406250000000003)
     )
-    ;; raybench.cpp:225
+    ;; raybench.cpp:226
     (f64.store offset=16
       (get_local $5)
       (f64.const 0.26406250000000003)
     )
-    ;; raybench.cpp:226
+    ;; raybench.cpp:227
     (f64.store offset=24
       (get_local $5)
       (f64.const 0.19804687499999998)
     )
-    ;; raybench.cpp:226
+    ;; raybench.cpp:227
     (f64.store offset=32
       (get_local $5)
       (f64.const 0.19804687499999998)
     )
-    ;; raybench.cpp:226
+    ;; raybench.cpp:227
     (f64.store offset=40
       (get_local $5)
       (f64.const 0.19804687499999998)
     )
-    ;; raybench.cpp:227
+    ;; raybench.cpp:228
     (f64.store offset=48
       (get_local $5)
       (f64.const 100)
     )
-    ;; raybench.cpp:228
+    ;; raybench.cpp:229
     (f64.store offset=56
       (get_local $5)
       (f64.const 0.19804687499999998)
     )
-    ;; raybench.cpp:228
+    ;; raybench.cpp:229
     (f64.store offset=64
       (get_local $5)
       (f64.const 0.19804687499999998)
     )
-    ;; raybench.cpp:228
+    ;; raybench.cpp:229
     (f64.store offset=72
       (get_local $5)
       (f64.const 0.19804687499999998)
     )
-    ;; raybench.cpp:229
+    ;; raybench.cpp:230
     (f64.store offset=80
       (get_local $5)
       (f64.const 0.5)
     )
-    ;; raybench.cpp:225
+    ;; raybench.cpp:226
     (f64.store
       (tee_local $4
         (i32.add
@@ -927,52 +927,52 @@
       )
       (f64.const 0.23750000000000002)
     )
-    ;; raybench.cpp:225
+    ;; raybench.cpp:226
     (f64.store offset=8
       (get_local $4)
       (f64.const 0.3921875)
     )
-    ;; raybench.cpp:225
+    ;; raybench.cpp:226
     (f64.store offset=16
       (get_local $4)
       (f64.const 0.23750000000000002)
     )
-    ;; raybench.cpp:226
+    ;; raybench.cpp:227
     (f64.store offset=24
       (get_local $4)
       (f64.const 0.23750000000000002)
     )
-    ;; raybench.cpp:226
+    ;; raybench.cpp:227
     (f64.store offset=32
       (get_local $4)
       (f64.const 0.3921875)
     )
-    ;; raybench.cpp:226
+    ;; raybench.cpp:227
     (f64.store offset=40
       (get_local $4)
       (f64.const 0.23750000000000002)
     )
-    ;; raybench.cpp:227
+    ;; raybench.cpp:228
     (f64.store offset=48
       (get_local $4)
       (f64.const 10)
     )
-    ;; raybench.cpp:228
+    ;; raybench.cpp:229
     (f64.store offset=56
       (get_local $4)
       (f64.const 0.11875000000000001)
     )
-    ;; raybench.cpp:228
+    ;; raybench.cpp:229
     (f64.store offset=64
       (get_local $4)
       (f64.const 0.19609375)
     )
-    ;; raybench.cpp:228
+    ;; raybench.cpp:229
     (f64.store offset=72
       (get_local $4)
       (f64.const 0.11875000000000001)
     )
-    ;; raybench.cpp:229
+    ;; raybench.cpp:230
     (f64.store offset=80
       (get_local $4)
       (f64.const 1)
@@ -1002,93 +1002,93 @@
       (get_local $9)
       (i32.const 0)
     )
-    ;; raybench.cpp:942
+    ;; raybench.cpp:943
     (set_local $3
       (call $__Znwj
         (i32.const 128)
       )
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=8
       (get_local $3)
       (f64.const 0.1)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=16
       (get_local $3)
       (f64.const 0.2)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=24
       (get_local $3)
       (f64.const 0.2)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=32
       (get_local $3)
       (f64.const 0.3)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=40
       (get_local $3)
       (f64.const 0.6)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=48
       (get_local $3)
       (f64.const 0.6)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=56
       (get_local $3)
       (f64.const 10)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=64
       (get_local $3)
       (f64.const 0.05)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=72
       (get_local $3)
       (f64.const 0.1)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=80
       (get_local $3)
       (f64.const 0.1)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=88
       (get_local $3)
       (f64.const 0)
     )
-    ;; raybench.cpp:441
+    ;; raybench.cpp:442
     (i32.store
       (get_local $3)
       (i32.const 1600)
     )
-    ;; raybench.cpp:439
+    ;; raybench.cpp:440
     (f64.store offset=96
       (get_local $3)
       (f64.const -1)
     )
-    ;; raybench.cpp:439
+    ;; raybench.cpp:440
     (f64.store offset=104
       (get_local $3)
       (f64.const 1)
     )
-    ;; raybench.cpp:439
+    ;; raybench.cpp:440
     (f64.store offset=112
       (get_local $3)
       (f64.const -9)
     )
-    ;; raybench.cpp:440
+    ;; raybench.cpp:441
     (f64.store offset=120
       (get_local $3)
       (f64.const 1)
     )
-    ;; raybench.cpp:942
+    ;; raybench.cpp:943
     (i32.store
       (tee_local $6
         (i32.add
@@ -1103,93 +1103,93 @@
       (get_local $9)
       (get_local $6)
     )
-    ;; raybench.cpp:943
+    ;; raybench.cpp:944
     (set_local $3
       (call $__Znwj
         (i32.const 128)
       )
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=8
       (get_local $3)
       (f64.const 0.3)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=16
       (get_local $3)
       (f64.const 0.3)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=24
       (get_local $3)
       (f64.const 0.2)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=32
       (get_local $3)
       (f64.const 0.6)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=40
       (get_local $3)
       (f64.const 0.6)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=48
       (get_local $3)
       (f64.const 0.4)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=56
       (get_local $3)
       (f64.const 10)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=64
       (get_local $3)
       (f64.const 0.1)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=72
       (get_local $3)
       (f64.const 0.1)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=80
       (get_local $3)
       (f64.const 0.05)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=88
       (get_local $3)
       (f64.const 0)
     )
-    ;; raybench.cpp:441
+    ;; raybench.cpp:442
     (i32.store
       (get_local $3)
       (i32.const 1600)
     )
-    ;; raybench.cpp:439
+    ;; raybench.cpp:440
     (f64.store offset=96
       (get_local $3)
       (f64.const 1.5)
     )
-    ;; raybench.cpp:439
+    ;; raybench.cpp:440
     (f64.store offset=104
       (get_local $3)
       (f64.const 1)
     )
-    ;; raybench.cpp:439
+    ;; raybench.cpp:440
     (f64.store offset=112
       (get_local $3)
       (f64.const 0)
     )
-    ;; raybench.cpp:440
+    ;; raybench.cpp:441
     (f64.store offset=120
       (get_local $3)
       (f64.const 0.75)
     )
-    ;; raybench.cpp:943
+    ;; raybench.cpp:944
     (i32.store
       (get_local $6)
       (get_local $3)
@@ -1244,88 +1244,88 @@
         (get_local $6)
       )
     )
-    ;; raybench.cpp:944
+    ;; raybench.cpp:945
     (set_local $3
       (call $__Znwj
         (i32.const 192)
       )
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=8
       (get_local $3)
       (f64.const 0.1)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=16
       (get_local $3)
       (f64.const 0.2)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=24
       (get_local $3)
       (f64.const 0.2)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=32
       (get_local $3)
       (f64.const 0.3)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=40
       (get_local $3)
       (f64.const 0.6)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=48
       (get_local $3)
       (f64.const 0.6)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=56
       (get_local $3)
       (f64.const 10)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=64
       (get_local $3)
       (f64.const 0.05)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=72
       (get_local $3)
       (f64.const 0.1)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=80
       (get_local $3)
       (f64.const 0.1)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=88
       (get_local $3)
       (f64.const 0)
     )
-    ;; raybench.cpp:499
+    ;; raybench.cpp:500
     (i32.store
       (get_local $3)
       (i32.const 1516)
     )
-    ;; raybench.cpp:495
+    ;; raybench.cpp:496
     (f64.store offset=96
       (get_local $3)
       (f64.const -1)
     )
-    ;; raybench.cpp:495
+    ;; raybench.cpp:496
     (f64.store offset=104
       (get_local $3)
       (f64.const 0)
     )
-    ;; raybench.cpp:495
+    ;; raybench.cpp:496
     (f64.store offset=112
       (get_local $3)
       (f64.const 0.75)
     )
-    ;; raybench.cpp:496
+    ;; raybench.cpp:497
     (f64.store offset=120
       (get_local $3)
       (f64.const -0.75)
@@ -1339,42 +1339,42 @@
       )
       (i64.const 0)
     )
-    ;; raybench.cpp:496
+    ;; raybench.cpp:497
     (i64.store offset=8
       (get_local $7)
       (i64.const 0)
     )
-    ;; raybench.cpp:497
+    ;; raybench.cpp:498
     (f64.store offset=144
       (get_local $3)
       (f64.const -0.75)
     )
-    ;; raybench.cpp:497
+    ;; raybench.cpp:498
     (f64.store offset=152
       (get_local $3)
       (f64.const 1.5)
     )
-    ;; raybench.cpp:497
+    ;; raybench.cpp:498
     (f64.store offset=160
       (get_local $3)
       (f64.const 0)
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store offset=168
       (get_local $3)
       (f64.const 0.9486832980505138)
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store offset=176
       (get_local $3)
       (f64.const 0)
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=184
       (get_local $3)
       (f64.const 0.31622776601683794)
     )
-    ;; raybench.cpp:944
+    ;; raybench.cpp:945
     (i32.store
       (get_local $6)
       (get_local $3)
@@ -1424,13 +1424,13 @@
         (get_local $6)
       )
     )
-    ;; raybench.cpp:945
+    ;; raybench.cpp:946
     (set_local $3
       (call $__Znwj
         (i32.const 192)
       )
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=8
       (get_local $3)
       (f64.const 0.1)
@@ -1444,12 +1444,12 @@
       )
       (i64.const 0)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (i64.store offset=8
       (get_local $7)
       (i64.const 0)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=32
       (get_local $3)
       (f64.const 0.8)
@@ -1463,17 +1463,17 @@
       )
       (i64.const 0)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (i64.store offset=8
       (get_local $7)
       (i64.const 0)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=56
       (get_local $3)
       (f64.const 10)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (f64.store offset=64
       (get_local $3)
       (f64.const 0.1)
@@ -1491,17 +1491,17 @@
       (get_local $7)
       (i64.const 0)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (i64.store offset=16
       (get_local $7)
       (i64.const 0)
     )
-    ;; raybench.cpp:499
+    ;; raybench.cpp:500
     (i32.store
       (get_local $3)
       (i32.const 1516)
     )
-    ;; raybench.cpp:495
+    ;; raybench.cpp:496
     (f64.store offset=96
       (get_local $3)
       (f64.const -2)
@@ -1515,12 +1515,12 @@
       )
       (i64.const 0)
     )
-    ;; raybench.cpp:495
+    ;; raybench.cpp:496
     (i64.store offset=8
       (get_local $7)
       (i64.const 0)
     )
-    ;; raybench.cpp:496
+    ;; raybench.cpp:497
     (f64.store offset=120
       (get_local $3)
       (f64.const -0.5)
@@ -1534,17 +1534,17 @@
       )
       (i64.const 0)
     )
-    ;; raybench.cpp:496
+    ;; raybench.cpp:497
     (i64.store offset=8
       (get_local $7)
       (i64.const 0)
     )
-    ;; raybench.cpp:497
+    ;; raybench.cpp:498
     (f64.store offset=144
       (get_local $3)
       (f64.const -0.5)
     )
-    ;; raybench.cpp:497
+    ;; raybench.cpp:498
     (f64.store offset=152
       (get_local $3)
       (f64.const 2)
@@ -1562,17 +1562,17 @@
       (get_local $7)
       (i64.const 0)
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (i64.store offset=16
       (get_local $7)
       (i64.const 0)
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=184
       (get_local $3)
       (f64.const 1)
     )
-    ;; raybench.cpp:945
+    ;; raybench.cpp:946
     (i32.store
       (get_local $6)
       (get_local $3)
@@ -1628,22 +1628,22 @@
         (i32.const 96)
       )
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store
       (get_local $6)
       (f64.const -5)
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store offset=8
       (get_local $6)
       (f64.const 0)
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=16
       (get_local $6)
       (f64.const 5)
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store
       (tee_local $10
         (i32.add
@@ -1653,17 +1653,17 @@
       )
       (f64.const 5)
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store offset=8
       (get_local $10)
       (f64.const 0)
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=16
       (get_local $10)
       (f64.const 5)
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store
       (tee_local $15
         (i32.add
@@ -1673,17 +1673,17 @@
       )
       (f64.const 5)
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store offset=8
       (get_local $15)
       (f64.const 0)
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=16
       (get_local $15)
       (f64.const -40)
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store
       (tee_local $12
         (i32.add
@@ -1693,17 +1693,17 @@
       )
       (f64.const -5)
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store offset=8
       (get_local $12)
       (f64.const 0)
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=16
       (get_local $12)
       (f64.const -40)
     )
-    ;; raybench.cpp:946
+    ;; raybench.cpp:947
     (call $__Z9rectangleRNSt3__26vectorIP7SurfaceNS_9allocatorIS2_EEEERK8MaterialRK4Vec3SC_SC_SC_
       (get_local $9)
       (get_local $5)
@@ -1712,67 +1712,67 @@
       (get_local $15)
       (get_local $12)
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store
       (get_local $6)
       (f64.const 1)
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store offset=8
       (get_local $6)
       (f64.const 1.5)
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=16
       (get_local $6)
       (f64.const 1.5)
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store
       (get_local $10)
       (f64.const 1.5)
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store offset=8
       (get_local $10)
       (f64.const 1.5)
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=16
       (get_local $10)
       (f64.const 1.25)
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store
       (get_local $15)
       (f64.const 1.5)
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store offset=8
       (get_local $15)
       (f64.const 1.75)
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=16
       (get_local $15)
       (f64.const 1.25)
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store
       (get_local $12)
       (f64.const 1)
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store offset=8
       (get_local $12)
       (f64.const 1.75)
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=16
       (get_local $12)
       (f64.const 1.5)
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store
       (tee_local $5
         (i32.add
@@ -1782,17 +1782,17 @@
       )
       (f64.const 1.5)
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store offset=8
       (get_local $5)
       (f64.const 1.5)
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=16
       (get_local $5)
       (f64.const 0.5)
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store
       (tee_local $17
         (i32.add
@@ -1802,17 +1802,17 @@
       )
       (f64.const 1)
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store offset=8
       (get_local $17)
       (f64.const 1.5)
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=16
       (get_local $17)
       (f64.const 0.75)
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store
       (tee_local $20
         (i32.add
@@ -1822,52 +1822,52 @@
       )
       (f64.const 1)
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store offset=8
       (get_local $20)
       (f64.const 1.75)
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=16
       (get_local $20)
       (f64.const 0.75)
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store
       (tee_local $3
         (get_local $13)
       )
       (f64.const 1.5)
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store offset=8
       (get_local $3)
       (f64.const 1.75)
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=16
       (get_local $3)
       (f64.const 0.5)
-    )
-    ;; raybench.cpp:840
-    (call $__Z9rectangleRNSt3__26vectorIP7SurfaceNS_9allocatorIS2_EEEERK8MaterialRK4Vec3SC_SC_SC_
-      (get_local $9)
-      (get_local $4)
-      (get_local $6)
-      (get_local $10)
-      (get_local $15)
-      (get_local $12)
     )
     ;; raybench.cpp:841
     (call $__Z9rectangleRNSt3__26vectorIP7SurfaceNS_9allocatorIS2_EEEERK8MaterialRK4Vec3SC_SC_SC_
       (get_local $9)
       (get_local $4)
+      (get_local $6)
+      (get_local $10)
+      (get_local $15)
+      (get_local $12)
+    )
+    ;; raybench.cpp:842
+    (call $__Z9rectangleRNSt3__26vectorIP7SurfaceNS_9allocatorIS2_EEEERK8MaterialRK4Vec3SC_SC_SC_
+      (get_local $9)
+      (get_local $4)
       (get_local $10)
       (get_local $5)
       (get_local $3)
       (get_local $15)
     )
-    ;; raybench.cpp:842
+    ;; raybench.cpp:843
     (call $__Z9rectangleRNSt3__26vectorIP7SurfaceNS_9allocatorIS2_EEEERK8MaterialRK4Vec3SC_SC_SC_
       (get_local $9)
       (get_local $4)
@@ -1876,7 +1876,7 @@
       (get_local $12)
       (get_local $20)
     )
-    ;; raybench.cpp:843
+    ;; raybench.cpp:844
     (call $__Z9rectangleRNSt3__26vectorIP7SurfaceNS_9allocatorIS2_EEEERK8MaterialRK4Vec3SC_SC_SC_
       (get_local $9)
       (get_local $4)
@@ -1885,7 +1885,7 @@
       (get_local $20)
       (get_local $3)
     )
-    ;; raybench.cpp:844
+    ;; raybench.cpp:845
     (call $__Z9rectangleRNSt3__26vectorIP7SurfaceNS_9allocatorIS2_EEEERK8MaterialRK4Vec3SC_SC_SC_
       (get_local $9)
       (get_local $4)
@@ -1894,7 +1894,7 @@
       (get_local $3)
       (get_local $20)
     )
-    ;; raybench.cpp:845
+    ;; raybench.cpp:846
     (call $__Z9rectangleRNSt3__26vectorIP7SurfaceNS_9allocatorIS2_EEEERK8MaterialRK4Vec3SC_SC_SC_
       (get_local $9)
       (get_local $4)
@@ -1907,13 +1907,13 @@
       (i32.const 0)
     )
     (loop $while-in
-      ;; raybench.cpp:950
+      ;; raybench.cpp:951
       (set_local $4
         (call $__Znwj
           (i32.const 128)
         )
       )
-      ;; raybench.cpp:950
+      ;; raybench.cpp:951
       (set_local $16
         (call $_cos
           (f64.div
@@ -1926,12 +1926,12 @@
           )
         )
       )
-      ;; raybench.cpp:265
+      ;; raybench.cpp:266
       (f64.store offset=8
         (get_local $4)
         (f64.const 0.6)
       )
-      ;; raybench.cpp:265
+      ;; raybench.cpp:266
       (f64.store offset=16
         (get_local $4)
         (f64.const 0.6)
@@ -1957,17 +1957,17 @@
         (get_local $5)
         (i64.const 0)
       )
-      ;; raybench.cpp:265
+      ;; raybench.cpp:266
       (i64.store offset=32
         (get_local $5)
         (i64.const 0)
       )
-      ;; raybench.cpp:265
+      ;; raybench.cpp:266
       (f64.store offset=64
         (get_local $4)
         (f64.const 0.4)
       )
-      ;; raybench.cpp:265
+      ;; raybench.cpp:266
       (f64.store offset=72
         (get_local $4)
         (f64.const 0.4)
@@ -1981,17 +1981,17 @@
         )
         (i64.const 0)
       )
-      ;; raybench.cpp:265
+      ;; raybench.cpp:266
       (i64.store offset=8
         (get_local $5)
         (i64.const 0)
       )
-      ;; raybench.cpp:441
+      ;; raybench.cpp:442
       (i32.store
         (get_local $4)
         (i32.const 1600)
       )
-      ;; raybench.cpp:439
+      ;; raybench.cpp:440
       (f64.store offset=96
         (get_local $4)
         (f64.add
@@ -2002,7 +2002,7 @@
           (f64.const -0.6)
         )
       )
-      ;; raybench.cpp:439
+      ;; raybench.cpp:440
       (f64.store offset=104
         (get_local $4)
         (f64.add
@@ -2013,7 +2013,7 @@
           (f64.const 0.075)
         )
       )
-      ;; raybench.cpp:439
+      ;; raybench.cpp:440
       (f64.store offset=112
         (get_local $4)
         (f64.sub
@@ -2027,12 +2027,12 @@
           )
         )
       )
-      ;; raybench.cpp:440
+      ;; raybench.cpp:441
       (f64.store offset=120
         (get_local $4)
         (f64.const 0.075)
       )
-      ;; raybench.cpp:950
+      ;; raybench.cpp:951
       (i32.store
         (get_local $6)
         (get_local $4)
@@ -2049,7 +2049,7 @@
           (get_local $19)
         )
       )
-      ;; raybench.cpp:949
+      ;; raybench.cpp:950
       (if
         ;; /Users/lhansen/lib/emsdk_portable/emscripten/incoming/system/include/libcxx/memory:1748
         (i32.lt_u
@@ -2099,13 +2099,13 @@
       (i32.const 0)
     )
     (loop $while-in1
-      ;; raybench.cpp:952
+      ;; raybench.cpp:953
       (set_local $4
         (call $__Znwj
           (i32.const 128)
         )
       )
-      ;; raybench.cpp:952
+      ;; raybench.cpp:953
       (set_local $18
         (call $_sin
           (tee_local $16
@@ -2120,13 +2120,13 @@
           )
         )
       )
-      ;; raybench.cpp:952
+      ;; raybench.cpp:953
       (set_local $16
         (call $_cos
           (get_local $16)
         )
       )
-      ;; raybench.cpp:265
+      ;; raybench.cpp:266
       (f64.store offset=8
         (get_local $4)
         (f64.const 0.6)
@@ -2156,12 +2156,12 @@
         (get_local $5)
         (i64.const 0)
       )
-      ;; raybench.cpp:265
+      ;; raybench.cpp:266
       (i64.store offset=40
         (get_local $5)
         (i64.const 0)
       )
-      ;; raybench.cpp:265
+      ;; raybench.cpp:266
       (f64.store offset=64
         (get_local $4)
         (f64.const 0.4)
@@ -2179,17 +2179,17 @@
         (get_local $5)
         (i64.const 0)
       )
-      ;; raybench.cpp:265
+      ;; raybench.cpp:266
       (i64.store offset=16
         (get_local $5)
         (i64.const 0)
       )
-      ;; raybench.cpp:441
+      ;; raybench.cpp:442
       (i32.store
         (get_local $4)
         (i32.const 1600)
       )
-      ;; raybench.cpp:439
+      ;; raybench.cpp:440
       (f64.store offset=96
         (get_local $4)
         (f64.add
@@ -2200,7 +2200,7 @@
           (f64.const 1)
         )
       )
-      ;; raybench.cpp:439
+      ;; raybench.cpp:440
       (f64.store offset=104
         (get_local $4)
         (f64.add
@@ -2211,7 +2211,7 @@
           (f64.const 0.075)
         )
       )
-      ;; raybench.cpp:439
+      ;; raybench.cpp:440
       (f64.store offset=112
         (get_local $4)
         (f64.add
@@ -2222,12 +2222,12 @@
           (f64.const 1)
         )
       )
-      ;; raybench.cpp:440
+      ;; raybench.cpp:441
       (f64.store offset=120
         (get_local $4)
         (f64.const 0.025)
       )
-      ;; raybench.cpp:952
+      ;; raybench.cpp:953
       (i32.store
         (get_local $6)
         (get_local $4)
@@ -2244,7 +2244,7 @@
           (get_local $19)
         )
       )
-      ;; raybench.cpp:951
+      ;; raybench.cpp:952
       (if
         ;; /Users/lhansen/lib/emsdk_portable/emscripten/incoming/system/include/libcxx/memory:1748
         (i32.lt_u
@@ -2294,13 +2294,13 @@
       (i32.const 0)
     )
     (loop $while-in3
-      ;; raybench.cpp:954
+      ;; raybench.cpp:955
       (set_local $4
         (call $__Znwj
           (i32.const 128)
         )
       )
-      ;; raybench.cpp:954
+      ;; raybench.cpp:955
       (set_local $16
         (call $_sin
           (tee_local $14
@@ -2313,7 +2313,7 @@
           )
         )
       )
-      ;; raybench.cpp:954
+      ;; raybench.cpp:955
       (set_local $14
         (call $_cos
           (get_local $14)
@@ -2328,12 +2328,12 @@
         )
         (i64.const 0)
       )
-      ;; raybench.cpp:265
+      ;; raybench.cpp:266
       (i64.store offset=8
         (get_local $5)
         (i64.const 0)
       )
-      ;; raybench.cpp:265
+      ;; raybench.cpp:266
       (f64.store offset=24
         (get_local $4)
         (f64.const 0.6)
@@ -2363,27 +2363,27 @@
         (get_local $5)
         (i64.const 0)
       )
-      ;; raybench.cpp:265
+      ;; raybench.cpp:266
       (i64.store offset=40
         (get_local $5)
         (i64.const 0)
       )
-      ;; raybench.cpp:265
+      ;; raybench.cpp:266
       (f64.store offset=80
         (get_local $4)
         (f64.const 0.4)
       )
-      ;; raybench.cpp:265
+      ;; raybench.cpp:266
       (f64.store offset=88
         (get_local $4)
         (f64.const 0)
       )
-      ;; raybench.cpp:441
+      ;; raybench.cpp:442
       (i32.store
         (get_local $4)
         (i32.const 1600)
       )
-      ;; raybench.cpp:439
+      ;; raybench.cpp:440
       (f64.store offset=96
         (get_local $4)
         (f64.add
@@ -2394,7 +2394,7 @@
           (f64.const 1)
         )
       )
-      ;; raybench.cpp:439
+      ;; raybench.cpp:440
       (f64.store offset=104
         (get_local $4)
         (f64.add
@@ -2410,7 +2410,7 @@
           (f64.const 0.075)
         )
       )
-      ;; raybench.cpp:439
+      ;; raybench.cpp:440
       (f64.store offset=112
         (get_local $4)
         (f64.add
@@ -2421,12 +2421,12 @@
           (f64.const 1)
         )
       )
-      ;; raybench.cpp:440
+      ;; raybench.cpp:441
       (f64.store offset=120
         (get_local $4)
         (f64.const 0.025)
       )
-      ;; raybench.cpp:954
+      ;; raybench.cpp:955
       (i32.store
         (get_local $6)
         (get_local $4)
@@ -2443,7 +2443,7 @@
           (get_local $19)
         )
       )
-      ;; raybench.cpp:953
+      ;; raybench.cpp:954
       (if
         ;; /Users/lhansen/lib/emsdk_portable/emscripten/incoming/system/include/libcxx/memory:1748
         (i32.lt_u
@@ -2489,55 +2489,55 @@
         )
       )
     )
-    ;; raybench.cpp:956
+    ;; raybench.cpp:957
     (f64.store
       (get_local $0)
       (f64.const 0.5)
     )
-    ;; raybench.cpp:956
+    ;; raybench.cpp:957
     (f64.store offset=8
       (get_local $0)
       (f64.const 0.75)
     )
-    ;; raybench.cpp:956
+    ;; raybench.cpp:957
     (f64.store offset=16
       (get_local $0)
       (f64.const 5)
     )
-    ;; raybench.cpp:957
+    ;; raybench.cpp:958
     (f64.store
       (get_local $1)
       (f64.const -3)
     )
-    ;; raybench.cpp:957
+    ;; raybench.cpp:958
     (f64.store offset=8
       (get_local $1)
       (f64.const 1.5)
     )
-    ;; raybench.cpp:957
+    ;; raybench.cpp:958
     (f64.store offset=16
       (get_local $1)
       (f64.const 2)
     )
-    ;; raybench.cpp:958
+    ;; raybench.cpp:959
     (f64.store
       (get_local $2)
       (f64.const 0.09765625)
     )
-    ;; raybench.cpp:958
+    ;; raybench.cpp:959
     (f64.store offset=8
       (get_local $2)
       (f64.const 0.09765625)
     )
-    ;; raybench.cpp:958
+    ;; raybench.cpp:959
     (f64.store offset=16
       (get_local $2)
       (f64.const 0.4375)
     )
-    ;; raybench.cpp:960
+    ;; raybench.cpp:961
     (set_local $0
       (i32.load8_s
-        (i32.const 2344)
+        (i32.const 2348)
       )
     )
     (if
@@ -2587,35 +2587,35 @@
             )
           )
           (block
-            ;; raybench.cpp:858
+            ;; raybench.cpp:859
             (set_local $3
               (i32.add
                 (get_local $6)
                 (i32.const 8)
               )
             )
-            ;; raybench.cpp:859
+            ;; raybench.cpp:860
             (set_local $4
               (i32.add
                 (get_local $6)
                 (i32.const 16)
               )
             )
-            ;; raybench.cpp:860
+            ;; raybench.cpp:861
             (set_local $5
               (i32.add
                 (get_local $6)
                 (i32.const 24)
               )
             )
-            ;; raybench.cpp:861
+            ;; raybench.cpp:862
             (set_local $10
               (i32.add
                 (get_local $6)
                 (i32.const 32)
               )
             )
-            ;; raybench.cpp:862
+            ;; raybench.cpp:863
             (set_local $15
               (i32.add
                 (get_local $6)
@@ -2641,25 +2641,25 @@
               (f64.const 1.e+100)
             )
             (loop $while-in5
-              ;; raybench.cpp:855
+              ;; raybench.cpp:856
               (set_local $2
                 (i32.load
                   (get_local $0)
                 )
               )
-              ;; raybench.cpp:856
+              ;; raybench.cpp:857
               (set_local $12
                 (i32.load
                   (get_local $2)
                 )
               )
-              ;; raybench.cpp:856
+              ;; raybench.cpp:857
               (set_local $12
                 (i32.load offset=8
                   (get_local $12)
                 )
               )
-              ;; raybench.cpp:856
+              ;; raybench.cpp:857
               (call_indirect $FUNCSIG$vii
                 (get_local $6)
                 (get_local $2)
@@ -2671,13 +2671,13 @@
                   (i32.const 36)
                 )
               )
-              ;; raybench.cpp:857
+              ;; raybench.cpp:858
               (set_local $11
                 (f64.load
                   (get_local $6)
                 )
               )
-              ;; raybench.cpp:209
+              ;; raybench.cpp:210
               (if
                 (i32.eqz
                   (f64.lt
@@ -2689,13 +2689,13 @@
                   (get_local $11)
                 )
               )
-              ;; raybench.cpp:858
+              ;; raybench.cpp:859
               (set_local $11
                 (f64.load
                   (get_local $3)
                 )
               )
-              ;; raybench.cpp:200
+              ;; raybench.cpp:201
               (if
                 (i32.eqz
                   (f64.gt
@@ -2707,13 +2707,13 @@
                   (get_local $11)
                 )
               )
-              ;; raybench.cpp:859
+              ;; raybench.cpp:860
               (set_local $11
                 (f64.load
                   (get_local $4)
                 )
               )
-              ;; raybench.cpp:209
+              ;; raybench.cpp:210
               (if
                 (i32.eqz
                   (f64.lt
@@ -2725,13 +2725,13 @@
                   (get_local $11)
                 )
               )
-              ;; raybench.cpp:860
+              ;; raybench.cpp:861
               (set_local $11
                 (f64.load
                   (get_local $5)
                 )
               )
-              ;; raybench.cpp:200
+              ;; raybench.cpp:201
               (if
                 (i32.eqz
                   (f64.gt
@@ -2743,13 +2743,13 @@
                   (get_local $11)
                 )
               )
-              ;; raybench.cpp:861
+              ;; raybench.cpp:862
               (set_local $11
                 (f64.load
                   (get_local $10)
                 )
               )
-              ;; raybench.cpp:209
+              ;; raybench.cpp:210
               (if
                 (i32.eqz
                   (f64.lt
@@ -2761,13 +2761,13 @@
                   (get_local $11)
                 )
               )
-              ;; raybench.cpp:862
+              ;; raybench.cpp:863
               (set_local $11
                 (f64.load
                   (get_local $15)
                 )
               )
-              ;; raybench.cpp:200
+              ;; raybench.cpp:201
               (if
                 (i32.eqz
                   (f64.gt
@@ -2793,32 +2793,32 @@
             )
           )
         )
-        ;; raybench.cpp:250
+        ;; raybench.cpp:251
         (f64.store
           (get_local $7)
           (get_local $14)
         )
-        ;; raybench.cpp:251
+        ;; raybench.cpp:252
         (f64.store offset=8
           (get_local $7)
           (get_local $16)
         )
-        ;; raybench.cpp:252
+        ;; raybench.cpp:253
         (f64.store offset=16
           (get_local $7)
           (get_local $18)
         )
-        ;; raybench.cpp:253
+        ;; raybench.cpp:254
         (f64.store offset=24
           (get_local $7)
           (get_local $23)
         )
-        ;; raybench.cpp:254
+        ;; raybench.cpp:255
         (f64.store offset=32
           (get_local $7)
           (get_local $22)
         )
-        ;; raybench.cpp:255
+        ;; raybench.cpp:256
         (f64.store offset=40
           (get_local $7)
           (get_local $21)
@@ -2853,14 +2853,14 @@
             (get_local $7)
           )
         )
-        ;; raybench.cpp:961
+        ;; raybench.cpp:962
         (i64.store offset=40
           (get_local $6)
           (i64.load offset=40
             (get_local $7)
           )
         )
-        ;; raybench.cpp:961
+        ;; raybench.cpp:962
         (set_local $0
           (call $__Z9partitionRNSt3__26vectorIP7SurfaceNS_9allocatorIS2_EEEE6Boundsj
             (get_local $9)
@@ -2870,7 +2870,7 @@
         )
       )
       (block
-        ;; raybench.cpp:963
+        ;; raybench.cpp:964
         (set_local $0
           (call $__Znwj
             (i32.const 112)
@@ -2921,12 +2921,12 @@
           (get_local $1)
           (i64.const 0)
         )
-        ;; raybench.cpp:265
+        ;; raybench.cpp:266
         (i64.store offset=80
           (get_local $1)
           (i64.const 0)
         )
-        ;; raybench.cpp:390
+        ;; raybench.cpp:391
         (i32.store
           (get_local $0)
           (i32.const 1544)
@@ -2957,7 +2957,7 @@
             (get_local $9)
           )
         )
-        ;; raybench.cpp:391
+        ;; raybench.cpp:392
         (i32.store
           (get_local $15)
           (get_local $2)
@@ -2968,26 +2968,26 @@
             (get_local $8)
           )
         )
-        ;; raybench.cpp:391
+        ;; raybench.cpp:392
         (i32.store
           (get_local $12)
           (get_local $2)
         )
-        ;; raybench.cpp:391
+        ;; raybench.cpp:392
         (i32.store
           (get_local $10)
           (i32.load
             (get_local $15)
           )
         )
-        ;; raybench.cpp:391
+        ;; raybench.cpp:392
         (i32.store
           (get_local $6)
           (i32.load
             (get_local $12)
           )
         )
-        ;; raybench.cpp:391
+        ;; raybench.cpp:392
         (call $__ZNSt3__26vectorIP7SurfaceNS_9allocatorIS2_EEE6assignINS_11__wrap_iterIPS2_EEEENS_9enable_ifIXaasr21__is_forward_iteratorIT_EE5valuesr16is_constructibleIS2_NS_15iterator_traitsISB_E9referenceEEE5valueEvE4typeESB_SB_
           (get_local $1)
           (get_local $10)
@@ -3091,14 +3091,14 @@
     (set_local $5
       (get_global $STACKTOP)
     )
-    ;; raybench.cpp:752
+    ;; raybench.cpp:753
     (set_global $STACKTOP
       (i32.add
         (get_global $STACKTOP)
         (i32.const 48)
       )
     )
-    ;; raybench.cpp:753
+    ;; raybench.cpp:754
     (if
       (i32.ge_u
         (get_local $0)
@@ -3154,7 +3154,7 @@
         (i32.const 16)
       )
     )
-    ;; raybench.cpp:753
+    ;; raybench.cpp:754
     (set_local $24
       (i32.sub
         (get_local $3)
@@ -3165,7 +3165,7 @@
       (i32.const 0)
     )
     (loop $while-in
-      ;; raybench.cpp:765
+      ;; raybench.cpp:766
       (set_local $25
         (f64.convert_u/i32
           (get_local $0)
@@ -3174,12 +3174,12 @@
       (set_local $9
         (get_local $2)
       )
-      ;; raybench.cpp:757
+      ;; raybench.cpp:758
       (set_local $13
         (get_local $12)
       )
       (loop $while-in1
-        ;; raybench.cpp:764
+        ;; raybench.cpp:765
         (set_local $26
           (f64.convert_u/i32
             (get_local $9)
@@ -3204,7 +3204,7 @@
           (f64.const 0)
         )
         (loop $while-in3
-          ;; raybench.cpp:764
+          ;; raybench.cpp:765
           (set_local $27
             (f64.convert_u/i32
               (get_local $6)
@@ -3213,12 +3213,12 @@
           (set_local $8
             (i32.const 0)
           )
-          ;; raybench.cpp:762
+          ;; raybench.cpp:763
           (set_local $4
             (get_local $7)
           )
           (loop $while-in5
-            ;; raybench.cpp:762
+            ;; raybench.cpp:763
             (set_local $17
               (f64.load
                 (i32.add
@@ -3230,7 +3230,7 @@
                 )
               )
             )
-            ;; raybench.cpp:763
+            ;; raybench.cpp:764
             (set_local $18
               (f64.load
                 (i32.add
@@ -3245,20 +3245,20 @@
                 )
               )
             )
-            ;; raybench.cpp:763
+            ;; raybench.cpp:764
             (set_local $4
               (i32.add
                 (get_local $4)
                 (i32.const 2)
               )
             )
-            ;; raybench.cpp:766
+            ;; raybench.cpp:767
             (set_local $28
               (f64.load
-                (i32.const 5440)
+                (i32.const 5448)
               )
             )
-            ;; raybench.cpp:136
+            ;; raybench.cpp:137
             (f64.store
               (get_local $10)
               (f64.add
@@ -3281,7 +3281,7 @@
                 (f64.const -2)
               )
             )
-            ;; raybench.cpp:137
+            ;; raybench.cpp:138
             (f64.store
               (get_local $20)
               (f64.add
@@ -3306,23 +3306,23 @@
                 (f64.const -1.5)
               )
             )
-            ;; raybench.cpp:138
+            ;; raybench.cpp:139
             (f64.store
               (get_local $21)
               (f64.neg
                 (get_local $28)
               )
             )
-            ;; raybench.cpp:767
+            ;; raybench.cpp:768
             (set_local $19
               (i32.load
                 (i32.const 1504)
               )
             )
-            ;; raybench.cpp:767
+            ;; raybench.cpp:768
             (call $__Z8raycolorRK4Vec3S1_ddj
               (get_local $11)
-              (i32.const 5424)
+              (i32.const 5432)
               (get_local $10)
               (f64.const 0)
               (f64.const 1.e+32)
@@ -3338,7 +3338,7 @@
                 (get_local $23)
               )
             )
-            ;; raybench.cpp:151
+            ;; raybench.cpp:152
             (set_local $14
               (f64.add
                 (get_local $14)
@@ -3347,14 +3347,14 @@
                 )
               )
             )
-            ;; raybench.cpp:151
+            ;; raybench.cpp:152
             (set_local $15
               (f64.add
                 (get_local $15)
                 (get_local $17)
               )
             )
-            ;; raybench.cpp:151
+            ;; raybench.cpp:152
             (set_local $16
               (f64.add
                 (get_local $16)
@@ -3373,7 +3373,7 @@
               )
             )
           )
-          ;; raybench.cpp:761
+          ;; raybench.cpp:762
           (set_local $7
             (i32.add
               (get_local $7)
@@ -3392,20 +3392,20 @@
             )
           )
         )
-        ;; raybench.cpp:759
+        ;; raybench.cpp:760
         (set_local $13
           (i32.add
             (get_local $13)
             (i32.const 1)
           )
         )
-        ;; raybench.cpp:770
+        ;; raybench.cpp:771
         (set_local $4
           (i32.load
-            (i32.const 5500)
+            (i32.const 5508)
           )
         )
-        ;; raybench.cpp:564
+        ;; raybench.cpp:565
         (set_local $7
           (call $f64-to-int
             (f64.mul
@@ -3417,7 +3417,7 @@
             )
           )
         )
-        ;; raybench.cpp:564
+        ;; raybench.cpp:565
         (set_local $6
           (call $f64-to-int
             (f64.mul
@@ -3429,7 +3429,7 @@
             )
           )
         )
-        ;; raybench.cpp:564
+        ;; raybench.cpp:565
         (set_local $8
           (call $f64-to-int
             (f64.mul
@@ -3441,25 +3441,25 @@
             )
           )
         )
-        ;; raybench.cpp:602
+        ;; raybench.cpp:603
         (set_local $19
           (i32.load
             (get_local $4)
           )
         )
-        ;; raybench.cpp:602
+        ;; raybench.cpp:603
         (set_local $29
           (i32.load offset=4
             (get_local $4)
           )
         )
-        ;; raybench.cpp:602
+        ;; raybench.cpp:603
         (set_local $4
           (i32.load offset=8
             (get_local $4)
           )
         )
-        ;; raybench.cpp:602
+        ;; raybench.cpp:603
         (i32.store
           (i32.add
             (get_local $4)
@@ -3506,7 +3506,7 @@
           )
         )
       )
-      ;; raybench.cpp:753
+      ;; raybench.cpp:754
       (set_local $12
         (i32.add
           (get_local $24)
@@ -3549,14 +3549,14 @@
     (set_local $6
       (get_global $STACKTOP)
     )
-    ;; raybench.cpp:732
+    ;; raybench.cpp:733
     (set_global $STACKTOP
       (i32.add
         (get_global $STACKTOP)
         (i32.const 48)
       )
     )
-    ;; raybench.cpp:733
+    ;; raybench.cpp:734
     (if
       (i32.ge_u
         (get_local $0)
@@ -3606,7 +3606,7 @@
         (i32.const 16)
       )
     )
-    ;; raybench.cpp:735
+    ;; raybench.cpp:736
     (set_local $13
       (i32.add
         (get_local $9)
@@ -3614,7 +3614,7 @@
       )
     )
     (loop $while-in
-      ;; raybench.cpp:735
+      ;; raybench.cpp:736
       (set_local $14
         (f64.add
           (f64.div
@@ -3632,19 +3632,19 @@
           (f64.const -1.5)
         )
       )
-      ;; raybench.cpp:734
+      ;; raybench.cpp:735
       (set_local $7
         (get_local $2)
       )
-      ;; raybench.cpp:732
+      ;; raybench.cpp:733
       (loop $while-in1
-        ;; raybench.cpp:736
+        ;; raybench.cpp:737
         (set_local $4
           (f64.load
-            (i32.const 5440)
+            (i32.const 5448)
           )
         )
-        ;; raybench.cpp:136
+        ;; raybench.cpp:137
         (f64.store
           (get_local $8)
           (f64.add
@@ -3663,46 +3663,46 @@
             (f64.const -2)
           )
         )
-        ;; raybench.cpp:137
+        ;; raybench.cpp:138
         (f64.store
           (get_local $10)
           (get_local $14)
         )
-        ;; raybench.cpp:138
+        ;; raybench.cpp:139
         (f64.store
           (get_local $11)
           (f64.neg
             (get_local $4)
           )
         )
-        ;; raybench.cpp:737
+        ;; raybench.cpp:738
         (set_local $5
           (i32.load
             (i32.const 1504)
           )
         )
-        ;; raybench.cpp:737
+        ;; raybench.cpp:738
         (call $__Z8raycolorRK4Vec3S1_ddj
           (get_local $9)
-          (i32.const 5424)
+          (i32.const 5432)
           (get_local $8)
           (f64.const 0)
           (f64.const 1.e+32)
           (get_local $5)
         )
-        ;; raybench.cpp:738
+        ;; raybench.cpp:739
         (set_local $5
           (i32.load
-            (i32.const 5500)
+            (i32.const 5508)
           )
         )
-        ;; raybench.cpp:564
+        ;; raybench.cpp:565
         (set_local $4
           (f64.load
             (get_local $12)
           )
         )
-        ;; raybench.cpp:564
+        ;; raybench.cpp:565
         (set_local $15
           (call $f64-to-int
             (f64.mul
@@ -3711,13 +3711,13 @@
             )
           )
         )
-        ;; raybench.cpp:564
+        ;; raybench.cpp:565
         (set_local $4
           (f64.load
             (get_local $13)
           )
         )
-        ;; raybench.cpp:564
+        ;; raybench.cpp:565
         (set_local $16
           (call $f64-to-int
             (f64.mul
@@ -3726,13 +3726,13 @@
             )
           )
         )
-        ;; raybench.cpp:564
+        ;; raybench.cpp:565
         (set_local $4
           (f64.load
             (get_local $9)
           )
         )
-        ;; raybench.cpp:564
+        ;; raybench.cpp:565
         (set_local $17
           (call $f64-to-int
             (f64.mul
@@ -3741,25 +3741,25 @@
             )
           )
         )
-        ;; raybench.cpp:602
+        ;; raybench.cpp:603
         (set_local $18
           (i32.load
             (get_local $5)
           )
         )
-        ;; raybench.cpp:602
+        ;; raybench.cpp:603
         (set_local $19
           (i32.load offset=4
             (get_local $5)
           )
         )
-        ;; raybench.cpp:602
+        ;; raybench.cpp:603
         (set_local $5
           (i32.load offset=8
             (get_local $5)
           )
         )
-        ;; raybench.cpp:602
+        ;; raybench.cpp:603
         (i32.store
           (i32.add
             (get_local $5)
@@ -3861,25 +3861,25 @@
         (i32.const 160)
       )
     )
-    ;; raybench.cpp:785
+    ;; raybench.cpp:786
     (set_local $16
       (i32.load
-        (i32.const 5496)
+        (i32.const 5504)
       )
     )
-    ;; raybench.cpp:785
+    ;; raybench.cpp:786
     (set_local $6
       (i32.load
         (get_local $16)
       )
     )
-    ;; raybench.cpp:785
+    ;; raybench.cpp:786
     (set_local $6
       (i32.load
         (get_local $6)
       )
     )
-    ;; raybench.cpp:785
+    ;; raybench.cpp:786
     (set_local $6
       (call_indirect $FUNCSIG$iiiiddi
         (get_local $16)
@@ -3910,20 +3910,20 @@
         (i64.store
           (get_local $0)
           (i64.load
-            (i32.const 5448)
+            (i32.const 5456)
           )
         )
         (i64.store offset=8
           (get_local $0)
           (i64.load
-            (i32.const 5456)
+            (i32.const 5464)
           )
         )
-        ;; raybench.cpp:814
+        ;; raybench.cpp:815
         (i64.store offset=16
           (get_local $0)
           (i64.load
-            (i32.const 5464)
+            (i32.const 5472)
           )
         )
         (set_global $STACKTOP
@@ -3947,7 +3947,7 @@
     (set_local $16
       (get_local $13)
     )
-    ;; raybench.cpp:789
+    ;; raybench.cpp:790
     (set_local $3
       (f64.load
         (get_local $10)
@@ -3973,7 +3973,7 @@
         )
       )
     )
-    ;; raybench.cpp:167
+    ;; raybench.cpp:168
     (set_local $11
       (f64.mul
         (get_local $3)
@@ -3992,7 +3992,7 @@
         (get_local $1)
       )
     )
-    ;; raybench.cpp:151
+    ;; raybench.cpp:152
     (set_local $11
       (f64.add
         (get_local $11)
@@ -4001,7 +4001,7 @@
         )
       )
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store
       (tee_local $1
         (i32.add
@@ -4011,7 +4011,7 @@
       )
       (get_local $11)
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store
       (tee_local $25
         (i32.add
@@ -4027,7 +4027,7 @@
         (get_local $8)
       )
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store
       (tee_local $26
         (i32.add
@@ -4043,19 +4043,19 @@
         (get_local $9)
       )
     )
-    ;; raybench.cpp:790
+    ;; raybench.cpp:791
     (set_local $10
       (i32.load
         (get_local $6)
       )
     )
-    ;; raybench.cpp:790
+    ;; raybench.cpp:791
     (set_local $10
       (i32.load offset=4
         (get_local $10)
       )
     )
-    ;; raybench.cpp:790
+    ;; raybench.cpp:791
     (call_indirect $FUNCSIG$viii
       (tee_local $20
         (i32.add
@@ -4075,12 +4075,12 @@
     )
     (set_local $4
       (f64.load
-        (i32.const 5480)
+        (i32.const 5488)
       )
     )
     (set_local $7
       (f64.load
-        (i32.const 5488)
+        (i32.const 5496)
       )
     )
     (set_local $11
@@ -4093,11 +4093,11 @@
         (get_local $26)
       )
     )
-    ;; raybench.cpp:159
+    ;; raybench.cpp:160
     (set_local $3
       (f64.sub
         (f64.load
-          (i32.const 5472)
+          (i32.const 5480)
         )
         (tee_local $12
           (f64.load
@@ -4106,7 +4106,7 @@
         )
       )
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store
       (tee_local $10
         (i32.add
@@ -4150,7 +4150,7 @@
         )
       )
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store
       (tee_local $29
         (i32.add
@@ -4165,7 +4165,7 @@
         )
       )
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store
       (tee_local $30
         (i32.add
@@ -4197,17 +4197,17 @@
         (get_local $14)
       )
     )
-    ;; raybench.cpp:792
+    ;; raybench.cpp:793
     (i64.store offset=16
       (get_local $0)
       (i64.load offset=16
         (get_local $14)
       )
     )
-    ;; raybench.cpp:795
+    ;; raybench.cpp:796
     (set_local $14
       (i32.load8_s
-        (i32.const 2345)
+        (i32.const 2349)
       )
     )
     (block $__rjto$0
@@ -4223,25 +4223,25 @@
             )
           )
         )
-        ;; raybench.cpp:797
+        ;; raybench.cpp:798
         (set_local $14
           (i32.load
-            (i32.const 5496)
+            (i32.const 5504)
           )
         )
-        ;; raybench.cpp:797
+        ;; raybench.cpp:798
         (set_local $23
           (i32.load
             (get_local $14)
           )
         )
-        ;; raybench.cpp:797
+        ;; raybench.cpp:798
         (set_local $23
           (i32.load
             (get_local $23)
           )
         )
-        ;; raybench.cpp:136
+        ;; raybench.cpp:137
         (f64.store
           (get_local $15)
           (f64.add
@@ -4252,7 +4252,7 @@
             (get_local $12)
           )
         )
-        ;; raybench.cpp:137
+        ;; raybench.cpp:138
         (f64.store offset=8
           (get_local $15)
           (f64.add
@@ -4263,7 +4263,7 @@
             (get_local $11)
           )
         )
-        ;; raybench.cpp:138
+        ;; raybench.cpp:139
         (f64.store offset=16
           (get_local $15)
           (f64.add
@@ -4274,7 +4274,7 @@
             (get_local $8)
           )
         )
-        ;; raybench.cpp:797
+        ;; raybench.cpp:798
         (set_local $14
           (call_indirect $FUNCSIG$iiiiddi
             (get_local $14)
@@ -4327,13 +4327,13 @@
           (get_local $20)
         )
       )
-      ;; raybench.cpp:196
+      ;; raybench.cpp:197
       (set_local $22
         (f64.load offset=16
           (get_local $20)
         )
       )
-      ;; raybench.cpp:200
+      ;; raybench.cpp:201
       (if
         (f64.lt
           (tee_local $11
@@ -4370,13 +4370,13 @@
           (get_local $27)
         )
       )
-      ;; raybench.cpp:179
+      ;; raybench.cpp:180
       (set_local $12
         (f64.load
           (get_local $28)
         )
       )
-      ;; raybench.cpp:151
+      ;; raybench.cpp:152
       (set_local $3
         (f64.add
           (get_local $3)
@@ -4407,7 +4407,7 @@
           )
         )
       )
-      ;; raybench.cpp:183
+      ;; raybench.cpp:184
       (set_local $4
         (f64.sqrt
           (f64.add
@@ -4448,13 +4448,13 @@
           )
         )
       )
-      ;; raybench.cpp:803
+      ;; raybench.cpp:804
       (set_local $24
         (f64.load offset=56
           (get_local $6)
         )
       )
-      ;; raybench.cpp:803
+      ;; raybench.cpp:804
       (set_local $3
         (call $Math_pow
           (if f64
@@ -4504,7 +4504,7 @@
           (get_local $6)
         )
       )
-      ;; raybench.cpp:167
+      ;; raybench.cpp:168
       (set_local $4
         (f64.mul
           (get_local $11)
@@ -4523,7 +4523,7 @@
           (get_local $6)
         )
       )
-      ;; raybench.cpp:167
+      ;; raybench.cpp:168
       (set_local $32
         (f64.mul
           (get_local $3)
@@ -4552,7 +4552,7 @@
           )
         )
       )
-      ;; raybench.cpp:151
+      ;; raybench.cpp:152
       (set_local $4
         (f64.add
           (f64.add
@@ -4564,12 +4564,12 @@
           )
         )
       )
-      ;; raybench.cpp:804
+      ;; raybench.cpp:805
       (f64.store
         (get_local $0)
         (get_local $4)
       )
-      ;; raybench.cpp:804
+      ;; raybench.cpp:805
       (f64.store
         (get_local $2)
         (tee_local $7
@@ -4588,7 +4588,7 @@
           )
         )
       )
-      ;; raybench.cpp:804
+      ;; raybench.cpp:805
       (f64.store
         (get_local $10)
         (tee_local $11
@@ -4607,14 +4607,14 @@
           )
         )
       )
-      ;; raybench.cpp:805
+      ;; raybench.cpp:806
       (set_local $20
         (i32.load8_s
-          (i32.const 2346)
+          (i32.const 2350)
         )
       )
       (if
-        ;; raybench.cpp:806
+        ;; raybench.cpp:807
         (i32.and
           (i32.ne
             (get_local $5)
@@ -4632,7 +4632,7 @@
           )
         )
         (block
-          ;; raybench.cpp:806
+          ;; raybench.cpp:807
           (set_local $3
             (f64.load
               (tee_local $6
@@ -4644,13 +4644,13 @@
             )
           )
           (if
-            ;; raybench.cpp:196
+            ;; raybench.cpp:197
             (f64.ne
               (get_local $3)
               (f64.const 0)
             )
             (block
-              ;; raybench.cpp:136
+              ;; raybench.cpp:137
               (f64.store
                 (get_local $19)
                 (tee_local $8
@@ -4683,7 +4683,7 @@
                   )
                 )
               )
-              ;; raybench.cpp:137
+              ;; raybench.cpp:138
               (f64.store offset=8
                 (get_local $19)
                 (tee_local $9
@@ -4696,7 +4696,7 @@
                   )
                 )
               )
-              ;; raybench.cpp:138
+              ;; raybench.cpp:139
               (f64.store offset=16
                 (get_local $19)
                 (tee_local $3
@@ -4719,7 +4719,7 @@
                   (get_local $26)
                 )
               )
-              ;; raybench.cpp:151
+              ;; raybench.cpp:152
               (set_local $8
                 (f64.add
                   (f64.mul
@@ -4731,12 +4731,12 @@
                   )
                 )
               )
-              ;; raybench.cpp:136
+              ;; raybench.cpp:137
               (f64.store
                 (get_local $16)
                 (get_local $8)
               )
-              ;; raybench.cpp:137
+              ;; raybench.cpp:138
               (f64.store offset=8
                 (get_local $16)
                 (f64.add
@@ -4747,7 +4747,7 @@
                   (get_local $12)
                 )
               )
-              ;; raybench.cpp:138
+              ;; raybench.cpp:139
               (f64.store offset=16
                 (get_local $16)
                 (f64.add
@@ -4758,7 +4758,7 @@
                   (get_local $18)
                 )
               )
-              ;; raybench.cpp:808
+              ;; raybench.cpp:809
               (call $__Z8raycolorRK4Vec3S1_ddj
                 (get_local $15)
                 (get_local $16)
@@ -4770,7 +4770,7 @@
                   (i32.const -1)
                 )
               )
-              ;; raybench.cpp:808
+              ;; raybench.cpp:809
               (set_local $3
                 (f64.load
                   (get_local $6)
@@ -4786,7 +4786,7 @@
                   (get_local $15)
                 )
               )
-              ;; raybench.cpp:167
+              ;; raybench.cpp:168
               (set_local $12
                 (f64.mul
                   (get_local $3)
@@ -4795,7 +4795,7 @@
                   )
                 )
               )
-              ;; raybench.cpp:808
+              ;; raybench.cpp:809
               (f64.store
                 (get_local $0)
                 (f64.add
@@ -4803,7 +4803,7 @@
                   (get_local $4)
                 )
               )
-              ;; raybench.cpp:808
+              ;; raybench.cpp:809
               (f64.store
                 (get_local $2)
                 (f64.add
@@ -4814,7 +4814,7 @@
                   (get_local $7)
                 )
               )
-              ;; raybench.cpp:808
+              ;; raybench.cpp:809
               (f64.store
                 (get_local $10)
                 (f64.add
@@ -4867,7 +4867,7 @@
         (i32.const 16)
       )
     )
-    ;; raybench.cpp:831
+    ;; raybench.cpp:832
     (set_local $7
       (call $__Znwj
         (i32.const 192)
@@ -4938,14 +4938,14 @@
         (get_local $1)
       )
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (i64.store offset=80
       (get_local $6)
       (i64.load offset=80
         (get_local $1)
       )
     )
-    ;; raybench.cpp:499
+    ;; raybench.cpp:500
     (i32.store
       (get_local $7)
       (i32.const 1516)
@@ -4967,7 +4967,7 @@
         (get_local $2)
       )
     )
-    ;; raybench.cpp:495
+    ;; raybench.cpp:496
     (i64.store offset=16
       (get_local $6)
       (i64.load offset=16
@@ -4991,7 +4991,7 @@
         (get_local $3)
       )
     )
-    ;; raybench.cpp:496
+    ;; raybench.cpp:497
     (i64.store offset=16
       (get_local $6)
       (i64.load offset=16
@@ -5015,38 +5015,38 @@
         (get_local $4)
       )
     )
-    ;; raybench.cpp:497
+    ;; raybench.cpp:498
     (i64.store offset=16
       (get_local $6)
       (i64.load offset=16
         (get_local $4)
       )
     )
-    ;; raybench.cpp:831
+    ;; raybench.cpp:832
     (set_local $14
       (f64.load
         (get_local $3)
       )
     )
-    ;; raybench.cpp:831
+    ;; raybench.cpp:832
     (set_local $12
       (f64.load offset=8
         (get_local $3)
       )
     )
-    ;; raybench.cpp:831
+    ;; raybench.cpp:832
     (set_local $8
       (f64.load offset=16
         (get_local $3)
       )
     )
-    ;; raybench.cpp:831
+    ;; raybench.cpp:832
     (set_local $13
       (f64.load
         (get_local $2)
       )
     )
-    ;; raybench.cpp:831
+    ;; raybench.cpp:832
     (set_local $10
       (f64.load
         (tee_local $9
@@ -5057,7 +5057,7 @@
         )
       )
     )
-    ;; raybench.cpp:831
+    ;; raybench.cpp:832
     (set_local $11
       (f64.load
         (tee_local $20
@@ -5068,13 +5068,13 @@
         )
       )
     )
-    ;; raybench.cpp:831
+    ;; raybench.cpp:832
     (set_local $15
       (f64.load
         (get_local $4)
       )
     )
-    ;; raybench.cpp:831
+    ;; raybench.cpp:832
     (set_local $16
       (f64.load
         (tee_local $21
@@ -5085,7 +5085,7 @@
         )
       )
     )
-    ;; raybench.cpp:831
+    ;; raybench.cpp:832
     (set_local $17
       (f64.load
         (tee_local $22
@@ -5096,7 +5096,7 @@
         )
       )
     )
-    ;; raybench.cpp:192
+    ;; raybench.cpp:193
     (set_local $12
       (f64.sub
         (f64.mul
@@ -5129,7 +5129,7 @@
         )
       )
     )
-    ;; raybench.cpp:192
+    ;; raybench.cpp:193
     (set_local $14
       (f64.sub
         (f64.mul
@@ -5152,7 +5152,7 @@
         )
       )
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store offset=168
       (get_local $7)
       (f64.div
@@ -5190,7 +5190,7 @@
         )
       )
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store offset=176
       (get_local $7)
       (f64.div
@@ -5198,7 +5198,7 @@
         (get_local $12)
       )
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=184
       (get_local $7)
       (f64.div
@@ -5206,7 +5206,7 @@
         (get_local $12)
       )
     )
-    ;; raybench.cpp:831
+    ;; raybench.cpp:832
     (i32.store
       (tee_local $6
         (get_local $19)
@@ -5270,37 +5270,37 @@
           (get_local $0)
           (get_local $6)
         )
-        ;; raybench.cpp:832
+        ;; raybench.cpp:833
         (set_local $15
           (f64.load
             (get_local $4)
           )
         )
-        ;; raybench.cpp:832
+        ;; raybench.cpp:833
         (set_local $16
           (f64.load
             (get_local $21)
           )
         )
-        ;; raybench.cpp:832
+        ;; raybench.cpp:833
         (set_local $17
           (f64.load
             (get_local $22)
           )
         )
-        ;; raybench.cpp:832
+        ;; raybench.cpp:833
         (set_local $13
           (f64.load
             (get_local $2)
           )
         )
-        ;; raybench.cpp:832
+        ;; raybench.cpp:833
         (set_local $10
           (f64.load
             (get_local $9)
           )
         )
-        ;; raybench.cpp:832
+        ;; raybench.cpp:833
         (set_local $11
           (f64.load
             (get_local $20)
@@ -5314,7 +5314,7 @@
         )
       )
     )
-    ;; raybench.cpp:832
+    ;; raybench.cpp:833
     (set_local $7
       (call $__Znwj
         (i32.const 192)
@@ -5385,14 +5385,14 @@
         (get_local $1)
       )
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (i64.store offset=80
       (get_local $9)
       (i64.load offset=80
         (get_local $1)
       )
     )
-    ;; raybench.cpp:499
+    ;; raybench.cpp:500
     (i32.store
       (get_local $7)
       (i32.const 1516)
@@ -5414,7 +5414,7 @@
         (get_local $2)
       )
     )
-    ;; raybench.cpp:495
+    ;; raybench.cpp:496
     (i64.store offset=16
       (get_local $1)
       (i64.load offset=16
@@ -5438,7 +5438,7 @@
         (get_local $4)
       )
     )
-    ;; raybench.cpp:496
+    ;; raybench.cpp:497
     (i64.store offset=16
       (get_local $1)
       (i64.load offset=16
@@ -5462,32 +5462,32 @@
         (get_local $5)
       )
     )
-    ;; raybench.cpp:497
+    ;; raybench.cpp:498
     (i64.store offset=16
       (get_local $1)
       (i64.load offset=16
         (get_local $5)
       )
     )
-    ;; raybench.cpp:832
+    ;; raybench.cpp:833
     (set_local $12
       (f64.load
         (get_local $5)
       )
     )
-    ;; raybench.cpp:832
+    ;; raybench.cpp:833
     (set_local $14
       (f64.load offset=8
         (get_local $5)
       )
     )
-    ;; raybench.cpp:832
+    ;; raybench.cpp:833
     (set_local $8
       (f64.load offset=16
         (get_local $5)
       )
     )
-    ;; raybench.cpp:192
+    ;; raybench.cpp:193
     (set_local $10
       (f64.sub
         (f64.mul
@@ -5520,7 +5520,7 @@
         )
       )
     )
-    ;; raybench.cpp:192
+    ;; raybench.cpp:193
     (set_local $13
       (f64.sub
         (f64.mul
@@ -5543,7 +5543,7 @@
         )
       )
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store offset=168
       (get_local $7)
       (f64.div
@@ -5581,7 +5581,7 @@
         )
       )
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store offset=176
       (get_local $7)
       (f64.div
@@ -5589,7 +5589,7 @@
         (get_local $10)
       )
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=184
       (get_local $7)
       (f64.div
@@ -5597,7 +5597,7 @@
         (get_local $10)
       )
     )
-    ;; raybench.cpp:832
+    ;; raybench.cpp:833
     (i32.store
       (get_local $6)
       (get_local $7)
@@ -5811,7 +5811,7 @@
               )
             )
           )
-          ;; raybench.cpp:875
+          ;; raybench.cpp:876
           (set_local $0
             (i32.load
               (get_local $6)
@@ -5822,13 +5822,13 @@
           )
           (br $switch)
         )
-        ;; raybench.cpp:879
+        ;; raybench.cpp:880
         (set_local $0
           (i32.load
             (get_local $6)
           )
         )
-        ;; raybench.cpp:880
+        ;; raybench.cpp:881
         (set_local $2
           (i32.load offset=4
             (get_local $6)
@@ -5890,49 +5890,49 @@
           (i32.const 8)
         )
       )
-      ;; raybench.cpp:900
+      ;; raybench.cpp:901
       (set_local $35
         (i32.add
           (get_local $1)
           (i32.const 8)
         )
       )
-      ;; raybench.cpp:904
+      ;; raybench.cpp:905
       (set_local $36
         (i32.add
           (get_local $1)
           (i32.const 24)
         )
       )
-      ;; raybench.cpp:904
+      ;; raybench.cpp:905
       (set_local $37
         (i32.add
           (get_local $1)
           (i32.const 16)
         )
       )
-      ;; raybench.cpp:905
+      ;; raybench.cpp:906
       (set_local $38
         (i32.add
           (get_local $30)
           (i32.const 8)
         )
       )
-      ;; raybench.cpp:908
+      ;; raybench.cpp:909
       (set_local $39
         (i32.add
           (get_local $1)
           (i32.const 40)
         )
       )
-      ;; raybench.cpp:908
+      ;; raybench.cpp:909
       (set_local $40
         (i32.add
           (get_local $1)
           (i32.const 32)
         )
       )
-      ;; raybench.cpp:909
+      ;; raybench.cpp:910
       (set_local $41
         (i32.add
           (get_local $31)
@@ -5958,7 +5958,7 @@
             (block $__rjti$1
               (block $__rjti$0
                 (loop $label$continue$L3
-                  ;; raybench.cpp:917
+                  ;; raybench.cpp:918
                   (block $label$break$L5
                     (if
                       (i32.ne
@@ -5977,42 +5977,42 @@
                             )
                           )
                           (loop $while-in
-                            ;; raybench.cpp:897
+                            ;; raybench.cpp:898
                             (set_local $4
                               (i32.load
                                 (get_local $2)
                               )
                             )
-                            ;; raybench.cpp:897
+                            ;; raybench.cpp:898
                             (i32.store
                               (get_local $5)
                               (get_local $4)
                             )
-                            ;; raybench.cpp:900
+                            ;; raybench.cpp:901
                             (set_local $11
                               (f64.load
                                 (get_local $35)
                               )
                             )
-                            ;; raybench.cpp:900
+                            ;; raybench.cpp:901
                             (set_local $9
                               (f64.load
                                 (get_local $1)
                               )
                             )
-                            ;; raybench.cpp:901
+                            ;; raybench.cpp:902
                             (set_local $7
                               (i32.load
                                 (get_local $4)
                               )
                             )
-                            ;; raybench.cpp:901
+                            ;; raybench.cpp:902
                             (set_local $7
                               (i32.load offset=12
                                 (get_local $7)
                               )
                             )
-                            ;; raybench.cpp:901
+                            ;; raybench.cpp:902
                             (call_indirect $FUNCSIG$vii
                               (get_local $29)
                               (get_local $4)
@@ -6024,7 +6024,7 @@
                                 (i32.const 36)
                               )
                             )
-                            ;; raybench.cpp:901
+                            ;; raybench.cpp:902
                             (set_local $12
                               (f64.load
                                 (get_local $29)
@@ -6162,18 +6162,18 @@
                           )
                         )
                         (loop $while-in3
-                          ;; raybench.cpp:897
+                          ;; raybench.cpp:898
                           (set_local $4
                             (i32.load
                               (get_local $2)
                             )
                           )
-                          ;; raybench.cpp:897
+                          ;; raybench.cpp:898
                           (i32.store
                             (get_local $5)
                             (get_local $4)
                           )
-                          ;; raybench.cpp:912
+                          ;; raybench.cpp:913
                           (block $switch4
                             (block $switch-default
                               (block $switch-case6
@@ -6185,31 +6185,31 @@
                                     )
                                   )
                                 )
-                                ;; raybench.cpp:908
+                                ;; raybench.cpp:909
                                 (set_local $9
                                   (f64.load
                                     (get_local $39)
                                   )
                                 )
-                                ;; raybench.cpp:908
+                                ;; raybench.cpp:909
                                 (set_local $12
                                   (f64.load
                                     (get_local $40)
                                   )
                                 )
-                                ;; raybench.cpp:909
+                                ;; raybench.cpp:910
                                 (set_local $7
                                   (i32.load
                                     (get_local $4)
                                   )
                                 )
-                                ;; raybench.cpp:909
+                                ;; raybench.cpp:910
                                 (set_local $7
                                   (i32.load offset=12
                                     (get_local $7)
                                   )
                                 )
-                                ;; raybench.cpp:909
+                                ;; raybench.cpp:910
                                 (call_indirect $FUNCSIG$vii
                                   (get_local $31)
                                   (get_local $4)
@@ -6221,7 +6221,7 @@
                                     (i32.const 36)
                                   )
                                 )
-                                ;; raybench.cpp:909
+                                ;; raybench.cpp:910
                                 (set_local $11
                                   (f64.load
                                     (get_local $41)
@@ -6238,31 +6238,31 @@
                                 )
                                 (br $switch4)
                               )
-                              ;; raybench.cpp:904
+                              ;; raybench.cpp:905
                               (set_local $9
                                 (f64.load
                                   (get_local $36)
                                 )
                               )
-                              ;; raybench.cpp:904
+                              ;; raybench.cpp:905
                               (set_local $12
                                 (f64.load
                                   (get_local $37)
                                 )
                               )
-                              ;; raybench.cpp:905
+                              ;; raybench.cpp:906
                               (set_local $7
                                 (i32.load
                                   (get_local $4)
                                 )
                               )
-                              ;; raybench.cpp:905
+                              ;; raybench.cpp:906
                               (set_local $7
                                 (i32.load offset=12
                                   (get_local $7)
                                 )
                               )
-                              ;; raybench.cpp:905
+                              ;; raybench.cpp:906
                               (call_indirect $FUNCSIG$vii
                                 (get_local $30)
                                 (get_local $4)
@@ -6274,7 +6274,7 @@
                                   (i32.const 36)
                                 )
                               )
-                              ;; raybench.cpp:905
+                              ;; raybench.cpp:906
                               (set_local $11
                                 (f64.load
                                   (get_local $38)
@@ -6418,7 +6418,7 @@
                       )
                     )
                   )
-                  ;; raybench.cpp:917
+                  ;; raybench.cpp:918
                   (set_local $7
                     (call $i32u-rem
                       (i32.add
@@ -6440,7 +6440,7 @@
                       (get_local $19)
                     )
                   )
-                  ;; raybench.cpp:918
+                  ;; raybench.cpp:919
                   (set_local $3
                     (get_local $6)
                   )
@@ -6544,7 +6544,7 @@
                       )
                     )
                   )
-                  ;; raybench.cpp:891
+                  ;; raybench.cpp:892
                   (if
                     (i32.ne
                       (get_local $3)
@@ -6602,26 +6602,26 @@
                   (br $label$continue$L3)
                 )
               )
-              ;; raybench.cpp:114
+              ;; raybench.cpp:120
               (set_local $2
                 (i32.load
                   (i32.const 1620)
                 )
               )
-              ;; raybench.cpp:114
+              ;; raybench.cpp:120
               (i32.store
                 (get_local $26)
-                (i32.const 2411)
+                (i32.const 2415)
               )
-              ;; raybench.cpp:114
+              ;; raybench.cpp:120
               (drop
                 (call $_fprintf
                   (get_local $2)
-                  (i32.const 2359)
+                  (i32.const 2363)
                   (get_local $26)
                 )
               )
-              ;; raybench.cpp:893
+              ;; raybench.cpp:894
               (set_local $2
                 (call $__Znwj
                   (i32.const 112)
@@ -6672,12 +6672,12 @@
                 (get_local $3)
                 (i64.const 0)
               )
-              ;; raybench.cpp:265
+              ;; raybench.cpp:266
               (i64.store offset=80
                 (get_local $3)
                 (i64.const 0)
               )
-              ;; raybench.cpp:390
+              ;; raybench.cpp:391
               (i32.store
                 (get_local $2)
                 (i32.const 1544)
@@ -6708,7 +6708,7 @@
                   (get_local $0)
                 )
               )
-              ;; raybench.cpp:391
+              ;; raybench.cpp:392
               (i32.store
                 (get_local $27)
                 (get_local $0)
@@ -6719,26 +6719,26 @@
                   (get_local $32)
                 )
               )
-              ;; raybench.cpp:391
+              ;; raybench.cpp:392
               (i32.store
                 (get_local $28)
                 (get_local $0)
               )
-              ;; raybench.cpp:391
+              ;; raybench.cpp:392
               (i32.store
                 (get_local $26)
                 (i32.load
                   (get_local $27)
                 )
               )
-              ;; raybench.cpp:391
+              ;; raybench.cpp:392
               (i32.store
                 (get_local $5)
                 (i32.load
                   (get_local $28)
                 )
               )
-              ;; raybench.cpp:391
+              ;; raybench.cpp:392
               (call $__ZNSt3__26vectorIP7SurfaceNS_9allocatorIS2_EEE6assignINS_11__wrap_iterIPS2_EEEENS_9enable_ifIXaasr21__is_forward_iteratorIT_EE5valuesr16is_constructibleIS2_NS_15iterator_traitsISB_E9referenceEEE5valueEvE4typeESB_SB_
                 (get_local $3)
                 (get_local $26)
@@ -6758,7 +6758,7 @@
               )
               (br $do-once15)
             )
-            ;; raybench.cpp:923
+            ;; raybench.cpp:924
             (set_local $0
               (i32.load
                 (get_local $2)
@@ -6798,35 +6798,35 @@
               )
             )
             (block
-              ;; raybench.cpp:858
+              ;; raybench.cpp:859
               (set_local $3
                 (i32.add
                   (get_local $5)
                   (i32.const 8)
                 )
               )
-              ;; raybench.cpp:859
+              ;; raybench.cpp:860
               (set_local $6
                 (i32.add
                   (get_local $5)
                   (i32.const 16)
                 )
               )
-              ;; raybench.cpp:860
+              ;; raybench.cpp:861
               (set_local $13
                 (i32.add
                   (get_local $5)
                   (i32.const 24)
                 )
               )
-              ;; raybench.cpp:861
+              ;; raybench.cpp:862
               (set_local $23
                 (i32.add
                   (get_local $5)
                   (i32.const 32)
                 )
               )
-              ;; raybench.cpp:862
+              ;; raybench.cpp:863
               (set_local $25
                 (i32.add
                   (get_local $5)
@@ -6852,25 +6852,25 @@
                 (f64.const 1.e+100)
               )
               (loop $while-in14
-                ;; raybench.cpp:855
+                ;; raybench.cpp:856
                 (set_local $0
                   (i32.load
                     (get_local $2)
                   )
                 )
-                ;; raybench.cpp:856
+                ;; raybench.cpp:857
                 (set_local $24
                   (i32.load
                     (get_local $0)
                   )
                 )
-                ;; raybench.cpp:856
+                ;; raybench.cpp:857
                 (set_local $24
                   (i32.load offset=8
                     (get_local $24)
                   )
                 )
-                ;; raybench.cpp:856
+                ;; raybench.cpp:857
                 (call_indirect $FUNCSIG$vii
                   (get_local $5)
                   (get_local $0)
@@ -6882,13 +6882,13 @@
                     (i32.const 36)
                   )
                 )
-                ;; raybench.cpp:857
+                ;; raybench.cpp:858
                 (set_local $8
                   (f64.load
                     (get_local $5)
                   )
                 )
-                ;; raybench.cpp:209
+                ;; raybench.cpp:210
                 (if
                   (i32.eqz
                     (f64.lt
@@ -6900,13 +6900,13 @@
                     (get_local $8)
                   )
                 )
-                ;; raybench.cpp:858
+                ;; raybench.cpp:859
                 (set_local $8
                   (f64.load
                     (get_local $3)
                   )
                 )
-                ;; raybench.cpp:200
+                ;; raybench.cpp:201
                 (if
                   (i32.eqz
                     (f64.gt
@@ -6918,13 +6918,13 @@
                     (get_local $8)
                   )
                 )
-                ;; raybench.cpp:859
+                ;; raybench.cpp:860
                 (set_local $8
                   (f64.load
                     (get_local $6)
                   )
                 )
-                ;; raybench.cpp:209
+                ;; raybench.cpp:210
                 (if
                   (i32.eqz
                     (f64.lt
@@ -6936,13 +6936,13 @@
                     (get_local $8)
                   )
                 )
-                ;; raybench.cpp:860
+                ;; raybench.cpp:861
                 (set_local $8
                   (f64.load
                     (get_local $13)
                   )
                 )
-                ;; raybench.cpp:200
+                ;; raybench.cpp:201
                 (if
                   (i32.eqz
                     (f64.gt
@@ -6954,13 +6954,13 @@
                     (get_local $8)
                   )
                 )
-                ;; raybench.cpp:861
+                ;; raybench.cpp:862
                 (set_local $8
                   (f64.load
                     (get_local $23)
                   )
                 )
-                ;; raybench.cpp:209
+                ;; raybench.cpp:210
                 (if
                   (i32.eqz
                     (f64.lt
@@ -6972,13 +6972,13 @@
                     (get_local $8)
                   )
                 )
-                ;; raybench.cpp:862
+                ;; raybench.cpp:863
                 (set_local $8
                   (f64.load
                     (get_local $25)
                   )
                 )
-                ;; raybench.cpp:200
+                ;; raybench.cpp:201
                 (if
                   (i32.eqz
                     (f64.gt
@@ -7004,32 +7004,32 @@
               )
             )
           )
-          ;; raybench.cpp:250
+          ;; raybench.cpp:251
           (f64.store
             (get_local $10)
             (get_local $11)
           )
-          ;; raybench.cpp:251
+          ;; raybench.cpp:252
           (f64.store offset=8
             (get_local $10)
             (get_local $9)
           )
-          ;; raybench.cpp:252
+          ;; raybench.cpp:253
           (f64.store offset=16
             (get_local $10)
             (get_local $12)
           )
-          ;; raybench.cpp:253
+          ;; raybench.cpp:254
           (f64.store offset=24
             (get_local $10)
             (get_local $22)
           )
-          ;; raybench.cpp:254
+          ;; raybench.cpp:255
           (f64.store offset=32
             (get_local $10)
             (get_local $21)
           )
-          ;; raybench.cpp:255
+          ;; raybench.cpp:256
           (f64.store offset=40
             (get_local $10)
             (get_local $20)
@@ -7064,14 +7064,14 @@
               (get_local $10)
             )
           )
-          ;; raybench.cpp:923
+          ;; raybench.cpp:924
           (i64.store offset=40
             (get_local $5)
             (i64.load offset=40
               (get_local $10)
             )
           )
-          ;; raybench.cpp:923
+          ;; raybench.cpp:924
           (set_local $0
             (call $__Z9partitionRNSt3__26vectorIP7SurfaceNS_9allocatorIS2_EEEE6Boundsj
               (get_local $18)
@@ -7109,7 +7109,7 @@
             (i32.const 4)
           )
           (block
-            ;; raybench.cpp:924
+            ;; raybench.cpp:925
             (set_local $2
               (i32.load
                 (get_local $6)
@@ -7150,35 +7150,35 @@
             )
           )
           (block
-            ;; raybench.cpp:858
+            ;; raybench.cpp:859
             (set_local $4
               (i32.add
                 (get_local $5)
                 (i32.const 8)
               )
             )
-            ;; raybench.cpp:859
+            ;; raybench.cpp:860
             (set_local $13
               (i32.add
                 (get_local $5)
                 (i32.const 16)
               )
             )
-            ;; raybench.cpp:860
+            ;; raybench.cpp:861
             (set_local $23
               (i32.add
                 (get_local $5)
                 (i32.const 24)
               )
             )
-            ;; raybench.cpp:861
+            ;; raybench.cpp:862
             (set_local $25
               (i32.add
                 (get_local $5)
                 (i32.const 32)
               )
             )
-            ;; raybench.cpp:862
+            ;; raybench.cpp:863
             (set_local $24
               (i32.add
                 (get_local $5)
@@ -7207,25 +7207,25 @@
               (get_local $6)
             )
             (loop $while-in18
-              ;; raybench.cpp:855
+              ;; raybench.cpp:856
               (set_local $6
                 (i32.load
                   (get_local $2)
                 )
               )
-              ;; raybench.cpp:856
+              ;; raybench.cpp:857
               (set_local $10
                 (i32.load
                   (get_local $6)
                 )
               )
-              ;; raybench.cpp:856
+              ;; raybench.cpp:857
               (set_local $10
                 (i32.load offset=8
                   (get_local $10)
                 )
               )
-              ;; raybench.cpp:856
+              ;; raybench.cpp:857
               (call_indirect $FUNCSIG$vii
                 (get_local $5)
                 (get_local $6)
@@ -7237,13 +7237,13 @@
                   (i32.const 36)
                 )
               )
-              ;; raybench.cpp:857
+              ;; raybench.cpp:858
               (set_local $8
                 (f64.load
                   (get_local $5)
                 )
               )
-              ;; raybench.cpp:209
+              ;; raybench.cpp:210
               (if
                 (i32.eqz
                   (f64.lt
@@ -7255,13 +7255,13 @@
                   (get_local $8)
                 )
               )
-              ;; raybench.cpp:858
+              ;; raybench.cpp:859
               (set_local $8
                 (f64.load
                   (get_local $4)
                 )
               )
-              ;; raybench.cpp:200
+              ;; raybench.cpp:201
               (if
                 (i32.eqz
                   (f64.gt
@@ -7273,13 +7273,13 @@
                   (get_local $8)
                 )
               )
-              ;; raybench.cpp:859
+              ;; raybench.cpp:860
               (set_local $8
                 (f64.load
                   (get_local $13)
                 )
               )
-              ;; raybench.cpp:209
+              ;; raybench.cpp:210
               (if
                 (i32.eqz
                   (f64.lt
@@ -7291,13 +7291,13 @@
                   (get_local $8)
                 )
               )
-              ;; raybench.cpp:860
+              ;; raybench.cpp:861
               (set_local $8
                 (f64.load
                   (get_local $23)
                 )
               )
-              ;; raybench.cpp:200
+              ;; raybench.cpp:201
               (if
                 (i32.eqz
                   (f64.gt
@@ -7309,13 +7309,13 @@
                   (get_local $8)
                 )
               )
-              ;; raybench.cpp:861
+              ;; raybench.cpp:862
               (set_local $8
                 (f64.load
                   (get_local $25)
                 )
               )
-              ;; raybench.cpp:209
+              ;; raybench.cpp:210
               (if
                 (i32.eqz
                   (f64.lt
@@ -7327,13 +7327,13 @@
                   (get_local $8)
                 )
               )
-              ;; raybench.cpp:862
+              ;; raybench.cpp:863
               (set_local $8
                 (f64.load
                   (get_local $24)
                 )
               )
-              ;; raybench.cpp:200
+              ;; raybench.cpp:201
               (if
                 (i32.eqz
                   (f64.gt
@@ -7359,32 +7359,32 @@
             )
           )
         )
-        ;; raybench.cpp:250
+        ;; raybench.cpp:251
         (f64.store
           (get_local $15)
           (get_local $11)
         )
-        ;; raybench.cpp:251
+        ;; raybench.cpp:252
         (f64.store offset=8
           (get_local $15)
           (get_local $9)
         )
-        ;; raybench.cpp:252
+        ;; raybench.cpp:253
         (f64.store offset=16
           (get_local $15)
           (get_local $12)
         )
-        ;; raybench.cpp:253
+        ;; raybench.cpp:254
         (f64.store offset=24
           (get_local $15)
           (get_local $22)
         )
-        ;; raybench.cpp:254
+        ;; raybench.cpp:255
         (f64.store offset=32
           (get_local $15)
           (get_local $21)
         )
-        ;; raybench.cpp:255
+        ;; raybench.cpp:256
         (f64.store offset=40
           (get_local $15)
           (get_local $20)
@@ -7419,14 +7419,14 @@
             (get_local $15)
           )
         )
-        ;; raybench.cpp:924
+        ;; raybench.cpp:925
         (i64.store offset=40
           (get_local $5)
           (i64.load offset=40
             (get_local $15)
           )
         )
-        ;; raybench.cpp:924
+        ;; raybench.cpp:925
         (set_local $2
           (call $__Z9partitionRNSt3__26vectorIP7SurfaceNS_9allocatorIS2_EEEE6Boundsj
             (get_local $19)
@@ -7563,7 +7563,7 @@
         )
       )
     )
-    ;; raybench.cpp:926
+    ;; raybench.cpp:927
     (set_local $6
       (call $__Znwj
         (i32.const 152)
@@ -7614,12 +7614,12 @@
       (get_local $3)
       (i64.const 0)
     )
-    ;; raybench.cpp:265
+    ;; raybench.cpp:266
     (i64.store offset=80
       (get_local $3)
       (i64.const 0)
     )
-    ;; raybench.cpp:287
+    ;; raybench.cpp:288
     (i32.store
       (get_local $6)
       (i32.const 1572)
@@ -7659,19 +7659,19 @@
         (get_local $1)
       )
     )
-    ;; raybench.cpp:284
+    ;; raybench.cpp:285
     (i64.store offset=40
       (get_local $3)
       (i64.load offset=40
         (get_local $1)
       )
     )
-    ;; raybench.cpp:285
+    ;; raybench.cpp:286
     (i32.store offset=144
       (get_local $6)
       (get_local $0)
     )
-    ;; raybench.cpp:286
+    ;; raybench.cpp:287
     (i32.store offset=148
       (get_local $6)
       (get_local $2)
@@ -7701,97 +7701,97 @@
     (local $22 f64)
     (local $23 f64)
     (local $24 f64)
-    ;; raybench.cpp:506
+    ;; raybench.cpp:507
     (set_local $7
       (f64.load offset=96
         (get_local $0)
       )
     )
-    ;; raybench.cpp:506
+    ;; raybench.cpp:507
     (set_local $11
       (f64.load offset=120
         (get_local $0)
       )
     )
-    ;; raybench.cpp:507
+    ;; raybench.cpp:508
     (set_local $8
       (f64.load offset=104
         (get_local $0)
       )
     )
-    ;; raybench.cpp:507
+    ;; raybench.cpp:508
     (set_local $13
       (f64.load offset=128
         (get_local $0)
       )
     )
-    ;; raybench.cpp:508
+    ;; raybench.cpp:509
     (set_local $9
       (f64.load offset=112
         (get_local $0)
       )
     )
-    ;; raybench.cpp:508
+    ;; raybench.cpp:509
     (set_local $14
       (f64.load offset=136
         (get_local $0)
       )
     )
-    ;; raybench.cpp:509
+    ;; raybench.cpp:510
     (set_local $10
       (f64.load offset=144
         (get_local $0)
       )
     )
-    ;; raybench.cpp:510
+    ;; raybench.cpp:511
     (set_local $6
       (f64.load offset=152
         (get_local $0)
       )
     )
-    ;; raybench.cpp:511
+    ;; raybench.cpp:512
     (set_local $15
       (f64.load offset=160
         (get_local $0)
       )
     )
-    ;; raybench.cpp:512
+    ;; raybench.cpp:513
     (set_local $17
       (f64.load
         (get_local $2)
       )
     )
-    ;; raybench.cpp:513
+    ;; raybench.cpp:514
     (set_local $18
       (f64.load offset=8
         (get_local $2)
       )
     )
-    ;; raybench.cpp:514
+    ;; raybench.cpp:515
     (set_local $19
       (f64.load offset=16
         (get_local $2)
       )
     )
-    ;; raybench.cpp:515
+    ;; raybench.cpp:516
     (set_local $16
       (f64.load
         (get_local $1)
       )
     )
-    ;; raybench.cpp:516
+    ;; raybench.cpp:517
     (set_local $22
       (f64.load offset=8
         (get_local $1)
       )
     )
-    ;; raybench.cpp:517
+    ;; raybench.cpp:518
     (set_local $23
       (f64.load offset=16
         (get_local $1)
       )
     )
-    ;; raybench.cpp:518
+    ;; raybench.cpp:519
     (set_local $20
       (f64.sub
         (f64.mul
@@ -7814,7 +7814,7 @@
         )
       )
     )
-    ;; raybench.cpp:518
+    ;; raybench.cpp:519
     (set_local $21
       (f64.sub
         (f64.mul
@@ -7832,7 +7832,7 @@
         )
       )
     )
-    ;; raybench.cpp:518
+    ;; raybench.cpp:519
     (set_local $11
       (f64.add
         (f64.mul
@@ -7877,7 +7877,7 @@
         )
       )
     )
-    ;; raybench.cpp:519
+    ;; raybench.cpp:520
     (set_local $16
       (f64.sub
         (f64.mul
@@ -7900,7 +7900,7 @@
         )
       )
     )
-    ;; raybench.cpp:519
+    ;; raybench.cpp:520
     (set_local $12
       (f64.sub
         (f64.mul
@@ -7918,7 +7918,7 @@
         )
       )
     )
-    ;; raybench.cpp:522
+    ;; raybench.cpp:523
     (if
       (i32.or
         (f64.lt
@@ -7967,7 +7967,7 @@
         (i32.const 0)
       )
     )
-    ;; raybench.cpp:525
+    ;; raybench.cpp:526
     (if
       (i32.or
         (f64.lt
@@ -8041,7 +8041,7 @@
         (i32.const 0)
       )
     )
-    ;; raybench.cpp:528
+    ;; raybench.cpp:529
     (f64.store
       (get_local $5)
       (get_local $6)
@@ -8067,7 +8067,7 @@
         (get_local $3)
       )
     )
-    ;; raybench.cpp:533
+    ;; raybench.cpp:534
     (i64.store offset=16
       (get_local $0)
       (i64.load offset=16
@@ -8086,61 +8086,61 @@
     (local $9 f64)
     (local $10 f64)
     (local $11 f64)
-    ;; raybench.cpp:537
+    ;; raybench.cpp:538
     (set_local $2
       (f64.load offset=96
         (get_local $1)
       )
     )
-    ;; raybench.cpp:537
+    ;; raybench.cpp:538
     (set_local $5
       (f64.load offset=120
         (get_local $1)
       )
     )
-    ;; raybench.cpp:537
+    ;; raybench.cpp:538
     (set_local $6
       (f64.load offset=144
         (get_local $1)
       )
     )
-    ;; raybench.cpp:538
+    ;; raybench.cpp:539
     (set_local $3
       (f64.load offset=104
         (get_local $1)
       )
     )
-    ;; raybench.cpp:538
+    ;; raybench.cpp:539
     (set_local $7
       (f64.load offset=128
         (get_local $1)
       )
     )
-    ;; raybench.cpp:538
+    ;; raybench.cpp:539
     (set_local $8
       (f64.load offset=152
         (get_local $1)
       )
     )
-    ;; raybench.cpp:539
+    ;; raybench.cpp:540
     (set_local $4
       (f64.load offset=112
         (get_local $1)
       )
     )
-    ;; raybench.cpp:539
+    ;; raybench.cpp:540
     (set_local $9
       (f64.load offset=136
         (get_local $1)
       )
     )
-    ;; raybench.cpp:539
+    ;; raybench.cpp:540
     (set_local $10
       (f64.load offset=160
         (get_local $1)
       )
     )
-    ;; raybench.cpp:250
+    ;; raybench.cpp:251
     (f64.store
       (get_local $0)
       (if f64
@@ -8161,7 +8161,7 @@
         (get_local $11)
       )
     )
-    ;; raybench.cpp:251
+    ;; raybench.cpp:252
     (f64.store offset=8
       (get_local $0)
       (if f64
@@ -8182,7 +8182,7 @@
         (get_local $2)
       )
     )
-    ;; raybench.cpp:252
+    ;; raybench.cpp:253
     (f64.store offset=16
       (get_local $0)
       (if f64
@@ -8203,7 +8203,7 @@
         (get_local $2)
       )
     )
-    ;; raybench.cpp:253
+    ;; raybench.cpp:254
     (f64.store offset=24
       (get_local $0)
       (if f64
@@ -8224,7 +8224,7 @@
         (get_local $3)
       )
     )
-    ;; raybench.cpp:254
+    ;; raybench.cpp:255
     (f64.store offset=32
       (get_local $0)
       (if f64
@@ -8245,7 +8245,7 @@
         (get_local $2)
       )
     )
-    ;; raybench.cpp:255
+    ;; raybench.cpp:256
     (f64.store offset=40
       (get_local $0)
       (if f64
@@ -8277,61 +8277,61 @@
     (local $8 f64)
     (local $9 f64)
     (local $10 f64)
-    ;; raybench.cpp:543
+    ;; raybench.cpp:544
     (set_local $2
       (f64.load offset=96
         (get_local $1)
       )
     )
-    ;; raybench.cpp:543
+    ;; raybench.cpp:544
     (set_local $3
       (f64.load offset=120
         (get_local $1)
       )
     )
-    ;; raybench.cpp:543
+    ;; raybench.cpp:544
     (set_local $4
       (f64.load offset=144
         (get_local $1)
       )
     )
-    ;; raybench.cpp:544
+    ;; raybench.cpp:545
     (set_local $5
       (f64.load offset=104
         (get_local $1)
       )
     )
-    ;; raybench.cpp:544
+    ;; raybench.cpp:545
     (set_local $6
       (f64.load offset=128
         (get_local $1)
       )
     )
-    ;; raybench.cpp:544
+    ;; raybench.cpp:545
     (set_local $7
       (f64.load offset=152
         (get_local $1)
       )
     )
-    ;; raybench.cpp:545
+    ;; raybench.cpp:546
     (set_local $8
       (f64.load offset=112
         (get_local $1)
       )
     )
-    ;; raybench.cpp:545
+    ;; raybench.cpp:546
     (set_local $9
       (f64.load offset=136
         (get_local $1)
       )
     )
-    ;; raybench.cpp:545
+    ;; raybench.cpp:546
     (set_local $10
       (f64.load offset=160
         (get_local $1)
       )
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store
       (get_local $0)
       (f64.div
@@ -8345,7 +8345,7 @@
         (f64.const 3)
       )
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store offset=8
       (get_local $0)
       (f64.div
@@ -8359,7 +8359,7 @@
         (f64.const 3)
       )
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=16
       (get_local $0)
       (f64.div
@@ -8388,115 +8388,115 @@
     (set_local $2
       (get_global $STACKTOP)
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (set_global $STACKTOP
       (i32.add
         (get_global $STACKTOP)
         (i32.const 1104)
       )
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (set_local $3
       (f64.load offset=96
         (get_local $0)
       )
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (set_local $4
       (f64.load offset=104
         (get_local $0)
       )
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (set_local $5
       (f64.load offset=112
         (get_local $0)
       )
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (set_local $6
       (f64.load offset=120
         (get_local $0)
       )
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (set_local $7
       (f64.load offset=128
         (get_local $0)
       )
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (set_local $8
       (f64.load offset=136
         (get_local $0)
       )
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (set_local $9
       (f64.load offset=144
         (get_local $0)
       )
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (set_local $10
       (f64.load offset=152
         (get_local $0)
       )
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (set_local $11
       (f64.load offset=160
         (get_local $0)
       )
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (f64.store
       (tee_local $0
         (get_local $2)
       )
       (get_local $3)
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (f64.store offset=8
       (get_local $0)
       (get_local $4)
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (f64.store offset=16
       (get_local $0)
       (get_local $5)
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (f64.store offset=24
       (get_local $0)
       (get_local $6)
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (f64.store offset=32
       (get_local $0)
       (get_local $7)
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (f64.store offset=40
       (get_local $0)
       (get_local $8)
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (f64.store offset=48
       (get_local $0)
       (get_local $9)
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (f64.store offset=56
       (get_local $0)
       (get_local $10)
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (f64.store offset=64
       (get_local $0)
       (get_local $11)
     )
-    ;; raybench.cpp:550
+    ;; raybench.cpp:551
     (drop
       (call $_sprintf
         (tee_local $12
@@ -8505,11 +8505,11 @@
             (i32.const 72)
           )
         )
-        (i32.const 2450)
+        (i32.const 2454)
         (get_local $0)
       )
     )
-    ;; raybench.cpp:551
+    ;; raybench.cpp:552
     (call_indirect $FUNCSIG$vi
       (get_local $12)
       (i32.add
@@ -9026,7 +9026,7 @@
         (get_local $12)
       )
       (block
-        ;; raybench.cpp:408
+        ;; raybench.cpp:409
         (f64.store
           (get_local $5)
           (f64.const 1.e+100)
@@ -9049,30 +9049,30 @@
       (i32.const 0)
     )
     (loop $while-in
-      ;; raybench.cpp:398
+      ;; raybench.cpp:399
       (set_local $6
         (i32.load
           (get_local $7)
         )
       )
-      ;; raybench.cpp:399
+      ;; raybench.cpp:400
       (f64.store
         (get_local $9)
         (f64.const 0)
       )
-      ;; raybench.cpp:400
+      ;; raybench.cpp:401
       (set_local $11
         (i32.load
           (get_local $6)
         )
       )
-      ;; raybench.cpp:400
+      ;; raybench.cpp:401
       (set_local $11
         (i32.load
           (get_local $11)
         )
       )
-      ;; raybench.cpp:400
+      ;; raybench.cpp:401
       (set_local $6
         (call_indirect $FUNCSIG$iiiiddi
           (get_local $6)
@@ -9094,7 +9094,7 @@
       (if
         (get_local $6)
         (block
-          ;; raybench.cpp:402
+          ;; raybench.cpp:403
           (set_local $13
             (f64.load
               (get_local $9)
@@ -9128,7 +9128,7 @@
         )
       )
     )
-    ;; raybench.cpp:408
+    ;; raybench.cpp:409
     (f64.store
       (get_local $5)
       (get_local $10)
@@ -9139,21 +9139,21 @@
     (get_local $0)
   )
   (func $__ZN6Jumble6normalERK4Vec3 (param $0 i32) (param $1 i32) (param $2 i32)
-    ;; raybench.cpp:413
+    ;; raybench.cpp:414
     (call $__Z5CRASHPKc
-      (i32.const 2495)
+      (i32.const 2499)
     )
   )
   (func $__ZN6Jumble6boundsEv (param $0 i32) (param $1 i32)
-    ;; raybench.cpp:418
+    ;; raybench.cpp:419
     (call $__Z5CRASHPKc
-      (i32.const 2529)
+      (i32.const 2533)
     )
   )
   (func $__ZN6Jumble6centerEv (param $0 i32) (param $1 i32)
-    ;; raybench.cpp:423
+    ;; raybench.cpp:424
     (call $__Z5CRASHPKc
-      (i32.const 2563)
+      (i32.const 2567)
     )
   )
   (func $__ZN6Jumble5debugEPFvPKcEj (param $0 i32) (param $1 i32) (param $2 i32)
@@ -9181,31 +9181,31 @@
         (i32.const 16)
       )
     )
-    ;; raybench.cpp:293
+    ;; raybench.cpp:294
     (set_local $6
       (f64.load
         (get_local $2)
       )
     )
-    ;; raybench.cpp:299
+    ;; raybench.cpp:300
     (set_local $8
       (f64.load offset=104
         (get_local $0)
       )
     )
-    ;; raybench.cpp:299
+    ;; raybench.cpp:300
     (set_local $7
       (f64.load
         (get_local $1)
       )
     )
-    ;; raybench.cpp:300
+    ;; raybench.cpp:301
     (set_local $9
       (f64.load offset=96
         (get_local $0)
       )
     )
-    ;; raybench.cpp:294
+    ;; raybench.cpp:295
     (set_local $6
       (if f64
         (tee_local $10
@@ -9225,7 +9225,7 @@
         (get_local $8)
       )
     )
-    ;; raybench.cpp:295
+    ;; raybench.cpp:296
     (set_local $8
       (f64.mul
         (get_local $11)
@@ -9239,7 +9239,7 @@
         )
       )
     )
-    ;; raybench.cpp:296
+    ;; raybench.cpp:297
     (set_local $7
       (f64.mul
         (get_local $11)
@@ -9249,31 +9249,31 @@
         )
       )
     )
-    ;; raybench.cpp:304
+    ;; raybench.cpp:305
     (set_local $6
       (f64.load offset=8
         (get_local $2)
       )
     )
-    ;; raybench.cpp:310
+    ;; raybench.cpp:311
     (set_local $11
       (f64.load offset=120
         (get_local $0)
       )
     )
-    ;; raybench.cpp:310
+    ;; raybench.cpp:311
     (set_local $14
       (f64.load offset=8
         (get_local $1)
       )
     )
-    ;; raybench.cpp:311
+    ;; raybench.cpp:312
     (set_local $9
       (f64.load offset=112
         (get_local $0)
       )
     )
-    ;; raybench.cpp:305
+    ;; raybench.cpp:306
     (set_local $6
       (if f64
         (tee_local $10
@@ -9293,7 +9293,7 @@
         (get_local $11)
       )
     )
-    ;; raybench.cpp:316
+    ;; raybench.cpp:317
     (if
       (i32.or
         (f64.gt
@@ -9334,7 +9334,7 @@
         )
       )
     )
-    ;; raybench.cpp:316
+    ;; raybench.cpp:317
     (if
       (i32.eqz
         (f64.gt
@@ -9346,7 +9346,7 @@
         (get_local $8)
       )
     )
-    ;; raybench.cpp:318
+    ;; raybench.cpp:319
     (if
       (i32.eqz
         (f64.lt
@@ -9358,31 +9358,31 @@
         (get_local $7)
       )
     )
-    ;; raybench.cpp:321
+    ;; raybench.cpp:322
     (set_local $7
       (f64.load offset=16
         (get_local $2)
       )
     )
-    ;; raybench.cpp:327
+    ;; raybench.cpp:328
     (set_local $8
       (f64.load offset=136
         (get_local $0)
       )
     )
-    ;; raybench.cpp:327
+    ;; raybench.cpp:328
     (set_local $11
       (f64.load offset=16
         (get_local $1)
       )
     )
-    ;; raybench.cpp:328
+    ;; raybench.cpp:329
     (set_local $14
       (f64.load offset=128
         (get_local $0)
       )
     )
-    ;; raybench.cpp:322
+    ;; raybench.cpp:323
     (set_local $7
       (if f64
         (tee_local $10
@@ -9402,7 +9402,7 @@
         (get_local $14)
       )
     )
-    ;; raybench.cpp:333
+    ;; raybench.cpp:334
     (if
       (i32.or
         (f64.gt
@@ -9482,7 +9482,7 @@
     (set_local $10
       (get_local $13)
     )
-    ;; raybench.cpp:342
+    ;; raybench.cpp:343
     (f64.store
       (tee_local $17
         (i32.add
@@ -9492,25 +9492,25 @@
       )
       (f64.const 0)
     )
-    ;; raybench.cpp:343
+    ;; raybench.cpp:344
     (set_local $16
       (i32.load offset=144
         (get_local $0)
       )
     )
-    ;; raybench.cpp:343
+    ;; raybench.cpp:344
     (set_local $12
       (i32.load
         (get_local $16)
       )
     )
-    ;; raybench.cpp:343
+    ;; raybench.cpp:344
     (set_local $12
       (i32.load
         (get_local $12)
       )
     )
-    ;; raybench.cpp:343
+    ;; raybench.cpp:344
     (set_local $16
       (call_indirect $FUNCSIG$iiiiddi
         (get_local $16)
@@ -9528,7 +9528,7 @@
         )
       )
     )
-    ;; raybench.cpp:346
+    ;; raybench.cpp:347
     (set_local $0
       (i32.load offset=148
         (get_local $0)
@@ -9538,24 +9538,24 @@
       (if
         (get_local $0)
         (block
-          ;; raybench.cpp:345
+          ;; raybench.cpp:346
           (f64.store
             (get_local $10)
             (f64.const 0)
           )
-          ;; raybench.cpp:346
+          ;; raybench.cpp:347
           (set_local $12
             (i32.load
               (get_local $0)
             )
           )
-          ;; raybench.cpp:346
+          ;; raybench.cpp:347
           (set_local $12
             (i32.load
               (get_local $12)
             )
           )
-          ;; raybench.cpp:346
+          ;; raybench.cpp:347
           (set_local $0
             (call_indirect $FUNCSIG$iiiiddi
               (get_local $0)
@@ -9574,16 +9574,16 @@
             )
           )
           (if
-            ;; raybench.cpp:347
+            ;; raybench.cpp:348
             (get_local $0)
             (block
-              ;; raybench.cpp:348
+              ;; raybench.cpp:349
               (set_local $3
                 (f64.load
                   (get_local $10)
                 )
               )
-              ;; raybench.cpp:347
+              ;; raybench.cpp:348
               (set_local $4
                 (f64.load
                   (get_local $17)
@@ -9600,7 +9600,7 @@
                   )
                 )
                 (block
-                  ;; raybench.cpp:348
+                  ;; raybench.cpp:349
                   (f64.store
                     (get_local $5)
                     (get_local $3)
@@ -9612,13 +9612,13 @@
           )
         )
       )
-      ;; raybench.cpp:352
+      ;; raybench.cpp:353
       (set_local $3
         (f64.load
           (get_local $17)
         )
       )
-      ;; raybench.cpp:352
+      ;; raybench.cpp:353
       (f64.store
         (get_local $5)
         (get_local $3)
@@ -9633,9 +9633,9 @@
     (get_local $0)
   )
   (func $__ZN6Volume6normalERK4Vec3 (param $0 i32) (param $1 i32) (param $2 i32)
-    ;; raybench.cpp:361
+    ;; raybench.cpp:362
     (call $__Z5CRASHPKc
-      (i32.const 2605)
+      (i32.const 2609)
     )
   )
   (func $__ZN6Volume6boundsEv (param $0 i32) (param $1 i32)
@@ -9675,7 +9675,7 @@
         (get_local $2)
       )
     )
-    ;; raybench.cpp:357
+    ;; raybench.cpp:358
     (i64.store offset=40
       (get_local $0)
       (i64.load offset=40
@@ -9684,17 +9684,17 @@
     )
   )
   (func $__ZN6Volume6centerEv (param $0 i32) (param $1 i32)
-    ;; raybench.cpp:366
+    ;; raybench.cpp:367
     (call $__Z5CRASHPKc
-      (i32.const 2639)
+      (i32.const 2643)
     )
   )
   (func $__ZN6Volume5debugEPFvPKcEj (param $0 i32) (param $1 i32) (param $2 i32)
     (local $3 i32)
     (local $4 i32)
-    ;; raybench.cpp:371
+    ;; raybench.cpp:372
     (call_indirect $FUNCSIG$vi
-      (i32.const 2673)
+      (i32.const 2677)
       (i32.add
         (i32.and
           (get_local $1)
@@ -9703,25 +9703,25 @@
         (i32.const 12)
       )
     )
-    ;; raybench.cpp:372
+    ;; raybench.cpp:373
     (set_local $4
       (i32.load offset=144
         (get_local $0)
       )
     )
-    ;; raybench.cpp:372
+    ;; raybench.cpp:373
     (set_local $3
       (i32.load
         (get_local $4)
       )
     )
-    ;; raybench.cpp:372
+    ;; raybench.cpp:373
     (set_local $3
       (i32.load offset=16
         (get_local $3)
       )
     )
-    ;; raybench.cpp:372
+    ;; raybench.cpp:373
     (call_indirect $FUNCSIG$viii
       (get_local $4)
       (get_local $1)
@@ -9739,7 +9739,7 @@
         (i32.const 56)
       )
     )
-    ;; raybench.cpp:373
+    ;; raybench.cpp:374
     (set_local $0
       (i32.load
         (tee_local $3
@@ -9755,9 +9755,9 @@
         (get_local $0)
       )
       (block
-        ;; raybench.cpp:379
+        ;; raybench.cpp:380
         (call_indirect $FUNCSIG$vi
-          (i32.const 2680)
+          (i32.const 2684)
           (i32.add
             (i32.and
               (get_local $1)
@@ -9769,9 +9769,9 @@
         (return)
       )
     )
-    ;; raybench.cpp:374
+    ;; raybench.cpp:375
     (call_indirect $FUNCSIG$vi
-      (i32.const 2675)
+      (i32.const 2679)
       (i32.add
         (i32.and
           (get_local $1)
@@ -9787,9 +9787,9 @@
           (i32.const 0)
         )
         (loop $while-in
-          ;; raybench.cpp:376
+          ;; raybench.cpp:377
           (call_indirect $FUNCSIG$vi
-            (i32.const 2678)
+            (i32.const 2682)
             (i32.add
               (i32.and
                 (get_local $1)
@@ -9812,25 +9812,25 @@
         )
       )
     )
-    ;; raybench.cpp:377
+    ;; raybench.cpp:378
     (set_local $0
       (i32.load
         (get_local $3)
       )
     )
-    ;; raybench.cpp:377
+    ;; raybench.cpp:378
     (set_local $2
       (i32.load
         (get_local $0)
       )
     )
-    ;; raybench.cpp:377
+    ;; raybench.cpp:378
     (set_local $2
       (i32.load offset=16
         (get_local $2)
       )
     )
-    ;; raybench.cpp:377
+    ;; raybench.cpp:378
     (call_indirect $FUNCSIG$viii
       (get_local $0)
       (get_local $1)
@@ -9843,9 +9843,9 @@
         (i32.const 56)
       )
     )
-    ;; raybench.cpp:379
+    ;; raybench.cpp:380
     (call_indirect $FUNCSIG$vi
-      (i32.const 2680)
+      (i32.const 2684)
       (i32.add
         (i32.and
           (get_local $1)
@@ -9875,7 +9875,7 @@
         (get_local $2)
       )
     )
-    ;; raybench.cpp:196
+    ;; raybench.cpp:197
     (set_local $8
       (f64.load offset=16
         (get_local $2)
@@ -9901,7 +9901,7 @@
         (get_local $0)
       )
     )
-    ;; raybench.cpp:159
+    ;; raybench.cpp:160
     (set_local $12
       (f64.sub
         (f64.load
@@ -9912,13 +9912,13 @@
         )
       )
     )
-    ;; raybench.cpp:447
+    ;; raybench.cpp:448
     (set_local $13
       (f64.load offset=120
         (get_local $0)
       )
     )
-    ;; raybench.cpp:450
+    ;; raybench.cpp:451
     (if
       (f64.lt
         (tee_local $6
@@ -10004,7 +10004,7 @@
         (i32.const 0)
       )
     )
-    ;; raybench.cpp:450
+    ;; raybench.cpp:451
     (set_local $6
       (f64.div
         (f64.sub
@@ -10018,7 +10018,7 @@
         (get_local $7)
       )
     )
-    ;; raybench.cpp:451
+    ;; raybench.cpp:452
     (set_local $7
       (f64.div
         (f64.sub
@@ -10078,7 +10078,7 @@
         (i32.const 0)
       )
     )
-    ;; raybench.cpp:460
+    ;; raybench.cpp:461
     (f64.store
       (get_local $5)
       (get_local $6)
@@ -10112,7 +10112,7 @@
         (get_local $1)
       )
     )
-    ;; raybench.cpp:159
+    ;; raybench.cpp:160
     (set_local $8
       (f64.sub
         (f64.load
@@ -10123,13 +10123,13 @@
         )
       )
     )
-    ;; raybench.cpp:465
+    ;; raybench.cpp:466
     (set_local $3
       (f64.load offset=120
         (get_local $1)
       )
     )
-    ;; raybench.cpp:136
+    ;; raybench.cpp:137
     (f64.store
       (get_local $0)
       (f64.div
@@ -10137,7 +10137,7 @@
         (get_local $3)
       )
     )
-    ;; raybench.cpp:137
+    ;; raybench.cpp:138
     (f64.store offset=8
       (get_local $0)
       (f64.div
@@ -10148,7 +10148,7 @@
         (get_local $3)
       )
     )
-    ;; raybench.cpp:138
+    ;; raybench.cpp:139
     (f64.store offset=16
       (get_local $0)
       (f64.div
@@ -10165,31 +10165,31 @@
     (local $3 f64)
     (local $4 f64)
     (local $5 f64)
-    ;; raybench.cpp:469
+    ;; raybench.cpp:470
     (set_local $3
       (f64.load offset=96
         (get_local $1)
       )
     )
-    ;; raybench.cpp:469
+    ;; raybench.cpp:470
     (set_local $2
       (f64.load offset=120
         (get_local $1)
       )
     )
-    ;; raybench.cpp:470
+    ;; raybench.cpp:471
     (set_local $4
       (f64.load offset=104
         (get_local $1)
       )
     )
-    ;; raybench.cpp:471
+    ;; raybench.cpp:472
     (set_local $5
       (f64.load offset=112
         (get_local $1)
       )
     )
-    ;; raybench.cpp:250
+    ;; raybench.cpp:251
     (f64.store
       (get_local $0)
       (f64.sub
@@ -10197,7 +10197,7 @@
         (get_local $2)
       )
     )
-    ;; raybench.cpp:251
+    ;; raybench.cpp:252
     (f64.store offset=8
       (get_local $0)
       (f64.add
@@ -10205,7 +10205,7 @@
         (get_local $2)
       )
     )
-    ;; raybench.cpp:252
+    ;; raybench.cpp:253
     (f64.store offset=16
       (get_local $0)
       (f64.sub
@@ -10213,7 +10213,7 @@
         (get_local $2)
       )
     )
-    ;; raybench.cpp:253
+    ;; raybench.cpp:254
     (f64.store offset=24
       (get_local $0)
       (f64.add
@@ -10221,7 +10221,7 @@
         (get_local $4)
       )
     )
-    ;; raybench.cpp:254
+    ;; raybench.cpp:255
     (f64.store offset=32
       (get_local $0)
       (f64.sub
@@ -10229,7 +10229,7 @@
         (get_local $2)
       )
     )
-    ;; raybench.cpp:255
+    ;; raybench.cpp:256
     (f64.store offset=40
       (get_local $0)
       (f64.add
@@ -10257,7 +10257,7 @@
         (get_local $2)
       )
     )
-    ;; raybench.cpp:475
+    ;; raybench.cpp:476
     (i64.store offset=16
       (get_local $0)
       (i64.load offset=16
@@ -10274,60 +10274,60 @@
     (set_local $2
       (get_global $STACKTOP)
     )
-    ;; raybench.cpp:480
+    ;; raybench.cpp:481
     (set_global $STACKTOP
       (i32.add
         (get_global $STACKTOP)
         (i32.const 288)
       )
     )
-    ;; raybench.cpp:480
+    ;; raybench.cpp:481
     (set_local $3
       (f64.load offset=96
         (get_local $0)
       )
     )
-    ;; raybench.cpp:480
+    ;; raybench.cpp:481
     (set_local $4
       (f64.load offset=104
         (get_local $0)
       )
     )
-    ;; raybench.cpp:480
+    ;; raybench.cpp:481
     (set_local $5
       (f64.load offset=112
         (get_local $0)
       )
     )
-    ;; raybench.cpp:480
+    ;; raybench.cpp:481
     (set_local $6
       (f64.load offset=120
         (get_local $0)
       )
     )
-    ;; raybench.cpp:480
+    ;; raybench.cpp:481
     (f64.store
       (tee_local $0
         (get_local $2)
       )
       (get_local $3)
     )
-    ;; raybench.cpp:480
+    ;; raybench.cpp:481
     (f64.store offset=8
       (get_local $0)
       (get_local $4)
     )
-    ;; raybench.cpp:480
+    ;; raybench.cpp:481
     (f64.store offset=16
       (get_local $0)
       (get_local $5)
     )
-    ;; raybench.cpp:480
+    ;; raybench.cpp:481
     (f64.store offset=24
       (get_local $0)
       (get_local $6)
     )
-    ;; raybench.cpp:480
+    ;; raybench.cpp:481
     (drop
       (call $_sprintf
         (tee_local $7
@@ -10336,11 +10336,11 @@
             (i32.const 32)
           )
         )
-        (i32.const 2690)
+        (i32.const 2694)
         (get_local $0)
       )
     )
-    ;; raybench.cpp:481
+    ;; raybench.cpp:482
     (call_indirect $FUNCSIG$vi
       (get_local $7)
       (i32.add
@@ -10782,7 +10782,7 @@
           (loop $while-in
             (if
               (i32.load
-                (i32.const 5504)
+                (i32.const 5512)
               )
               (block
                 (call $_pthread_cleanup_push
@@ -11121,12 +11121,12 @@
   (func $___errno_location (result i32)
     (if i32
       (i32.load
-        (i32.const 5504)
+        (i32.const 5512)
       )
       (i32.load offset=64
         (call $_pthread_self)
       )
-      (i32.const 5548)
+      (i32.const 5556)
     )
   )
   (func $_cleanup_387 (param $0 i32)
@@ -11281,85 +11281,85 @@
         (get_local $6)
       )
       (i64.load align=4
-        (i32.const 1852)
+        (i32.const 1856)
       )
     )
     (i64.store offset=8 align=4
       (get_local $4)
       (i64.load align=4
-        (i32.const 1860)
+        (i32.const 1864)
       )
     )
     (i64.store offset=16 align=4
       (get_local $4)
       (i64.load align=4
-        (i32.const 1868)
+        (i32.const 1872)
       )
     )
     (i64.store offset=24 align=4
       (get_local $4)
       (i64.load align=4
-        (i32.const 1876)
+        (i32.const 1880)
       )
     )
     (i64.store offset=32 align=4
       (get_local $4)
       (i64.load align=4
-        (i32.const 1884)
+        (i32.const 1888)
       )
     )
     (i64.store offset=40 align=4
       (get_local $4)
       (i64.load align=4
-        (i32.const 1892)
+        (i32.const 1896)
       )
     )
     (i64.store offset=48 align=4
       (get_local $4)
       (i64.load align=4
-        (i32.const 1900)
+        (i32.const 1904)
       )
     )
     (i64.store offset=56 align=4
       (get_local $4)
       (i64.load align=4
-        (i32.const 1908)
+        (i32.const 1912)
       )
     )
     (i64.store offset=64 align=4
       (get_local $4)
       (i64.load align=4
-        (i32.const 1916)
+        (i32.const 1920)
       )
     )
     (i64.store offset=72 align=4
       (get_local $4)
       (i64.load align=4
-        (i32.const 1924)
+        (i32.const 1928)
       )
     )
     (i64.store offset=80 align=4
       (get_local $4)
       (i64.load align=4
-        (i32.const 1932)
+        (i32.const 1936)
       )
     )
     (i64.store offset=88 align=4
       (get_local $4)
       (i64.load align=4
-        (i32.const 1940)
+        (i32.const 1944)
       )
     )
     (i64.store offset=96 align=4
       (get_local $4)
       (i64.load align=4
-        (i32.const 1948)
+        (i32.const 1952)
       )
     )
     (i64.store offset=104 align=4
       (get_local $4)
       (i64.load align=4
-        (i32.const 1956)
+        (i32.const 1960)
       )
     )
     (block $__rjto$0
@@ -12909,7 +12909,7 @@
                                   (get_local $7)
                                   (i32.const 58)
                                 )
-                                (i32.const 2712)
+                                (i32.const 2716)
                               )
                               (get_local $6)
                             )
@@ -13341,7 +13341,7 @@
                                                   (i32.const 0)
                                                 )
                                                 (set_local $8
-                                                  (i32.const 3192)
+                                                  (i32.const 3196)
                                                 )
                                                 (if
                                                   (i32.le_s
@@ -13359,7 +13359,7 @@
                                                   (i32.const 0)
                                                 )
                                                 (set_local $8
-                                                  (i32.const 3192)
+                                                  (i32.const 3196)
                                                 )
                                                 (br $__rjti$8)
                                               )
@@ -13388,7 +13388,7 @@
                                                 (i32.const 1)
                                               )
                                               (set_local $8
-                                                (i32.const 3192)
+                                                (i32.const 3196)
                                               )
                                               (br $__rjti$4)
                                             )
@@ -13403,7 +13403,7 @@
                                                 (i32.const 1)
                                               )
                                               (set_local $8
-                                                (i32.const 3193)
+                                                (i32.const 3197)
                                               )
                                               (br $__rjti$4)
                                             )
@@ -13419,8 +13419,8 @@
                                               (set_local $8
                                                 (if i32
                                                   (get_local $1)
-                                                  (i32.const 3194)
-                                                  (i32.const 3192)
+                                                  (i32.const 3198)
+                                                  (i32.const 3196)
                                                 )
                                               )
                                               (br $__rjti$4)
@@ -13431,7 +13431,7 @@
                                           (i32.const 0)
                                         )
                                         (set_local $8
-                                          (i32.const 3192)
+                                          (i32.const 3196)
                                         )
                                         (set_local $20
                                           (i64.load
@@ -13453,7 +13453,7 @@
                                         (i32.const 0)
                                       )
                                       (set_local $9
-                                        (i32.const 3192)
+                                        (i32.const 3196)
                                       )
                                       (set_local $8
                                         (get_local $25)
@@ -13484,7 +13484,7 @@
                                       )
                                     )
                                     (set_local $1
-                                      (i32.const 3202)
+                                      (i32.const 3206)
                                     )
                                   )
                                   (br $__rjti$5)
@@ -13568,7 +13568,7 @@
                                   (set_local $21
                                     (i32.const 1)
                                   )
-                                  (i32.const 3209)
+                                  (i32.const 3213)
                                 )
                                 (block i32
                                   (set_local $1
@@ -13586,7 +13586,7 @@
                                       (set_local $21
                                         (i32.const 1)
                                       )
-                                      (i32.const 3212)
+                                      (i32.const 3216)
                                     )
                                     (block i32
                                       (set_local $21
@@ -13594,8 +13594,8 @@
                                       )
                                       (if i32
                                         (get_local $1)
-                                        (i32.const 3215)
-                                        (i32.const 3210)
+                                        (i32.const 3219)
+                                        (i32.const 3214)
                                       )
                                     )
                                   )
@@ -13835,7 +13835,7 @@
                                                     (get_local $14)
                                                   )
                                                 )
-                                                (i32.const 3176)
+                                                (i32.const 3180)
                                               )
                                             )
                                             (get_local $7)
@@ -15509,7 +15509,7 @@
                                               )
                                               (drop
                                                 (call $___fwritex
-                                                  (i32.const 3244)
+                                                  (i32.const 3248)
                                                   (i32.const 1)
                                                   (get_local $0)
                                                 )
@@ -15744,7 +15744,7 @@
                                                     )
                                                     (drop
                                                       (call $___fwritex
-                                                        (i32.const 3244)
+                                                        (i32.const 3248)
                                                         (i32.const 1)
                                                         (get_local $0)
                                                       )
@@ -15956,15 +15956,15 @@
                                           (i32.const 0)
                                         )
                                       )
-                                      (i32.const 3228)
                                       (i32.const 3232)
+                                      (i32.const 3236)
                                     )
                                   )
                                   (set_local $5
                                     (if i32
                                       (get_local $5)
-                                      (i32.const 3236)
                                       (i32.const 3240)
+                                      (i32.const 3244)
                                     )
                                   )
                                   (if
@@ -16021,7 +16021,7 @@
                             (i32.const 0)
                           )
                           (set_local $9
-                            (i32.const 3192)
+                            (i32.const 3196)
                           )
                           (set_local $8
                             (get_local $25)
@@ -16071,7 +16071,7 @@
                                           )
                                           (i32.const 15)
                                         )
-                                        (i32.const 3176)
+                                        (i32.const 3180)
                                       )
                                     )
                                     (get_local $8)
@@ -16104,7 +16104,7 @@
                               (get_local $9)
                               (i32.const 4)
                             )
-                            (i32.const 3192)
+                            (i32.const 3196)
                           )
                         )
                         (if
@@ -16123,7 +16123,7 @@
                             )
                           )
                           (set_local $8
-                            (i32.const 3192)
+                            (i32.const 3196)
                           )
                         )
                         (set_local $7
@@ -16178,7 +16178,7 @@
                       (i32.const 0)
                     )
                     (set_local $9
-                      (i32.const 3192)
+                      (i32.const 3196)
                     )
                     (if
                       (i32.eqz
@@ -17295,7 +17295,7 @@
                 (i32.load8_u
                   (i32.add
                     (get_local $1)
-                    (i32.const 3246)
+                    (i32.const 3250)
                   )
                 )
                 (get_local $0)
@@ -17313,7 +17313,7 @@
               )
             )
             (set_local $0
-              (i32.const 3334)
+              (i32.const 3338)
             )
             (set_local $1
               (i32.const 87)
@@ -17325,12 +17325,12 @@
           (get_local $1)
           (block
             (set_local $0
-              (i32.const 3334)
+              (i32.const 3338)
             )
             (br $__rjti$1)
           )
           (set_local $0
-            (i32.const 3334)
+            (i32.const 3338)
           )
         )
         (br $__rjto$1)
@@ -19121,7 +19121,7 @@
             (get_local $4)
             (i32.const 2)
           )
-          (i32.const 1964)
+          (i32.const 1968)
         )
       )
     )
@@ -19195,7 +19195,7 @@
                         (get_local $6)
                         (i32.const 2)
                       )
-                      (i32.const 1980)
+                      (i32.const 1984)
                     )
                   )
                 )
@@ -19927,7 +19927,7 @@
                         )
                         (i32.const 2)
                       )
-                      (i32.const 1980)
+                      (i32.const 1984)
                     )
                   )
                 )
@@ -20922,23 +20922,23 @@
           (set_local $0
             (if i32
               (i32.load
-                (i32.const 1848)
+                (i32.const 1852)
               )
               (call $_fflush
                 (i32.load
-                  (i32.const 1848)
+                  (i32.const 1852)
                 )
               )
               (i32.const 0)
             )
           )
           (call $___lock
-            (i32.const 5532)
+            (i32.const 5540)
           )
           (if
             (tee_local $1
               (i32.load
-                (i32.const 5528)
+                (i32.const 5536)
               )
             )
             (loop $while-in
@@ -20990,7 +20990,7 @@
             )
           )
           (call $___unlock
-            (i32.const 5532)
+            (i32.const 5540)
           )
         )
       )
@@ -21204,7 +21204,7 @@
                 (i32.shr_u
                   (tee_local $7
                     (i32.load
-                      (i32.const 5552)
+                      (i32.const 5560)
                     )
                   )
                   (tee_local $0
@@ -21255,7 +21255,7 @@
                                     )
                                     (i32.const 2)
                                   )
-                                  (i32.const 5592)
+                                  (i32.const 5600)
                                 )
                               )
                               (i32.const 8)
@@ -21274,7 +21274,7 @@
                   (get_local $0)
                 )
                 (i32.store
-                  (i32.const 5552)
+                  (i32.const 5560)
                   (i32.and
                     (get_local $7)
                     (i32.xor
@@ -21291,7 +21291,7 @@
                     (i32.lt_u
                       (get_local $0)
                       (i32.load
-                        (i32.const 5568)
+                        (i32.const 5576)
                       )
                     )
                     (call $_abort)
@@ -21364,7 +21364,7 @@
               (get_local $2)
               (tee_local $16
                 (i32.load
-                  (i32.const 5560)
+                  (i32.const 5568)
                 )
               )
             )
@@ -21500,7 +21500,7 @@
                                         )
                                         (i32.const 2)
                                       )
-                                      (i32.const 5592)
+                                      (i32.const 5600)
                                     )
                                   )
                                   (i32.const 8)
@@ -21519,7 +21519,7 @@
                       (get_local $0)
                     )
                     (i32.store
-                      (i32.const 5552)
+                      (i32.const 5560)
                       (tee_local $3
                         (i32.and
                           (get_local $7)
@@ -21538,7 +21538,7 @@
                         (i32.lt_u
                           (get_local $0)
                           (i32.load
-                            (i32.const 5568)
+                            (i32.const 5576)
                           )
                         )
                         (call $_abort)
@@ -21611,7 +21611,7 @@
                     (block
                       (set_local $5
                         (i32.load
-                          (i32.const 5572)
+                          (i32.const 5580)
                         )
                       )
                       (set_local $0
@@ -21628,7 +21628,7 @@
                             )
                             (i32.const 2)
                           )
-                          (i32.const 5592)
+                          (i32.const 5600)
                         )
                       )
                       (if
@@ -21654,7 +21654,7 @@
                               )
                             )
                             (i32.load
-                              (i32.const 5568)
+                              (i32.const 5576)
                             )
                           )
                           (call $_abort)
@@ -21669,7 +21669,7 @@
                         )
                         (block
                           (i32.store
-                            (i32.const 5552)
+                            (i32.const 5560)
                             (i32.or
                               (get_local $3)
                               (get_local $1)
@@ -21705,11 +21705,11 @@
                     )
                   )
                   (i32.store
-                    (i32.const 5560)
+                    (i32.const 5568)
                     (get_local $4)
                   )
                   (i32.store
-                    (i32.const 5572)
+                    (i32.const 5580)
                     (get_local $8)
                   )
                   (set_global $STACKTOP
@@ -21723,7 +21723,7 @@
               (if
                 (tee_local $11
                   (i32.load
-                    (i32.const 5556)
+                    (i32.const 5564)
                   )
                 )
                 (block
@@ -21825,7 +21825,7 @@
                             )
                             (i32.const 2)
                           )
-                          (i32.const 5856)
+                          (i32.const 5864)
                         )
                       )
                     )
@@ -21907,7 +21907,7 @@
                       (get_local $3)
                       (tee_local $15
                         (i32.load
-                          (i32.const 5568)
+                          (i32.const 5576)
                         )
                       )
                     )
@@ -22110,7 +22110,7 @@
                                     )
                                     (i32.const 2)
                                   )
-                                  (i32.const 5856)
+                                  (i32.const 5864)
                                 )
                               )
                             )
@@ -22126,7 +22126,7 @@
                               )
                               (block
                                 (i32.store
-                                  (i32.const 5556)
+                                  (i32.const 5564)
                                   (i32.and
                                     (get_local $11)
                                     (i32.xor
@@ -22147,7 +22147,7 @@
                               (i32.lt_u
                                 (get_local $12)
                                 (i32.load
-                                  (i32.const 5568)
+                                  (i32.const 5576)
                                 )
                               )
                               (call $_abort)
@@ -22185,7 +22185,7 @@
                             (get_local $5)
                             (tee_local $1
                               (i32.load
-                                (i32.const 5568)
+                                (i32.const 5576)
                               )
                             )
                           )
@@ -22229,7 +22229,7 @@
                             (i32.lt_u
                               (get_local $0)
                               (i32.load
-                                (i32.const 5568)
+                                (i32.const 5576)
                               )
                             )
                             (call $_abort)
@@ -22311,7 +22311,7 @@
                         (block
                           (set_local $5
                             (i32.load
-                              (i32.const 5572)
+                              (i32.const 5580)
                             )
                           )
                           (set_local $0
@@ -22328,7 +22328,7 @@
                                 )
                                 (i32.const 2)
                               )
-                              (i32.const 5592)
+                              (i32.const 5600)
                             )
                           )
                           (if
@@ -22354,7 +22354,7 @@
                                   )
                                 )
                                 (i32.load
-                                  (i32.const 5568)
+                                  (i32.const 5576)
                                 )
                               )
                               (call $_abort)
@@ -22369,7 +22369,7 @@
                             )
                             (block
                               (i32.store
-                                (i32.const 5552)
+                                (i32.const 5560)
                                 (i32.or
                                   (get_local $7)
                                   (get_local $1)
@@ -22405,11 +22405,11 @@
                         )
                       )
                       (i32.store
-                        (i32.const 5560)
+                        (i32.const 5568)
                         (get_local $6)
                       )
                       (i32.store
-                        (i32.const 5572)
+                        (i32.const 5580)
                         (get_local $9)
                       )
                     )
@@ -22457,7 +22457,7 @@
             (if
               (tee_local $6
                 (i32.load
-                  (i32.const 5556)
+                  (i32.const 5564)
                 )
               )
               (block
@@ -22575,7 +22575,7 @@
                                 (get_local $17)
                                 (i32.const 2)
                               )
-                              (i32.const 5856)
+                              (i32.const 5864)
                             )
                           )
                         )
@@ -22850,7 +22850,7 @@
                                   )
                                   (i32.const 2)
                                 )
-                                (i32.const 5856)
+                                (i32.const 5864)
                               )
                             )
                           )
@@ -22923,7 +22923,7 @@
                       (get_local $3)
                       (i32.sub
                         (i32.load
-                          (i32.const 5560)
+                          (i32.const 5568)
                         )
                         (get_local $5)
                       )
@@ -22934,7 +22934,7 @@
                           (get_local $4)
                           (tee_local $15
                             (i32.load
-                              (i32.const 5568)
+                              (i32.const 5576)
                             )
                           )
                         )
@@ -23137,7 +23137,7 @@
                                         )
                                         (i32.const 2)
                                       )
-                                      (i32.const 5856)
+                                      (i32.const 5864)
                                     )
                                   )
                                 )
@@ -23153,7 +23153,7 @@
                                   )
                                   (block
                                     (i32.store
-                                      (i32.const 5556)
+                                      (i32.const 5564)
                                       (tee_local $1
                                         (i32.and
                                           (get_local $6)
@@ -23176,7 +23176,7 @@
                                   (i32.lt_u
                                     (get_local $11)
                                     (i32.load
-                                      (i32.const 5568)
+                                      (i32.const 5576)
                                     )
                                   )
                                   (call $_abort)
@@ -23220,7 +23220,7 @@
                                 (get_local $8)
                                 (tee_local $2
                                   (i32.load
-                                    (i32.const 5568)
+                                    (i32.const 5576)
                                   )
                                 )
                               )
@@ -23264,7 +23264,7 @@
                                 (i32.lt_u
                                   (get_local $0)
                                   (i32.load
-                                    (i32.const 5568)
+                                    (i32.const 5576)
                                   )
                                 )
                                 (call $_abort)
@@ -23372,14 +23372,14 @@
                                       )
                                       (i32.const 2)
                                     )
-                                    (i32.const 5592)
+                                    (i32.const 5600)
                                   )
                                 )
                                 (if
                                   (i32.and
                                     (tee_local $1
                                       (i32.load
-                                        (i32.const 5552)
+                                        (i32.const 5560)
                                       )
                                     )
                                     (tee_local $2
@@ -23402,7 +23402,7 @@
                                         )
                                       )
                                       (i32.load
-                                        (i32.const 5568)
+                                        (i32.const 5576)
                                       )
                                     )
                                     (call $_abort)
@@ -23417,7 +23417,7 @@
                                   )
                                   (block
                                     (i32.store
-                                      (i32.const 5552)
+                                      (i32.const 5560)
                                       (i32.or
                                         (get_local $1)
                                         (get_local $2)
@@ -23555,7 +23555,7 @@
                                   )
                                   (i32.const 2)
                                 )
-                                (i32.const 5856)
+                                (i32.const 5864)
                               )
                             )
                             (i32.store offset=28
@@ -23589,7 +23589,7 @@
                               )
                               (block
                                 (i32.store
-                                  (i32.const 5556)
+                                  (i32.const 5564)
                                   (i32.or
                                     (get_local $1)
                                     (get_local $5)
@@ -23698,7 +23698,7 @@
                                   (i32.lt_u
                                     (get_local $1)
                                     (i32.load
-                                      (i32.const 5568)
+                                      (i32.const 5576)
                                     )
                                   )
                                   (call $_abort)
@@ -23739,7 +23739,7 @@
                                     )
                                     (tee_local $3
                                       (i32.load
-                                        (i32.const 5568)
+                                        (i32.const 5576)
                                       )
                                     )
                                   )
@@ -23807,7 +23807,7 @@
       (i32.ge_u
         (tee_local $3
           (i32.load
-            (i32.const 5560)
+            (i32.const 5568)
           )
         )
         (get_local $0)
@@ -23815,7 +23815,7 @@
       (block
         (set_local $1
           (i32.load
-            (i32.const 5572)
+            (i32.const 5580)
           )
         )
         (if
@@ -23830,7 +23830,7 @@
           )
           (block
             (i32.store
-              (i32.const 5572)
+              (i32.const 5580)
               (tee_local $3
                 (i32.add
                   (get_local $1)
@@ -23839,7 +23839,7 @@
               )
             )
             (i32.store
-              (i32.const 5560)
+              (i32.const 5568)
               (get_local $2)
             )
             (i32.store offset=4
@@ -23866,11 +23866,11 @@
           )
           (block
             (i32.store
-              (i32.const 5560)
+              (i32.const 5568)
               (i32.const 0)
             )
             (i32.store
-              (i32.const 5572)
+              (i32.const 5580)
               (i32.const 0)
             )
             (i32.store offset=4
@@ -23914,14 +23914,14 @@
       (i32.gt_u
         (tee_local $3
           (i32.load
-            (i32.const 5564)
+            (i32.const 5572)
           )
         )
         (get_local $0)
       )
       (block
         (i32.store
-          (i32.const 5564)
+          (i32.const 5572)
           (tee_local $2
             (i32.sub
               (get_local $3)
@@ -23930,12 +23930,12 @@
           )
         )
         (i32.store
-          (i32.const 5576)
+          (i32.const 5584)
           (tee_local $3
             (i32.add
               (tee_local $1
                 (i32.load
-                  (i32.const 5576)
+                  (i32.const 5584)
                 )
               )
               (get_local $0)
@@ -23976,34 +23976,34 @@
                 (tee_local $1
                   (if i32
                     (i32.load
-                      (i32.const 6024)
+                      (i32.const 6032)
                     )
                     (i32.load
-                      (i32.const 6032)
+                      (i32.const 6040)
                     )
                     (block i32
                       (i32.store
-                        (i32.const 6032)
-                        (i32.const 4096)
-                      )
-                      (i32.store
-                        (i32.const 6028)
+                        (i32.const 6040)
                         (i32.const 4096)
                       )
                       (i32.store
                         (i32.const 6036)
-                        (i32.const -1)
-                      )
-                      (i32.store
-                        (i32.const 6040)
-                        (i32.const -1)
+                        (i32.const 4096)
                       )
                       (i32.store
                         (i32.const 6044)
+                        (i32.const -1)
+                      )
+                      (i32.store
+                        (i32.const 6048)
+                        (i32.const -1)
+                      )
+                      (i32.store
+                        (i32.const 6052)
                         (i32.const 0)
                       )
                       (i32.store
-                        (i32.const 5996)
+                        (i32.const 6004)
                         (i32.const 0)
                       )
                       (i32.store
@@ -24019,7 +24019,7 @@
                         )
                       )
                       (i32.store
-                        (i32.const 6024)
+                        (i32.const 6032)
                         (get_local $1)
                       )
                       (i32.const 4096)
@@ -24056,7 +24056,7 @@
     (if
       (tee_local $1
         (i32.load
-          (i32.const 5992)
+          (i32.const 6000)
         )
       )
       (if
@@ -24066,7 +24066,7 @@
               (i32.add
                 (tee_local $2
                   (i32.load
-                    (i32.const 5984)
+                    (i32.const 5992)
                   )
                 )
                 (get_local $5)
@@ -24101,7 +24101,7 @@
           (i32.eqz
             (i32.and
               (i32.load
-                (i32.const 5996)
+                (i32.const 6004)
               )
               (i32.const 4)
             )
@@ -24114,13 +24114,13 @@
                     (i32.eqz
                       (tee_local $1
                         (i32.load
-                          (i32.const 5576)
+                          (i32.const 5584)
                         )
                       )
                     )
                   )
                   (set_local $2
-                    (i32.const 6000)
+                    (i32.const 6008)
                   )
                   (loop $while-in32
                     (block $while-out31
@@ -24227,7 +24227,7 @@
                               (i32.add
                                 (tee_local $2
                                   (i32.load
-                                    (i32.const 6028)
+                                    (i32.const 6036)
                                   )
                                 )
                                 (i32.const -1)
@@ -24262,7 +24262,7 @@
                         )
                         (tee_local $4
                           (i32.load
-                            (i32.const 5984)
+                            (i32.const 5992)
                           )
                         )
                       )
@@ -24282,7 +24282,7 @@
                         (if
                           (tee_local $8
                             (i32.load
-                              (i32.const 5992)
+                              (i32.const 6000)
                             )
                           )
                           (br_if $label$break$L274
@@ -24363,7 +24363,7 @@
                           )
                           (tee_local $2
                             (i32.load
-                              (i32.const 6032)
+                              (i32.const 6040)
                             )
                           )
                         )
@@ -24416,10 +24416,10 @@
               )
             )
             (i32.store
-              (i32.const 5996)
+              (i32.const 6004)
               (i32.or
                 (i32.load
-                  (i32.const 5996)
+                  (i32.const 6004)
                 )
                 (i32.const 4)
               )
@@ -24475,11 +24475,11 @@
         (br $__rjto$13)
       )
       (i32.store
-        (i32.const 5984)
+        (i32.const 5992)
         (tee_local $3
           (i32.add
             (i32.load
-              (i32.const 5984)
+              (i32.const 5992)
             )
             (get_local $2)
           )
@@ -24489,11 +24489,11 @@
         (i32.gt_u
           (get_local $3)
           (i32.load
-            (i32.const 5988)
+            (i32.const 5996)
           )
         )
         (i32.store
-          (i32.const 5988)
+          (i32.const 5996)
           (get_local $3)
         )
       )
@@ -24501,12 +24501,12 @@
         (if
           (tee_local $6
             (i32.load
-              (i32.const 5576)
+              (i32.const 5584)
             )
           )
           (block
             (set_local $3
-              (i32.const 6000)
+              (i32.const 6008)
             )
             (block $__rjto$10
               (block $__rjti$10
@@ -24573,7 +24573,7 @@
                     )
                     (set_local $5
                       (i32.load
-                        (i32.const 5564)
+                        (i32.const 5572)
                       )
                     )
                     (set_local $1
@@ -24591,7 +24591,7 @@
                       )
                     )
                     (i32.store
-                      (i32.const 5576)
+                      (i32.const 5584)
                       (tee_local $3
                         (i32.add
                           (get_local $6)
@@ -24609,7 +24609,7 @@
                       )
                     )
                     (i32.store
-                      (i32.const 5564)
+                      (i32.const 5572)
                       (tee_local $1
                         (i32.add
                           (i32.sub
@@ -24635,9 +24635,9 @@
                       (i32.const 40)
                     )
                     (i32.store
-                      (i32.const 5580)
+                      (i32.const 5588)
                       (i32.load
-                        (i32.const 6040)
+                        (i32.const 6048)
                       )
                     )
                     (br $do-once38)
@@ -24650,13 +24650,13 @@
                 (get_local $1)
                 (tee_local $3
                   (i32.load
-                    (i32.const 5568)
+                    (i32.const 5576)
                   )
                 )
               )
               (block
                 (i32.store
-                  (i32.const 5568)
+                  (i32.const 5576)
                   (get_local $1)
                 )
                 (set_local $3
@@ -24671,7 +24671,7 @@
               )
             )
             (set_local $5
-              (i32.const 6000)
+              (i32.const 6008)
             )
             (block $__rjto$11
               (block $__rjti$11
@@ -24692,7 +24692,7 @@
                     )
                   )
                   (set_local $3
-                    (i32.const 6000)
+                    (i32.const 6008)
                   )
                 )
                 (br $__rjto$11)
@@ -24705,7 +24705,7 @@
                   (i32.const 8)
                 )
                 (set_local $3
-                  (i32.const 6000)
+                  (i32.const 6008)
                 )
                 (block
                   (i32.store
@@ -24808,18 +24808,18 @@
                       )
                       (block
                         (i32.store
-                          (i32.const 5564)
+                          (i32.const 5572)
                           (tee_local $0
                             (i32.add
                               (i32.load
-                                (i32.const 5564)
+                                (i32.const 5572)
                               )
                               (get_local $8)
                             )
                           )
                         )
                         (i32.store
-                          (i32.const 5576)
+                          (i32.const 5584)
                           (get_local $7)
                         )
                         (i32.store offset=4
@@ -24835,23 +24835,23 @@
                           (i32.eq
                             (get_local $4)
                             (i32.load
-                              (i32.const 5572)
+                              (i32.const 5580)
                             )
                           )
                           (block
                             (i32.store
-                              (i32.const 5560)
+                              (i32.const 5568)
                               (tee_local $0
                                 (i32.add
                                   (i32.load
-                                    (i32.const 5560)
+                                    (i32.const 5568)
                                   )
                                   (get_local $8)
                                 )
                               )
                             )
                             (i32.store
-                              (i32.const 5572)
+                              (i32.const 5580)
                               (get_local $7)
                             )
                             (i32.store offset=4
@@ -24926,7 +24926,7 @@
                                                 )
                                                 (i32.const 2)
                                               )
-                                              (i32.const 5592)
+                                              (i32.const 5600)
                                             )
                                           )
                                         )
@@ -24957,10 +24957,10 @@
                                       )
                                       (block
                                         (i32.store
-                                          (i32.const 5552)
+                                          (i32.const 5560)
                                           (i32.and
                                             (i32.load
-                                              (i32.const 5552)
+                                              (i32.const 5560)
                                             )
                                             (i32.xor
                                               (i32.shl
@@ -25215,7 +25215,7 @@
                                                   )
                                                   (i32.const 2)
                                                 )
-                                                (i32.const 5856)
+                                                (i32.const 5864)
                                               )
                                             )
                                           )
@@ -25229,10 +25229,10 @@
                                             (get_local $10)
                                           )
                                           (i32.store
-                                            (i32.const 5556)
+                                            (i32.const 5564)
                                             (i32.and
                                               (i32.load
-                                                (i32.const 5556)
+                                                (i32.const 5564)
                                               )
                                               (i32.xor
                                                 (i32.shl
@@ -25250,7 +25250,7 @@
                                             (i32.lt_u
                                               (get_local $6)
                                               (i32.load
-                                                (i32.const 5568)
+                                                (i32.const 5576)
                                               )
                                             )
                                             (call $_abort)
@@ -25289,7 +25289,7 @@
                                         (get_local $10)
                                         (tee_local $1
                                           (i32.load
-                                            (i32.const 5568)
+                                            (i32.const 5576)
                                           )
                                         )
                                       )
@@ -25341,7 +25341,7 @@
                                       (i32.lt_u
                                         (get_local $0)
                                         (i32.load
-                                          (i32.const 5568)
+                                          (i32.const 5576)
                                         )
                                       )
                                       (call $_abort)
@@ -25422,7 +25422,7 @@
                                   )
                                   (i32.const 2)
                                 )
-                                (i32.const 5592)
+                                (i32.const 5600)
                               )
                             )
                             (block $do-once61
@@ -25430,7 +25430,7 @@
                                 (i32.and
                                   (tee_local $2
                                     (i32.load
-                                      (i32.const 5552)
+                                      (i32.const 5560)
                                     )
                                   )
                                   (tee_local $1
@@ -25454,7 +25454,7 @@
                                         )
                                       )
                                       (i32.load
-                                        (i32.const 5568)
+                                        (i32.const 5576)
                                       )
                                     )
                                     (block
@@ -25471,7 +25471,7 @@
                                 )
                                 (block
                                   (i32.store
-                                    (i32.const 5552)
+                                    (i32.const 5560)
                                     (i32.or
                                       (get_local $2)
                                       (get_local $1)
@@ -25616,7 +25616,7 @@
                               )
                               (i32.const 2)
                             )
-                            (i32.const 5856)
+                            (i32.const 5864)
                           )
                         )
                         (i32.store offset=28
@@ -25641,7 +25641,7 @@
                             (i32.and
                               (tee_local $2
                                 (i32.load
-                                  (i32.const 5556)
+                                  (i32.const 5564)
                                 )
                               )
                               (tee_local $3
@@ -25654,7 +25654,7 @@
                           )
                           (block
                             (i32.store
-                              (i32.const 5556)
+                              (i32.const 5564)
                               (i32.or
                                 (get_local $2)
                                 (get_local $3)
@@ -25763,7 +25763,7 @@
                               (i32.lt_u
                                 (get_local $1)
                                 (i32.load
-                                  (i32.const 5568)
+                                  (i32.const 5576)
                                 )
                               )
                               (call $_abort)
@@ -25804,7 +25804,7 @@
                                 )
                                 (tee_local $3
                                   (i32.load
-                                    (i32.const 5568)
+                                    (i32.const 5576)
                                   )
                                 )
                               )
@@ -25964,7 +25964,7 @@
               )
             )
             (i32.store
-              (i32.const 5576)
+              (i32.const 5584)
               (tee_local $7
                 (i32.add
                   (get_local $1)
@@ -25982,7 +25982,7 @@
               )
             )
             (i32.store
-              (i32.const 5564)
+              (i32.const 5572)
               (tee_local $4
                 (i32.sub
                   (get_local $11)
@@ -26005,9 +26005,9 @@
               (i32.const 40)
             )
             (i32.store
-              (i32.const 5580)
+              (i32.const 5588)
               (i32.load
-                (i32.const 6040)
+                (i32.const 6048)
               )
             )
             (i32.store
@@ -26022,29 +26022,29 @@
             (i64.store align=4
               (get_local $8)
               (i64.load align=4
-                (i32.const 6000)
+                (i32.const 6008)
               )
             )
             (i64.store offset=8 align=4
               (get_local $8)
               (i64.load align=4
-                (i32.const 6008)
+                (i32.const 6016)
               )
             )
             (i32.store
-              (i32.const 6000)
+              (i32.const 6008)
               (get_local $1)
             )
             (i32.store
-              (i32.const 6004)
+              (i32.const 6012)
               (get_local $2)
             )
             (i32.store
-              (i32.const 6012)
+              (i32.const 6020)
               (i32.const 0)
             )
             (i32.store
-              (i32.const 6008)
+              (i32.const 6016)
               (get_local $8)
             )
             (set_local $1
@@ -26122,14 +26122,14 @@
                           )
                           (i32.const 2)
                         )
-                        (i32.const 5592)
+                        (i32.const 5600)
                       )
                     )
                     (if
                       (i32.and
                         (tee_local $3
                           (i32.load
-                            (i32.const 5552)
+                            (i32.const 5560)
                           )
                         )
                         (tee_local $2
@@ -26152,7 +26152,7 @@
                             )
                           )
                           (i32.load
-                            (i32.const 5568)
+                            (i32.const 5576)
                           )
                         )
                         (call $_abort)
@@ -26167,7 +26167,7 @@
                       )
                       (block
                         (i32.store
-                          (i32.const 5552)
+                          (i32.const 5560)
                           (i32.or
                             (get_local $3)
                             (get_local $2)
@@ -26305,7 +26305,7 @@
                       )
                       (i32.const 2)
                     )
-                    (i32.const 5856)
+                    (i32.const 5864)
                   )
                 )
                 (i32.store offset=28
@@ -26325,7 +26325,7 @@
                     (i32.and
                       (tee_local $3
                         (i32.load
-                          (i32.const 5556)
+                          (i32.const 5564)
                         )
                       )
                       (tee_local $5
@@ -26338,7 +26338,7 @@
                   )
                   (block
                     (i32.store
-                      (i32.const 5556)
+                      (i32.const 5564)
                       (i32.or
                         (get_local $3)
                         (get_local $5)
@@ -26447,7 +26447,7 @@
                       (i32.lt_u
                         (get_local $2)
                         (i32.load
-                          (i32.const 5568)
+                          (i32.const 5576)
                         )
                       )
                       (call $_abort)
@@ -26488,7 +26488,7 @@
                         )
                         (tee_local $5
                           (i32.load
-                            (i32.const 5568)
+                            (i32.const 5576)
                           )
                         )
                       )
@@ -26531,7 +26531,7 @@
                 (i32.eqz
                   (tee_local $3
                     (i32.load
-                      (i32.const 5568)
+                      (i32.const 5576)
                     )
                   )
                 )
@@ -26541,30 +26541,30 @@
                 )
               )
               (i32.store
-                (i32.const 5568)
+                (i32.const 5576)
                 (get_local $1)
               )
             )
             (i32.store
-              (i32.const 6000)
+              (i32.const 6008)
               (get_local $1)
             )
             (i32.store
-              (i32.const 6004)
+              (i32.const 6012)
               (get_local $2)
             )
             (i32.store
-              (i32.const 6012)
+              (i32.const 6020)
               (i32.const 0)
             )
             (i32.store
-              (i32.const 5588)
+              (i32.const 5596)
               (i32.load
-                (i32.const 6024)
+                (i32.const 6032)
               )
             )
             (i32.store
-              (i32.const 5584)
+              (i32.const 5592)
               (i32.const -1)
             )
             (set_local $3
@@ -26581,7 +26581,7 @@
                       )
                       (i32.const 2)
                     )
-                    (i32.const 5592)
+                    (i32.const 5600)
                   )
                 )
                 (get_local $5)
@@ -26623,7 +26623,7 @@
               )
             )
             (i32.store
-              (i32.const 5576)
+              (i32.const 5584)
               (tee_local $1
                 (i32.add
                   (get_local $1)
@@ -26641,7 +26641,7 @@
               )
             )
             (i32.store
-              (i32.const 5564)
+              (i32.const 5572)
               (tee_local $2
                 (i32.sub
                   (get_local $3)
@@ -26664,9 +26664,9 @@
               (i32.const 40)
             )
             (i32.store
-              (i32.const 5580)
+              (i32.const 5588)
               (i32.load
-                (i32.const 6040)
+                (i32.const 6048)
               )
             )
           )
@@ -26676,14 +26676,14 @@
         (i32.gt_u
           (tee_local $1
             (i32.load
-              (i32.const 5564)
+              (i32.const 5572)
             )
           )
           (get_local $0)
         )
         (block
           (i32.store
-            (i32.const 5564)
+            (i32.const 5572)
             (tee_local $2
               (i32.sub
                 (get_local $1)
@@ -26692,12 +26692,12 @@
             )
           )
           (i32.store
-            (i32.const 5576)
+            (i32.const 5584)
             (tee_local $3
               (i32.add
                 (tee_local $1
                   (i32.load
-                    (i32.const 5576)
+                    (i32.const 5584)
                   )
                 )
                 (get_local $0)
@@ -26771,7 +26771,7 @@
         )
         (tee_local $11
           (i32.load
-            (i32.const 5568)
+            (i32.const 5576)
           )
         )
       )
@@ -26858,7 +26858,7 @@
             (i32.eq
               (get_local $0)
               (i32.load
-                (i32.const 5572)
+                (i32.const 5580)
               )
             )
             (block
@@ -26890,7 +26890,7 @@
                 )
               )
               (i32.store
-                (i32.const 5560)
+                (i32.const 5568)
                 (get_local $1)
               )
               (i32.store
@@ -26950,7 +26950,7 @@
                         )
                         (i32.const 2)
                       )
-                      (i32.const 5592)
+                      (i32.const 5600)
                     )
                   )
                 )
@@ -26980,10 +26980,10 @@
                 )
                 (block
                   (i32.store
-                    (i32.const 5552)
+                    (i32.const 5560)
                     (i32.and
                       (i32.load
-                        (i32.const 5552)
+                        (i32.const 5560)
                       )
                       (i32.xor
                         (i32.shl
@@ -27243,7 +27243,7 @@
                           )
                           (i32.const 2)
                         )
-                        (i32.const 5856)
+                        (i32.const 5864)
                       )
                     )
                   )
@@ -27259,10 +27259,10 @@
                     )
                     (block
                       (i32.store
-                        (i32.const 5556)
+                        (i32.const 5564)
                         (i32.and
                           (i32.load
-                            (i32.const 5556)
+                            (i32.const 5564)
                           )
                           (i32.xor
                             (i32.shl
@@ -27288,7 +27288,7 @@
                     (i32.lt_u
                       (get_local $12)
                       (i32.load
-                        (i32.const 5568)
+                        (i32.const 5576)
                       )
                     )
                     (call $_abort)
@@ -27335,7 +27335,7 @@
                   (get_local $7)
                   (tee_local $5
                     (i32.load
-                      (i32.const 5568)
+                      (i32.const 5576)
                     )
                   )
                 )
@@ -27384,7 +27384,7 @@
                   (i32.lt_u
                     (get_local $4)
                     (i32.load
-                      (i32.const 5568)
+                      (i32.const 5576)
                     )
                   )
                   (call $_abort)
@@ -27485,23 +27485,23 @@
           (i32.eq
             (get_local $6)
             (i32.load
-              (i32.const 5576)
+              (i32.const 5584)
             )
           )
           (block
             (i32.store
-              (i32.const 5564)
+              (i32.const 5572)
               (tee_local $0
                 (i32.add
                   (i32.load
-                    (i32.const 5564)
+                    (i32.const 5572)
                   )
                   (get_local $2)
                 )
               )
             )
             (i32.store
-              (i32.const 5576)
+              (i32.const 5584)
               (get_local $3)
             )
             (i32.store offset=4
@@ -27515,17 +27515,17 @@
               (i32.ne
                 (get_local $3)
                 (i32.load
-                  (i32.const 5572)
+                  (i32.const 5580)
                 )
               )
               (return)
             )
             (i32.store
-              (i32.const 5572)
+              (i32.const 5580)
               (i32.const 0)
             )
             (i32.store
-              (i32.const 5560)
+              (i32.const 5568)
               (i32.const 0)
             )
             (return)
@@ -27535,23 +27535,23 @@
           (i32.eq
             (get_local $6)
             (i32.load
-              (i32.const 5572)
+              (i32.const 5580)
             )
           )
           (block
             (i32.store
-              (i32.const 5560)
+              (i32.const 5568)
               (tee_local $0
                 (i32.add
                   (i32.load
-                    (i32.const 5560)
+                    (i32.const 5568)
                   )
                   (get_local $2)
                 )
               )
             )
             (i32.store
-              (i32.const 5572)
+              (i32.const 5580)
               (get_local $3)
             )
             (i32.store offset=4
@@ -27614,7 +27614,7 @@
                         )
                         (i32.const 2)
                       )
-                      (i32.const 5592)
+                      (i32.const 5600)
                     )
                   )
                 )
@@ -27623,7 +27623,7 @@
                     (i32.lt_u
                       (get_local $1)
                       (i32.load
-                        (i32.const 5568)
+                        (i32.const 5576)
                       )
                     )
                     (call $_abort)
@@ -27646,10 +27646,10 @@
                 )
                 (block
                   (i32.store
-                    (i32.const 5552)
+                    (i32.const 5560)
                     (i32.and
                       (i32.load
-                        (i32.const 5552)
+                        (i32.const 5560)
                       )
                       (i32.xor
                         (i32.shl
@@ -27679,7 +27679,7 @@
                     (i32.lt_u
                       (get_local $2)
                       (i32.load
-                        (i32.const 5568)
+                        (i32.const 5576)
                       )
                     )
                     (call $_abort)
@@ -27812,7 +27812,7 @@
                       (i32.lt_u
                         (get_local $2)
                         (i32.load
-                          (i32.const 5568)
+                          (i32.const 5576)
                         )
                       )
                       (call $_abort)
@@ -27836,7 +27836,7 @@
                           )
                         )
                         (i32.load
-                          (i32.const 5568)
+                          (i32.const 5576)
                         )
                       )
                       (call $_abort)
@@ -27902,7 +27902,7 @@
                               )
                               (i32.const 2)
                             )
-                            (i32.const 5856)
+                            (i32.const 5864)
                           )
                         )
                       )
@@ -27918,10 +27918,10 @@
                         )
                         (block
                           (i32.store
-                            (i32.const 5556)
+                            (i32.const 5564)
                             (i32.and
                               (i32.load
-                                (i32.const 5556)
+                                (i32.const 5564)
                               )
                               (i32.xor
                                 (i32.shl
@@ -27941,7 +27941,7 @@
                         (i32.lt_u
                           (get_local $7)
                           (i32.load
-                            (i32.const 5568)
+                            (i32.const 5576)
                           )
                         )
                         (call $_abort)
@@ -27979,7 +27979,7 @@
                       (get_local $9)
                       (tee_local $2
                         (i32.load
-                          (i32.const 5568)
+                          (i32.const 5576)
                         )
                       )
                     )
@@ -28028,7 +28028,7 @@
                       (i32.lt_u
                         (get_local $0)
                         (i32.load
-                          (i32.const 5568)
+                          (i32.const 5576)
                         )
                       )
                       (call $_abort)
@@ -28067,12 +28067,12 @@
           (i32.eq
             (get_local $3)
             (i32.load
-              (i32.const 5572)
+              (i32.const 5580)
             )
           )
           (block
             (i32.store
-              (i32.const 5560)
+              (i32.const 5568)
               (get_local $5)
             )
             (return)
@@ -28104,14 +28104,14 @@
               )
               (i32.const 2)
             )
-            (i32.const 5592)
+            (i32.const 5600)
           )
         )
         (if
           (i32.and
             (tee_local $2
               (i32.load
-                (i32.const 5552)
+                (i32.const 5560)
               )
             )
             (tee_local $1
@@ -28134,7 +28134,7 @@
                 )
               )
               (i32.load
-                (i32.const 5568)
+                (i32.const 5576)
               )
             )
             (call $_abort)
@@ -28149,7 +28149,7 @@
           )
           (block
             (i32.store
-              (i32.const 5552)
+              (i32.const 5560)
               (i32.or
                 (get_local $2)
                 (get_local $1)
@@ -28287,7 +28287,7 @@
           )
           (i32.const 2)
         )
-        (i32.const 5856)
+        (i32.const 5864)
       )
     )
     (i32.store offset=28
@@ -28307,7 +28307,7 @@
         (i32.and
           (tee_local $4
             (i32.load
-              (i32.const 5556)
+              (i32.const 5564)
             )
           )
           (tee_local $5
@@ -28402,7 +28402,7 @@
                 (i32.lt_u
                   (get_local $1)
                   (i32.load
-                    (i32.const 5568)
+                    (i32.const 5576)
                   )
                 )
                 (call $_abort)
@@ -28443,7 +28443,7 @@
                   )
                   (tee_local $4
                     (i32.load
-                      (i32.const 5568)
+                      (i32.const 5576)
                     )
                   )
                 )
@@ -28480,7 +28480,7 @@
         )
         (block
           (i32.store
-            (i32.const 5556)
+            (i32.const 5564)
             (i32.or
               (get_local $4)
               (get_local $5)
@@ -28506,11 +28506,11 @@
       )
     )
     (i32.store
-      (i32.const 5584)
+      (i32.const 5592)
       (tee_local $0
         (i32.add
           (i32.load
-            (i32.const 5584)
+            (i32.const 5592)
           )
           (i32.const -1)
         )
@@ -28520,7 +28520,7 @@
       (get_local $0)
       (return)
       (set_local $0
-        (i32.const 6008)
+        (i32.const 6016)
       )
     )
     (loop $while-in17
@@ -28539,7 +28539,7 @@
       )
     )
     (i32.store
-      (i32.const 5584)
+      (i32.const 5592)
       (i32.const -1)
     )
   )
@@ -28835,10 +28835,10 @@
   )
   (func $__ZNKSt3__220__vector_base_commonILb1EE20__throw_length_errorEv (param $0 i32)
     (call $___assert_fail
-      (i32.const 5138)
-      (i32.const 5161)
+      (i32.const 5142)
+      (i32.const 5165)
       (i32.const 304)
-      (i32.const 5244)
+      (i32.const 5248)
     )
   )
   (func $__Znwj (param $0 i32) (result i32)
@@ -30031,22 +30031,22 @@
     )
   )
   (func $__ZNKSt9bad_alloc4whatEv (param $0 i32) (result i32)
-    (i32.const 5395)
+    (i32.const 5399)
   )
   (func $__ZNSt9bad_allocC2Ev (param $0 i32)
     (i32.store
       (get_local $0)
-      (i32.const 2332)
+      (i32.const 2336)
     )
   )
   (func $__ZSt15get_new_handlerv (result i32)
     (local $0 i32)
     (i32.store
-      (i32.const 6048)
+      (i32.const 6056)
       (i32.add
         (tee_local $0
           (i32.load
-            (i32.const 6048)
+            (i32.const 6056)
           )
         )
         (i32.const 0)

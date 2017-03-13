@@ -105,6 +105,12 @@ const Float g_bottom = -1.5;
 
 // END CONFIGURATION
 
+#ifdef HEADLESS
+#  define stdstatus stdout
+#else
+#  define stdstatus stderr
+#endif
+
 void CRASH(const char* msg) {
     fprintf(stderr, "CRASH: %s\n", msg);
     exit(1);
@@ -112,11 +118,6 @@ void CRASH(const char* msg) {
 
 void WARNING(const char* msg) {
     fprintf(stderr, "WARNING: %s\n", msg);
-}
-
-void PRINT(const char* s)
-{
-    fprintf(stderr, "%s", s);
 }
 
 uint64_t timestamp() {
@@ -649,7 +650,7 @@ int main(int argc, char** argv)
 	uint64_t then = timestamp();
 	world = setStage(&eye, &light, &background);
 	uint64_t now = timestamp();
-	fprintf(stderr, "Setup time: %g ms\n", (now-then) / 1000.0);
+	fprintf(stdstatus, "Setup time: %g ms\n", (now-then) / 1000.0);
     }
 
     Bitmap bits(g_height, g_width, colorFromRGB(152, 251, 152));
@@ -658,7 +659,7 @@ int main(int argc, char** argv)
 	uint64_t then = timestamp();
 	trace(0, g_height, 0, g_width, eye, light, background, world, &bits);
 	uint64_t now = timestamp();
-	fprintf(stderr, "Render time: %g ms\n", (now-then) / 1000.0);
+	fprintf(stdstatus, "Render time: %g ms\n", (now-then) / 1000.0);
     }
 
 #ifdef PPM_STDOUT
