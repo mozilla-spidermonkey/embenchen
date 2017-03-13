@@ -44,46 +44,50 @@ import argparse, os, re, subprocess, sys
 def main():
     (mode, numruns, argument, isBenchmark, isVerbose, patterns) = parse_args()
     (shell1, shell2) = get_shells(mode)
-    print("# mode=" + mode + ", runs=" + str(numruns) + ", problem size=" + (str(argument) if argument != None else "default"))
+
+    check = mode == "IonCheck" or mode == "BaselineCheck"
+    m1 = "baseline" if mode == "BaselineVsBaseline" else "ion"
+    m2 = "ion" if mode == "IonVsIon" else "baseline"
+
+    print "# mode=%s, runs=%d, problem size=%s" % (mode, numruns, (str(argument) if argument != None else "default"))
+
     for test in tests:
         (name, _, fn, _) = test
+
         found = len(patterns) == 0
         for p in patterns:
             found = found or re.search(p, name)
         if not found:
             continue
-        msg = name + "\t"
-        if len(name) < 8:
-            msg += "\t"
-        if mode == "IonCheck" or mode == "BaselineCheck":
+
+        msg = name + "\t" + ("\t" if len(name) < 8 else "")
+
+        if check:
             fn(test, isVerbose, shell1, "ion" if mode == "IonCheck" else "baseline", argument)
             msg += "did not crash today"
         else:
-            m1 = "baseline" if mode == "BaselineVsBaseline" else "ion"
-            m2 = "ion" if mode == "IonVsIon" else "baseline"
-            t1 = []
-            t2 = []
             # Run back-to-back for each shell to reduce caching noise
+            t1 = []
             for i in range(numruns):
                 (c, r) = fn(test, isVerbose, shell1, m1, argument)
                 t1.append(c if argument == 0 else r)
+            t1.sort()
+
+            t2 = []
             for i in range(numruns):
                 (c, r) = fn(test, isVerbose, shell2, m2, argument)
                 t2.append(c if argument == 0 else r)
-
-            t1.sort()
             t2.sort()
-            n1 = mid(t1)
-            n2 = mid(t2)
+
+            n1 = t1[len(t1)/2]
+            n2 = t2[len(t2)/2]
             score = str(round(float(n1)/float(n2)*1000)/1000)
 
             msg += str(n1) + "\t" + str(n2) + "\t" + score
             if isVerbose:
                 msg += "\t" + str(t1) + "\t" + str(t2)
-        print(msg)
 
-def mid(ss):
-    return ss[len(ss)/2]
+        print msg
 
 def run_std(test, isVerbose, shell, mode, argument):
     (name, program, _, correct) = test
@@ -106,8 +110,8 @@ def run_scimark(test, isVerbose, shell, mode, argument):
     if argument == 0:
         return parse_ouput(text, 0, None)
 
-    mflops = float(parse_line(text, r"SciMark.*small", 2))
-    score = int(100000.0/mflops)
+    mark = float(parse_line(text, r"SciMark.*small", 2))
+    score = int(100000.0/mark)
     return (0,score)
 
 tests = [ ("box2d",        None, run_std, r"frame averages:.*, range:.* to "),
@@ -140,7 +144,7 @@ def run_test(isVerbose, shell, program, mode, argument):
     if argument != None:
         cmd.append(str(argument))
     if isVerbose:
-        print("# " + str(cmd))
+        print "# %s" % str(cmd)
     log = open('output.tmp', 'w')
     text = subprocess.check_output(cmd, stderr=log, universal_newlines=True).split("\n")
     log.close()
@@ -159,7 +163,7 @@ def parse_output(text, argument, correct):
         elif re.match("WASM RUN TIME: ", t):
             runTime = int(t[15:])
     if do_check and not found:
-        print(text)
+        print text
         sys.exit("Error: did not match expected output " + correct)
     return (compileTime, runTime)
 
