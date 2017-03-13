@@ -44,6 +44,7 @@ import argparse, os, re, subprocess, sys
 def main():
     (mode, numruns, argument, isBenchmark, isVerbose, patterns) = parse_args()
     (shell1, shell2) = get_shells(mode)
+    print("# mode=" + mode + ", runs=" + str(numruns) + ", problem size=" + (str(argument) if argument != None else "default"))
     for test in tests:
         (name, _, fn, _) = test
         found = len(patterns) == 0
@@ -51,9 +52,12 @@ def main():
             found = found or re.search(p, name)
         if not found:
             continue
+        msg = name + "\t"
+        if len(name) < 8:
+            msg += "\t"
         if mode == "IonCheck" or mode == "BaselineCheck":
-            fn(isVerbose, shell1, "ion" if mode == "IonCheck" else "baseline", argument)
-            print(name)
+            fn(test, isVerbose, shell1, "ion" if mode == "IonCheck" else "baseline", argument)
+            msg += "did not crash today"
         else:
             m1 = "baseline" if mode == "BaselineVsBaseline" else "ion"
             m2 = "ion" if mode == "IonVsIon" else "baseline"
@@ -73,13 +77,10 @@ def main():
             n2 = mid(t2)
             score = str(round(float(n1)/float(n2)*1000)/1000)
 
-            msg = name + "\t"
-            if len(name) < 8:
-                msg = msg + "\t"
-            msg = msg + str(n1) + "\t" + str(n2) + "\t" + score
+            msg += str(n1) + "\t" + str(n2) + "\t" + score
             if isVerbose:
-                msg = msg + "\t" + str(t1) + "\t" + str(t2)
-            print(msg)
+                msg += "\t" + str(t1) + "\t" + str(t2)
+        print(msg)
 
 def mid(ss):
     return ss[len(ss)/2]
@@ -223,6 +224,8 @@ def parse_args():
         if args.n <= 0:
             sys.exit("Error: -n requires a nonnegative integer")
         numruns = args.n
+    if mode == "IonCheck" or mode == "BaselineCheck":
+        numruns = 1
 
     argument = None
     if args.a != None:
