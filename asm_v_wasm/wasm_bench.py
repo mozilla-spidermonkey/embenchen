@@ -42,7 +42,7 @@
 import argparse, os, re, subprocess, sys
 
 def main():
-    (mode, numruns, argument, isBenchmark, isVerbose, patterns) = parse_args()
+    (mode, numruns, argument, isBenchmark, isVerbose, dumpData, patterns) = parse_args()
     (shell1, shell2) = get_shells(mode)
 
     check = mode == "IonCheck" or mode == "BaselineCheck"
@@ -84,7 +84,7 @@ def main():
             score = str(round(float(n1)/float(n2)*1000)/1000)
 
             msg += str(n1) + "\t" + str(n2) + "\t" + score
-            if isVerbose:
+            if dumpData:
                 msg += "\t" + str(t1) + "\t" + str(t2)
 
         print msg
@@ -202,6 +202,9 @@ def parse_args():
     parser.add_argument("-c", metavar="mode", choices=["ion", "baseline"], help=
                         """Run only one shell (typically for sanity testing).  `mode` must 
                         be "ion" or "baseline".""")
+    parser.add_argument("-d", action="store_true", help=
+                        """Print the measurements as two comma-separated lists following
+                        the normal results.""")
     parser.add_argument("-m", metavar="mode", choices=["ion", "baseline"], help=
                         """Compare the output of two different shells.  In this case, 
                         the environment variables JS_SHELL1 and JS_SHELL2 must be set.
@@ -237,6 +240,9 @@ def parse_args():
             sys.exit("Error: -a requires an integer between 0 and 5")
         argument = args.a
     
-    return (mode, numruns, argument, args.b, args.v, args.pattern)
+    if args.v != None:
+        args.d = True
+
+    return (mode, numruns, argument, args.b, args.v, args.d, args.pattern)
 
 main()
