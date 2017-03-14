@@ -240,7 +240,7 @@ def parse_args():
             sys.exit("Error: -a requires an integer between 0 and 5")
         argument = args.a
     
-    if args.v != None:
+    if args.v:
         args.d = True
 
     return (mode, numruns, argument, args.b, args.v, args.d, args.pattern)
