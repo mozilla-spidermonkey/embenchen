@@ -33,8 +33,6 @@
 #
 # TODO: Also check the output for other arguments than the default.
 #
-# TODO: More interesting statistics when running more than once.
-#
 # TODO: In several cases below we'd like to check the entire output,
 #       not just one line of it (and we might like for the output
 #       not to contain any other lines)
@@ -42,7 +40,7 @@
 import argparse, os, re, subprocess, sys
 
 def main():
-    (mode, numruns, argument, isBenchmark, isVerbose, dumpData, patterns) = parse_args()
+    (mode, numruns, argument, isVerbose, dumpData, dumpVariance, patterns) = parse_args()
     (shell1, shell2) = get_shells(mode)
 
     check = mode == "IonCheck" or mode == "BaselineCheck"
@@ -81,13 +79,25 @@ def main():
 
             n1 = t1[len(t1)/2]
             n2 = t2[len(t2)/2]
-            score = str(round(float(n1)/float(n2)*1000)/1000)
+            score = three_places(n1, n2)
 
             msg += str(n1) + "\t" + str(n2) + "\t" + score
+
+            if dumpVariance:
+                lo1 = t1[1]
+                hi1 = t1[len(t1)-2]
+                msg += "\t[" + three_places(lo1, n1) + ", " + three_places(hi1, n1) + "]"
+                lo2 = t2[1]
+                hi2 = t2[len(t2)-2]
+                msg += "\t[" + three_places(lo2, n2) + ", " + three_places(hi2, n2) + "]"
+
             if dumpData:
                 msg += "\t" + str(t1) + "\t" + str(t2)
 
         print msg
+
+def three_places(a, b):
+    return str(round(float(a)/float(b)*1000)/1000)
 
 def run_std(test, isVerbose, shell, mode, argument):
     (name, program, _, correct) = test
@@ -192,57 +202,67 @@ def get_shell(name):
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Run wasm benchmarks in various configurations.")
-    parser.add_argument("-a", metavar="argument", type=int, help=
+    parser.add_argument("-a", "--problem", metavar="argument", type=int, help=
                         """The problem size argument. The default is 3.  With argument=0 we
                         effectively only compile the code and compilation time is reported 
                         instead.  The max is 5.""")
-    parser.add_argument("-b", action="store_true", help=
-                        """Benchmark mode.  Discard the slowest time and print the 
-                        mean of the remaining times.""")
-    parser.add_argument("-c", metavar="mode", choices=["ion", "baseline"], help=
-                        """Run only one shell (typically for sanity testing).  `mode` must 
+    parser.add_argument("-c", "--check", metavar="mode", choices=["ion", "baseline"], help=
+                        """Run only one shell a single run, to see if it works.  `mode` must
                         be "ion" or "baseline".""")
-    parser.add_argument("-d", action="store_true", help=
-                        """Print the measurements as two comma-separated lists following
+    parser.add_argument("-d", "--data", action="store_true", help=
+                        """Print the measurement data as two comma-separated lists following
                         the normal results.""")
-    parser.add_argument("-m", metavar="mode", choices=["ion", "baseline"], help=
+    parser.add_argument("-i", "--variance", action="store_true", help=
+                        """For five or more runs, discard the high and low measurements and
+                        print low/median and high/median following the standard columns.""")
+    parser.add_argument("-m", "--mode", metavar="mode", choices=["ion", "baseline"], help=
                         """Compare the output of two different shells.  In this case, 
                         the environment variables JS_SHELL1 and JS_SHELL2 must be set.
                         `mode` must be "ion" or "baseline".""")
-    parser.add_argument("-n", metavar="numruns", type=int, help=
+    parser.add_argument("-n", "--numruns", metavar="numruns", type=int, help=
                         """The number of iterations to run.  The default is 1.  The value 
                         should be odd.  We report the median time (but see -b).""")
-    parser.add_argument("-v", action="store_true", help=
+    parser.add_argument("-v", "--verbose", action="store_true", help=
                         """Verbose.  Echo commands and other information on stderr.""")
     parser.add_argument("pattern", nargs="*", help=
                         """Regular expressions to match against test names""")
     args = parser.parse_args();
     
     mode = "IonVsBaseline"
-    if args.c and args.m:
-        sys.exit("Error: -c and -m are incompatible")
-    if args.m:
-        mode = "BaselineVsBaseline" if args.m == "baseline" else "IonVsIon"
-    if args.c:
-        mode = "BaselineCheck" if args.c == "baseline" else "IonCheck"
+    if args.check and args.mode:
+        sys.exit("Error: --check and --mode are incompatible")
+    if args.mode:
+        mode = "BaselineVsBaseline" if args.mode == "baseline" else "IonVsIon"
+    if args.check:
+        mode = "BaselineCheck" if args.check == "baseline" else "IonCheck"
+
+    if args.check and args.variance:
+        sys.exit("Error: --check and --variance are incompatible")
 
     numruns = 1
-    if args.n != None:
-        if args.n <= 0:
-            sys.exit("Error: -n requires a nonnegative integer")
-        numruns = args.n
+    if args.numruns != None:
+        if args.numruns <= 0:
+            sys.exit("Error: --numruns requires a nonnegative integer")
+        numruns = args.numruns
+
     if mode == "IonCheck" or mode == "BaselineCheck":
         numruns = 1
 
-    argument = None
-    if args.a != None:
-        if args.a < 0 or args.a > 5:
-            sys.exit("Error: -a requires an integer between 0 and 5")
-        argument = args.a
-    
-    if args.v:
-        args.d = True
+    if not (numruns % 2):
+        sys.exit("Error: The number of runs must be odd")
 
-    return (mode, numruns, argument, args.b, args.v, args.d, args.pattern)
+    if args.variance and numruns < 5:
+        sys.exit("Error: At least five runs required for --variance")
+
+    argument = None
+    if args.problem != None:
+        if args.problem < 0 or args.problem > 5:
+            sys.exit("Error: --problem requires an integer between 0 and 5")
+        argument = args.problem
+    
+    if args.verbose:
+        args.data = True
+
+    return (mode, numruns, argument, args.verbose, args.data, args.variance, args.pattern)
 
 main()
