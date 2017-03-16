@@ -28,19 +28,25 @@
 # difference in ratios is actually not large, but running time is the
 # best measure.
 #
+# TODO: Snnotate results with - and +, derived from
+#       the variance maybe.  Switch -s / --significance.
+#
 # TODO: catch any exception from the subprocess and print the log if
 #       there was one.
 #
 # TODO: Also check the output for other arguments than the default.
+#       Easy: use list of results for for the problems, indexed by problem size
 #
 # TODO: In several cases below we'd like to check the entire output,
-#       not just one line of it (and we might like for the output
-#       not to contain any other lines)
+#       not just one line of it.  Easy: lists of lines, match in order.
+#
+# TODO: We might like for the output not to contain any other lines than
+#       the ones we are grepping for.  Not very hard - just a flag.
 
 import argparse, os, re, subprocess, sys
 
 def main():
-    (mode, numruns, argument, isVerbose, dumpData, dumpVariance, patterns) = parse_args()
+    (mode, numruns, argument, isVerbose, dumpData, dumpVariance, dumpRange, patterns) = parse_args()
     (shell1, shell2) = get_shells(mode)
 
     check = mode == "IonCheck" or mode == "BaselineCheck"
@@ -90,6 +96,14 @@ def main():
                 lo2 = t2[1]
                 hi2 = t2[len(t2)-2]
                 msg += "\t[" + three_places(lo2, n2) + ", " + three_places(hi2, n2) + "]"
+
+            if dumpRange:
+                lo1 = t1[1]
+                hi1 = t1[len(t1)-2]
+                msg += "\t[" + str(lo1) + ", " + str(hi1) + "]"
+                lo2 = t2[1]
+                hi2 = t2[len(t2)-2]
+                msg += "\t[" + str(lo2) + ", " + str(hi2) + "]"
 
             if dumpData:
                 msg += "\t" + str(t1) + "\t" + str(t2)
@@ -215,6 +229,9 @@ def parse_args():
     parser.add_argument("-i", "--variance", action="store_true", help=
                         """For five or more runs, discard the high and low measurements and
                         print low/median and high/median following the standard columns.""")
+    parser.add_argument("-j", "--range", action="store_true", help=
+                        """For five or more runs, discard the high and low measurements and
+                        print low and high following the standard columns.""")
     parser.add_argument("-m", "--mode", metavar="mode", choices=["ion", "baseline"], help=
                         """Compare the output of two different shells.  In this case, 
                         the environment variables JS_SHELL1 and JS_SHELL2 must be set.
@@ -239,6 +256,9 @@ def parse_args():
     if args.check and args.variance:
         sys.exit("Error: --check and --variance are incompatible")
 
+    if args.check and args.range:
+        sys.exit("Error: --check and --range are incompatible")
+
     numruns = 1
     if args.numruns != None:
         if args.numruns <= 0:
@@ -254,6 +274,9 @@ def parse_args():
     if args.variance and numruns < 5:
         sys.exit("Error: At least five runs required for --variance")
 
+    if args.range and numruns < 5:
+        sys.exit("Error: At least five runs required for --range")
+
     argument = None
     if args.problem != None:
         if args.problem < 0 or args.problem > 5:
@@ -263,6 +286,6 @@ def parse_args():
     if args.verbose:
         args.data = True
 
-    return (mode, numruns, argument, args.verbose, args.data, args.variance, args.pattern)
+    return (mode, numruns, argument, args.verbose, args.data, args.variance, args.range, args.pattern)
 
 main()
