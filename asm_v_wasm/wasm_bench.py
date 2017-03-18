@@ -28,7 +28,7 @@
 # difference in ratios is actually not large, but running time is the
 # best measure.
 #
-# TODO: Snnotate results with - and +, derived from
+# TODO: Annotate results with - and +, derived from
 #       the variance maybe.  Switch -s / --significance.
 #
 # TODO: catch any exception from the subprocess and print the log if
@@ -123,7 +123,7 @@ def run_std(test, isVerbose, shell, mode, argument):
 def run_linpack(test, isVerbose, shell, mode, argument):
     text = run_test(isVerbose, shell, "wasm_linpack_float.c.js", mode, argument)
     if argument == 0:
-        return parse_ouput(text, 0, None)
+        return parse_output(text, 0, None)
 
     mflops = float(parse_line(text, r"Unrolled +Single +Precision.*Mflops", 4))
     score = int(10000000.0/mflops)
@@ -132,7 +132,7 @@ def run_linpack(test, isVerbose, shell, mode, argument):
 def run_scimark(test, isVerbose, shell, mode, argument):
     text = run_test(isVerbose, shell, "wasm_lua_scimark.c.js", mode, argument)
     if argument == 0:
-        return parse_ouput(text, 0, None)
+        return parse_output(text, 0, None)
 
     mark = float(parse_line(text, r"SciMark.*small", 2))
     score = int(100000.0/mark)
@@ -146,20 +146,15 @@ tests = [ ("box2d",        None, run_std, r"frame averages:.*, range:.* to "),
           ("fannkuch",     None, run_std, r"4312567891011"),
           ("fasta",        None, run_std, r"CCACTGCACTCCAGCCTGGGCGACAGAGCGAGACTCCGTCTCAAAAAGGCCGGGCGCGGT"),
           ("ifs",          None, run_std, r"ok"),
-          ("linpack",      None, run_linpack,
-                                          None),
-          ("binarytrees",  "wasm_lua_binarytrees.c.js",
-                                 run_std, "843\t trees of depth 10\t check: -842"),
-          ("scimark",      None, run_scimark,
-                                          None),
+          ("linpack",      None, run_linpack, None),
+          ("binarytrees",  "wasm_lua_binarytrees.c.js", run_std, "843\t trees of depth 10\t check: -842"),
+          ("scimark",      None, run_scimark, None),
           ("memops",       None, run_std, r"final: 400."),
           ("primes",       None, run_std, r"lastprime: 3043739."),
-          ("raybench",     "raybench.js",
-                                 run_std, r"Render time: .*"),
+          ("raybench",     "raybench.js", run_std, r"Render time: .*"),
           ("skinning",     None, run_std, r"blah=0.000000"),
-          ("zlib",         "wasm_zlib.c.js",
-                                 run_std, r"sizes: 100000,25906") ]
-    
+          ("zlib",         "wasm_zlib.c.js", run_std, r"sizes: 100000,25906") ]
+
 def run_test(isVerbose, shell, program, mode, argument):
     cmd = [shell]
     if mode == "baseline":
@@ -218,7 +213,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Run wasm benchmarks in various configurations.")
     parser.add_argument("-a", "--problem", metavar="argument", type=int, help=
                         """The problem size argument. The default is 3.  With argument=0 we
-                        effectively only compile the code and compilation time is reported 
+                        effectively only compile the code and compilation time is reported
                         instead.  The max is 5.""")
     parser.add_argument("-c", "--check", metavar="mode", choices=["ion", "baseline"], help=
                         """Run only one shell a single run, to see if it works.  `mode` must
@@ -233,18 +228,18 @@ def parse_args():
                         """For five or more runs, discard the high and low measurements and
                         print low and high following the standard columns.""")
     parser.add_argument("-m", "--mode", metavar="mode", choices=["ion", "baseline"], help=
-                        """Compare the output of two different shells.  In this case, 
+                        """Compare the output of two different shells.  In this case,
                         the environment variables JS_SHELL1 and JS_SHELL2 must be set.
                         `mode` must be "ion" or "baseline".""")
     parser.add_argument("-n", "--numruns", metavar="numruns", type=int, help=
-                        """The number of iterations to run.  The default is 1.  The value 
+                        """The number of iterations to run.  The default is 1.  The value
                         should be odd.  We report the median time (but see -b).""")
     parser.add_argument("-v", "--verbose", action="store_true", help=
                         """Verbose.  Echo commands and other information on stderr.""")
     parser.add_argument("pattern", nargs="*", help=
                         """Regular expressions to match against test names""")
     args = parser.parse_args();
-    
+
     mode = "IonVsBaseline"
     if args.check and args.mode:
         sys.exit("Error: --check and --mode are incompatible")
@@ -282,10 +277,11 @@ def parse_args():
         if args.problem < 0 or args.problem > 5:
             sys.exit("Error: --problem requires an integer between 0 and 5")
         argument = args.problem
-    
+
     if args.verbose:
         args.data = True
 
     return (mode, numruns, argument, args.verbose, args.data, args.variance, args.range, args.pattern)
 
-main()
+if __name__ == '__main__':
+    main()
