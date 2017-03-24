@@ -1,7 +1,12 @@
 # Makefile for generating a Box2D library using Emscripten.
+#
+# Define JITTEST in FLAGS to compile a variant that runs very briefly.
+# To integrate the test into the SpiderMonkey test suite you must edit the
+# resulting .js file so that it loads the .wasm from the appropriate scriptdir.
 
 CXX=emcc -s WASM=1 -s BINARYEN=1 -s BINARYEN_METHOD=\"native-wasm\" -s BINARYEN_IMPRECISE=1
 OPT=-O2
+# FLAGS=-DJITTEST
 
 O = Box2D
 OBJECTS = \
@@ -53,8 +58,8 @@ OBJECTS = \
 
 all: wasm_box2d.js
 
-wasm_box2d.js: $(OBJECTS)
-	$(CXX) -o wasm_box2d.js -I . -g $(OPT) Benchmark.cpp $(OBJECTS)
+wasm_box2d.js: $(OBJECTS) Benchmark.cpp Makefile
+	$(CXX) -o wasm_box2d.js -I . -g $(OPT) $(FLAGS) Benchmark.cpp $(OBJECTS)
 
 %.o: %.cpp
 	$(CXX) -I. $< -o $@ $(OPT) -c

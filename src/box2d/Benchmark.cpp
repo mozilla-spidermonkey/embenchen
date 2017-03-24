@@ -65,6 +65,11 @@ int responsive_main_loop;
 void iter();
 
 int main(int argc, char **argv) {
+#ifdef JITTEST
+  // Special ultra-low setting for use in Firefox regression testing
+  WARMUP = 0;
+  FRAMES = 1;
+#else
   int arg = argc > 1 ? argv[1][0] - '0' : 3;
   switch(arg) {
     case 0: return 0; break;
@@ -75,6 +80,7 @@ int main(int argc, char **argv) {
     case 5: WARMUP = 10*64; FRAMES = 17*333; break;
     default: printf("error: %d\\n", arg); return -1;
   }
+#endif
 
   // do not split out warmup, do not ignore initial stalls
   FRAMES += WARMUP;
