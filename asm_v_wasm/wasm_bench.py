@@ -111,6 +111,8 @@ def main():
         print msg
 
 def three_places(a, b):
+    if b == 0:
+        return "-----"
     return str(round(float(a)/float(b)*1000)/1000)
 
 def run_std(test, isVerbose, shell, mode, argument):
