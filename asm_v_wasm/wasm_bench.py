@@ -214,7 +214,12 @@ def get_shell(name):
     return probe
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Run wasm benchmarks in various configurations.")
+    parser = argparse.ArgumentParser(description=
+                                     """Run wasm benchmarks in various configurations.
+                                     When a single JS shell is needed the default program name is 'js'; 
+                                     otherwise it can be overridden with the environment variable JS_SHELL.
+                                     When two shells are needed they must be named by the environment
+                                     variables JS_SHELL1 and JS_SHELL2.""")
     parser.add_argument("-a", "--problem", metavar="argument", type=int, help=
                         """The problem size argument. The default is 3.  With argument=0 we
                         effectively only compile the code and compilation time is reported
@@ -232,12 +237,11 @@ def parse_args():
                         """For five or more runs, discard the high and low measurements and
                         print low and high following the standard columns.""")
     parser.add_argument("-m", "--mode", metavar="mode", choices=["ion", "baseline"], help=
-                        """Compare the output of two different shells.  In this case,
-                        the environment variables JS_SHELL1 and JS_SHELL2 must be set.
+                        """Compare the output of two different shells.  
                         `mode` must be "ion" or "baseline".""")
     parser.add_argument("-n", "--numruns", metavar="numruns", type=int, help=
                         """The number of iterations to run.  The default is 1.  The value
-                        should be odd.  We report the median time (but see -b).""")
+                        should be odd.  We report the median time.""")
     parser.add_argument("-v", "--verbose", action="store_true", help=
                         """Verbose.  Echo commands and other information on stderr.""")
     parser.add_argument("pattern", nargs="*", help=
