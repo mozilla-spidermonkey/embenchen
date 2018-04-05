@@ -50,8 +50,9 @@ def main():
     (shell1, shell2) = get_shells(mode)
 
     check = mode == "IonCheck" or mode == "BaselineCheck"
-    m1 = "baseline" if mode == "BaselineVsBaseline" else "ion"
-    m2 = "ion" if mode == "IonVsIon" else "baseline"
+    only = mode == "IonOnly" or mode == "BaselineOnly"
+    m1 = "baseline" if (mode == "BaselineVsBaseline" or mode == "BaselineOnly") else "ion"
+    m2 = "ion" if (mode == "IonVsIon" or mode == "IonOnly") else "baseline"
 
     print "# mode=%s, runs=%d, problem size=%s" % (mode, numruns, (str(argument) if argument != None else "default"))
 
@@ -78,35 +79,45 @@ def main():
             t1.sort()
 
             t2 = []
-            for i in range(numruns):
-                (c, r) = fn(test, isVerbose, shell2, m2, argument)
-                t2.append(c if argument == 0 else r)
-            t2.sort()
+            if not only:
+                for i in range(numruns):
+                    (c, r) = fn(test, isVerbose, shell2, m2, argument)
+                    t2.append(c if argument == 0 else r)
+                t2.sort()
 
             n1 = t1[len(t1)/2]
-            n2 = t2[len(t2)/2]
+            n2 = 1
+            if not only:
+                n2 = t2[len(t2)/2]
             score = three_places(n1, n2)
 
-            msg += str(n1) + "\t" + str(n2) + "\t" + score
+            msg += str(n1) + "\t"
+            if not only:
+                msg += str(n2) + "\t"
+            msg += score
 
             if dumpVariance:
                 lo1 = t1[1]
                 hi1 = t1[len(t1)-2]
                 msg += "\t[" + three_places(lo1, n1) + ", " + three_places(hi1, n1) + "]"
-                lo2 = t2[1]
-                hi2 = t2[len(t2)-2]
-                msg += "\t[" + three_places(lo2, n2) + ", " + three_places(hi2, n2) + "]"
+                if not only:
+                    lo2 = t2[1]
+                    hi2 = t2[len(t2)-2]
+                    msg += "\t[" + three_places(lo2, n2) + ", " + three_places(hi2, n2) + "]"
 
             if dumpRange:
                 lo1 = t1[1]
                 hi1 = t1[len(t1)-2]
                 msg += "\t[" + str(lo1) + ", " + str(hi1) + "]"
-                lo2 = t2[1]
-                hi2 = t2[len(t2)-2]
-                msg += "\t[" + str(lo2) + ", " + str(hi2) + "]"
+                if not only:
+                    lo2 = t2[1]
+                    hi2 = t2[len(t2)-2]
+                    msg += "\t[" + str(lo2) + ", " + str(hi2) + "]"
 
             if dumpData:
-                msg += "\t" + str(t1) + "\t" + str(t2)
+                msg += "\t" + str(t1)
+                if not only:
+                    msg += "\t" + str(t2)
 
         print msg
 
@@ -199,7 +210,7 @@ def parse_line(text, correct, fieldno):
 def get_shells(mode):
     shell1 = None
     shell2 = None
-    if mode == "IonVsBaseline" or mode == "IonCheck" or mode == "BaselineCheck":
+    if mode == "IonVsBaseline" or mode == "IonCheck" or mode == "BaselineCheck" or mode == "IonOnly" or mode == "BaselineOnly":
         shell1 = get_shell("JS_SHELL")
         shell2 = shell1
     else:
@@ -242,19 +253,29 @@ def parse_args():
     parser.add_argument("-n", "--numruns", metavar="numruns", type=int, help=
                         """The number of iterations to run.  The default is 1.  The value
                         should be odd.  We report the median time.""")
+    parser.add_argument("-o", "--only", metavar="mode", choices=["ion", "baseline"], help=
+                        """Run only the one shell in the normal manner, and report results
+                        according to any other switches""")
     parser.add_argument("-v", "--verbose", action="store_true", help=
                         """Verbose.  Echo commands and other information on stderr.""")
     parser.add_argument("pattern", nargs="*", help=
                         """Regular expressions to match against test names""")
     args = parser.parse_args();
 
-    mode = "IonVsBaseline"
     if args.check and args.mode:
         sys.exit("Error: --check and --mode are incompatible")
+    if args.check and args.only:
+        sys.exit("Error: --check and --only are incompatible")
+    if args.mode and args.only:
+        sys.exit("Error: --mode and --only are incompatible")
+
+    mode = "IonVsBaseline"
     if args.mode:
         mode = "BaselineVsBaseline" if args.mode == "baseline" else "IonVsIon"
     if args.check:
         mode = "BaselineCheck" if args.check == "baseline" else "IonCheck"
+    if args.only:
+        mode = "BaselineOnly" if args.only == "baseline" else "IonOnly"
 
     if args.check and args.variance:
         sys.exit("Error: --check and --variance are incompatible")
