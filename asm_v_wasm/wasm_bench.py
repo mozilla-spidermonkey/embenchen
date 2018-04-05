@@ -3,8 +3,8 @@
 # Run wasm benchmarks in various configurations and report the times.
 # Run with -h for help.
 #
-# In the default mode, runs the shell without and with
-# --wasm-always-baseline and prints three tab-separated columns:
+# In the default mode, runs the shell with --no-wasm-baseline or --no-wasm-ion
+# and prints three tab-separated columns:
 #
 #  Ion-result  Baseline-result  Ion/Baseline
 #
@@ -160,7 +160,9 @@ tests = [ ("box2d",        None, run_std, r"frame averages:.*, range:.* to "),
 def run_test(isVerbose, shell, program, mode, argument):
     cmd = [shell]
     if mode == "baseline":
-        cmd.append("--wasm-always-baseline")
+        cmd.append("--no-wasm-ion")
+    if mode == "ion":
+        cmd.append("--no-wasm-baseline")
     cmd.append(program)
     if argument != None:
         cmd.append(str(argument))
