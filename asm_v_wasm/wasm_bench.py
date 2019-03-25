@@ -3,8 +3,8 @@
 # Run wasm benchmarks in various configurations and report the times.
 # Run with -h for help.
 #
-# In the default mode, runs the shell without and with
-# --wasm-always-baseline and prints three tab-separated columns:
+# In the default mode, runs the shell with --no-wasm-baseline or --no-wasm-ion
+# and prints three tab-separated columns:
 #
 #  Ion-result  Baseline-result  Ion/Baseline
 #
@@ -50,8 +50,9 @@ def main():
     (shell1, shell2) = get_shells(mode)
 
     check = mode == "IonCheck" or mode == "BaselineCheck"
-    m1 = "baseline" if mode == "BaselineVsBaseline" else "ion"
-    m2 = "ion" if mode == "IonVsIon" else "baseline"
+    only = mode == "IonOnly" or mode == "BaselineOnly"
+    m1 = "baseline" if (mode == "BaselineVsBaseline" or mode == "BaselineOnly") else "ion"
+    m2 = "ion" if (mode == "IonVsIon" or mode == "IonOnly") else "baseline"
 
     print "# mode=%s, runs=%d, problem size=%s" % (mode, numruns, (str(argument) if argument != None else "default"))
 
@@ -78,35 +79,45 @@ def main():
             t1.sort()
 
             t2 = []
-            for i in range(numruns):
-                (c, r) = fn(test, isVerbose, shell2, m2, argument)
-                t2.append(c if argument == 0 else r)
-            t2.sort()
+            if not only:
+                for i in range(numruns):
+                    (c, r) = fn(test, isVerbose, shell2, m2, argument)
+                    t2.append(c if argument == 0 else r)
+                t2.sort()
 
             n1 = t1[len(t1)/2]
-            n2 = t2[len(t2)/2]
+            n2 = 1
+            if not only:
+                n2 = t2[len(t2)/2]
             score = three_places(n1, n2)
 
-            msg += str(n1) + "\t" + str(n2) + "\t" + score
+            msg += str(n1) + "\t"
+            if not only:
+                msg += str(n2) + "\t"
+            msg += score
 
             if dumpVariance:
                 lo1 = t1[1]
                 hi1 = t1[len(t1)-2]
                 msg += "\t[" + three_places(lo1, n1) + ", " + three_places(hi1, n1) + "]"
-                lo2 = t2[1]
-                hi2 = t2[len(t2)-2]
-                msg += "\t[" + three_places(lo2, n2) + ", " + three_places(hi2, n2) + "]"
+                if not only:
+                    lo2 = t2[1]
+                    hi2 = t2[len(t2)-2]
+                    msg += "\t[" + three_places(lo2, n2) + ", " + three_places(hi2, n2) + "]"
 
             if dumpRange:
                 lo1 = t1[1]
                 hi1 = t1[len(t1)-2]
                 msg += "\t[" + str(lo1) + ", " + str(hi1) + "]"
-                lo2 = t2[1]
-                hi2 = t2[len(t2)-2]
-                msg += "\t[" + str(lo2) + ", " + str(hi2) + "]"
+                if not only:
+                    lo2 = t2[1]
+                    hi2 = t2[len(t2)-2]
+                    msg += "\t[" + str(lo2) + ", " + str(hi2) + "]"
 
             if dumpData:
-                msg += "\t" + str(t1) + "\t" + str(t2)
+                msg += "\t" + str(t1)
+                if not only:
+                    msg += "\t" + str(t2)
 
         print msg
 
@@ -160,7 +171,9 @@ tests = [ ("box2d",        None, run_std, r"frame averages:.*, range:.* to "),
 def run_test(isVerbose, shell, program, mode, argument):
     cmd = [shell]
     if mode == "baseline":
-        cmd.append("--wasm-always-baseline")
+        cmd.append("--no-wasm-ion")
+    if mode == "ion":
+        cmd.append("--no-wasm-baseline")
     cmd.append(program)
     if argument != None:
         cmd.append(str(argument))
@@ -197,7 +210,7 @@ def parse_line(text, correct, fieldno):
 def get_shells(mode):
     shell1 = None
     shell2 = None
-    if mode == "IonVsBaseline" or mode == "IonCheck" or mode == "BaselineCheck":
+    if mode == "IonVsBaseline" or mode == "IonCheck" or mode == "BaselineCheck" or mode == "IonOnly" or mode == "BaselineOnly":
         shell1 = get_shell("JS_SHELL")
         shell2 = shell1
     else:
@@ -212,7 +225,12 @@ def get_shell(name):
     return probe
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Run wasm benchmarks in various configurations.")
+    parser = argparse.ArgumentParser(description=
+                                     """Run wasm benchmarks in various configurations.
+                                     When a single JS shell is needed the default program name is 'js'; 
+                                     otherwise it can be overridden with the environment variable JS_SHELL.
+                                     When two shells are needed they must be named by the environment
+                                     variables JS_SHELL1 and JS_SHELL2.""")
     parser.add_argument("-a", "--problem", metavar="argument", type=int, help=
                         """The problem size argument. The default is 3.  With argument=0 we
                         effectively only compile the code and compilation time is reported
@@ -230,25 +248,34 @@ def parse_args():
                         """For five or more runs, discard the high and low measurements and
                         print low and high following the standard columns.""")
     parser.add_argument("-m", "--mode", metavar="mode", choices=["ion", "baseline"], help=
-                        """Compare the output of two different shells.  In this case,
-                        the environment variables JS_SHELL1 and JS_SHELL2 must be set.
+                        """Compare the output of two different shells.  
                         `mode` must be "ion" or "baseline".""")
     parser.add_argument("-n", "--numruns", metavar="numruns", type=int, help=
                         """The number of iterations to run.  The default is 1.  The value
-                        should be odd.  We report the median time (but see -b).""")
+                        should be odd.  We report the median time.""")
+    parser.add_argument("-o", "--only", metavar="mode", choices=["ion", "baseline"], help=
+                        """Run only the one shell in the normal manner, and report results
+                        according to any other switches""")
     parser.add_argument("-v", "--verbose", action="store_true", help=
                         """Verbose.  Echo commands and other information on stderr.""")
     parser.add_argument("pattern", nargs="*", help=
                         """Regular expressions to match against test names""")
     args = parser.parse_args();
 
-    mode = "IonVsBaseline"
     if args.check and args.mode:
         sys.exit("Error: --check and --mode are incompatible")
+    if args.check and args.only:
+        sys.exit("Error: --check and --only are incompatible")
+    if args.mode and args.only:
+        sys.exit("Error: --mode and --only are incompatible")
+
+    mode = "IonVsBaseline"
     if args.mode:
         mode = "BaselineVsBaseline" if args.mode == "baseline" else "IonVsIon"
     if args.check:
         mode = "BaselineCheck" if args.check == "baseline" else "IonCheck"
+    if args.only:
+        mode = "BaselineOnly" if args.only == "baseline" else "IonOnly"
 
     if args.check and args.variance:
         sys.exit("Error: --check and --variance are incompatible")
