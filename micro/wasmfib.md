@@ -86,9 +86,9 @@ The general bug for Cranelift for this heapReg interaction thing is https://bugz
 
 And even if we don't do that, would it not be sufficient to remove r15 from Cranelift's register mask so that we don't have to have these two chained loads at the end of every function?  Or will that interact poorly with eg callouts to C++?
 
-Is it possible to run an experiment here by removing the lines that reload the heapreg and running with --wasm-compiler=cranelift, since we won't have any use for the register and we won't have any interaction with baseline code?  Curious about how much this matters, if at all.
+Is it possible to run an experiment here by removing the lines that reload the heapreg and running with --wasm-compiler=cranelift, since we won't have any use for the register and we won't have any interaction with baseline code?  Curious about how much this matters, if at all.  (For the case with tiering, this won't work, since baseline code that may be returned to will expect the heapreg to be sane.)
 
-Looks like Benjamin is working on this: https://github.com/CraneStation/cranelift/pull/624.
+Benjamin was working on this: https://github.com/CraneStation/cranelift/pull/624 but is not currently doing so.
 
 #### [101] About reloading spilled values already in registers
 
