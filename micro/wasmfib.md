@@ -1,4 +1,4 @@
-# Case study of Cranelift behavior on doubly-recursive fib()
+# Cranelift behavior on doubly-recursive fib()
 
 ## Source:
 
