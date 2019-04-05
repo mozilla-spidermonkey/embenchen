@@ -105,3 +105,46 @@ But if we are, it would be better to do it after the "pop r14" than here...
 #### [104] Some work ongoing to improve branch optimizations
 
 Here: https://github.com/CraneStation/cranelift/pull/629.
+
+### For reference: Ion machine code
+
+This is slightly less bad than current cranelift code, but even so
+it's plenty bad, with poor register use and extraneous memory traffic.
+
+```
+[Codegen] cmpl       $0x23, %r10d
+[Codegen] je         .Lfrom10
+[Codegen] ud2
+[Codegen] .set .Lfrom10
+[Codegen] push       %r14
+[Codegen] push       %rbp
+[Codegen] movq       %rsp, %rbp
+[Codegen] subq       $24, %rsp
+[Codegen] cmpq       %rsp, 0x28(%r14)
+[Codegen] jb         .Lfrom36
+[Codegen] ud2
+[Codegen] .set .Lfrom36
+[Codegen] movl       %edi, 0x14(%rsp)    // BAD - missing shrinkwrap
+[Codegen] movl       0x14(%rsp), %eax    // BAD - value in EDI already
+[Codegen] cmpl       $0x2, %eax          // BAD - could just do a memory compare
+[Codegen] jl         .Lfrom55
+[Codegen] movl       0x14(%rsp), %edi    // BAD - value in EDI already
+[Codegen] subl       $1, %edi
+[Codegen] call       .Lfrom78
+[Codegen] movl       %eax, 0x10(%rsp)
+[Codegen] movl       0x14(%rsp), %eax    // BAD - load into edi would be better
+[Codegen] subl       $2, %eax
+[Codegen] movl       %eax, %edi          //   see above
+[Codegen] call       .Lfrom107
+[Codegen] movl       0x10(%rsp), %ecx
+[Codegen] addl       %eax, %ecx
+[Codegen] movl       %ecx, 0x10(%rsp)    // BAD - will reload next
+[Codegen] movl       0x10(%rsp), %r11d   // BAD - reloading
+[Codegen] movl       %r11d, 0x14(%rsp)   // BAD - just to store it again
+[Codegen] .set .Lfrom55,
+[Codegen] movl       0x14(%rsp), %eax    // BAD - value could be in register (EDI obvious, EAX plausible) along both branches
+[Codegen] addq       $24, %rsp
+[Codegen] pop        %rbp
+[Codegen] pop        %r14
+[Codegen] ret
+```
