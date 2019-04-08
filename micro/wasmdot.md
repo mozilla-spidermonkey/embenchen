@@ -29,6 +29,15 @@
     (local.get $sum)))
 ```
 
+## Analysis 2010-04-08
+
+With pending changes for LICM
+(https://github.com/CraneStation/cranelift/pull/727) performance is on
+par with Ion.  The cranelift code still has too many spurious MOVs in
+it and slightly higher register pressure and that will hurt it
+eventually, but on this benchmark it doesn't matter.
+
+
 ## Analysis 2019-04-05
 
 The Ion code (see below) is very good, the only thing one could do
@@ -38,18 +47,15 @@ every iteration, and then unroll the inner loop.
 The Cranelift code is not bad, but it has several weaknesses:
 
 * interrupt checks are load-compare instruction pairs instead of compare-with-memory
-* there are three obviously redundant moves at the inner loop head
+* there are three obviously redundant MOVs at the inner loop head
 * it loads the heap pointer from the tls on every iteration instead of hoisting the loaded value, even though there should be plenty of registers available for this
-* before making a heap reference it loads the index value into a temp register instead of using the register it's in
+* before making a heap reference it MOVs the index value into a temp register instead of using the register the index value is already in
 * it manipulates the stack pointer for unknown reasons and then does not use the frame, this looks like frame alignment that ion does not think it necessary to do
 
 With regards to reloading the heap pointer, Cranelift's LICM considers
-loops trivially unsafe.  But the load should be flagged as readonly
-(it is flagged when it's created) yet licm does not look at that.
-
-licm might also be constrained by a load faulting.  (Shouldn't be but
-could be.)  But a load from the vmctx can be flagged as intrinsically
-safe.
+loads trivially unsafe.  The load of the heap pointer is flagged as
+readonly + nontrapping when it's created yet licm does not look at
+that.
 
 
 ### Cranelift code

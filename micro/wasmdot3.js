@@ -1,37 +1,39 @@
 var ITER = 1000;
 
 // Compute the dot-product of vectors starting at $m and $n, both of length
-// $len, ITER times, and return the final sum.  Split this into one function per
-// loop.
+// $len, ITER times, and return the final sum.
 //
-// Reduces register pressure relative to wasmdot.js since temps holding original
-// values are local to the outer function.
+// Perform one dummy function call before the outer loop.
 
 var bin = wasmTextToBinary(
     `(module
       (memory (export "mem") 100)
-      (func $dodot (param $m i32) (param $n i32) (param $len i32) (result f64)
-        (local $sum f64)
-        (if (local.get $len)
-            (loop $L
-              (local.set $sum
-                (f64.add (local.get $sum)
-                         (f64.mul (f64.load (local.get $m)) (f64.load (local.get $n)))))
-              (local.set $m (i32.add (local.get $m) (i32.const 8)))
-              (local.set $n (i32.add (local.get $n) (i32.const 8)))
-              (local.set $len (i32.sub (local.get $len) (i32.const 1)))
-              (br_if $L (local.get $len))))
-        (local.get $sum))
-
+      (func $dummy)
       (func $dot (export "dot") (param $m i32) (param $n i32) (param $len i32) (result f64)
+        (local $mm i32)
+        (local $nn i32)
+        (local $ll i32)
         (local $sum f64)
         (local $iter i32)
         (local.set $iter (i32.const ${ITER}))
+        (local.set $mm (local.get $m))
+        (local.set $nn (local.get $n))
+        (local.set $ll (local.get $len))
+        (call $dummy)
         (loop $AGAIN
-          (local.set $sum
-            (f64.add (local.get $sum)
-                     (call $dodot (local.get $m) (local.get $n) (local.get $len))))
+          (if (local.get $len)
+              (loop $L
+                (local.set $sum
+                  (f64.add (local.get $sum)
+                           (f64.mul (f64.load (local.get $m)) (f64.load (local.get $n)))))
+                (local.set $m (i32.add (local.get $m) (i32.const 8)))
+                (local.set $n (i32.add (local.get $n) (i32.const 8)))
+                (local.set $len (i32.sub (local.get $len) (i32.const 1)))
+                (br_if $L (local.get $len))))
           (local.set $iter (i32.sub (local.get $iter) (i32.const 1)))
+          (local.set $m (local.get $mm))
+          (local.set $n (local.get $nn))
+          (local.set $len (local.get $ll))
           (br_if $AGAIN (local.get $iter)))
         (local.get $sum)))`);
 
