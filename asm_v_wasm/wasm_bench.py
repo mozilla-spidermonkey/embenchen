@@ -3,13 +3,14 @@
 # Run wasm benchmarks in various configurations and report the times.
 # Run with -h for help.
 #
-# In the default mode, runs the shell with --no-wasm-baseline or --no-wasm-ion
-# and prints three tab-separated columns:
+# In the default mode which is "ion+baseline", runs a single shell with
+# --wasm-compiler=baseline and --wasm-compiler=ion and prints three
+# tab-separated columns:
 #
 #  Ion-result  Baseline-result  Ion/Baseline
 #
-# In the other modes, runs the two shells with the same argument (depending on
-# the mode) and prints three tab-separated columns:
+# In other benchmarking modes, runs one or two shells with the same argument
+# (depending on the mode) and prints three tab-separated columns:
 #
 #  shell1-result  shell2-result  shell1-result/shell2-result
 #
@@ -49,11 +50,6 @@ def main():
     (mode, numruns, argument, isVerbose, dumpData, dumpVariance, dumpRange, patterns) = parse_args()
     (shell1, shell2) = get_shells(mode)
 
-    check = mode == "IonCheck" or mode == "BaselineCheck"
-    only = mode == "IonOnly" or mode == "BaselineOnly"
-    m1 = "baseline" if (mode == "BaselineVsBaseline" or mode == "BaselineOnly") else "ion"
-    m2 = "ion" if (mode == "IonVsIon" or mode == "IonOnly") else "baseline"
-
     print "# mode=%s, runs=%d, problem size=%s" % (mode, numruns, (str(argument) if argument != None else "default"))
 
     for test in tests:
@@ -67,32 +63,32 @@ def main():
 
         msg = name + "\t" + ("\t" if len(name) < 8 else "")
 
-        if check:
-            fn(test, isVerbose, shell1, "ion" if mode == "IonCheck" else "baseline", argument)
+        if is_check(mode):
+            fn(test, isVerbose, shell1, get_system1(mode), argument)
             msg += "did not crash today"
         else:
             # Run back-to-back for each shell to reduce caching noise
             t1 = []
             for i in range(numruns):
-                (c, r) = fn(test, isVerbose, shell1, m1, argument)
+                (c, r) = fn(test, isVerbose, shell1, get_system1(mode), argument)
                 t1.append(c if argument == 0 else r)
             t1.sort()
 
             t2 = []
-            if not only:
+            if not is_only(mode):
                 for i in range(numruns):
-                    (c, r) = fn(test, isVerbose, shell2, m2, argument)
+                    (c, r) = fn(test, isVerbose, shell2, get_system2(mode), argument)
                     t2.append(c if argument == 0 else r)
                 t2.sort()
 
             n1 = t1[len(t1)/2]
             n2 = 1
-            if not only:
+            if not is_only(mode):
                 n2 = t2[len(t2)/2]
             score = three_places(n1, n2)
 
             msg += str(n1) + "\t"
-            if not only:
+            if not is_only(mode):
                 msg += str(n2) + "\t"
             msg += score
 
@@ -100,7 +96,7 @@ def main():
                 lo1 = t1[1]
                 hi1 = t1[len(t1)-2]
                 msg += "\t[" + three_places(lo1, n1) + ", " + three_places(hi1, n1) + "]"
-                if not only:
+                if not is_only(mode):
                     lo2 = t2[1]
                     hi2 = t2[len(t2)-2]
                     msg += "\t[" + three_places(lo2, n2) + ", " + three_places(hi2, n2) + "]"
@@ -109,14 +105,14 @@ def main():
                 lo1 = t1[1]
                 hi1 = t1[len(t1)-2]
                 msg += "\t[" + str(lo1) + ", " + str(hi1) + "]"
-                if not only:
+                if not is_only(mode):
                     lo2 = t2[1]
                     hi2 = t2[len(t2)-2]
                     msg += "\t[" + str(lo2) + ", " + str(hi2) + "]"
 
             if dumpData:
                 msg += "\t" + str(t1)
-                if not only:
+                if not is_only(mode):
                     msg += "\t" + str(t2)
 
         print msg
@@ -171,9 +167,11 @@ tests = [ ("box2d",        None, run_std, r"frame averages:.*, range:.* to "),
 def run_test(isVerbose, shell, program, mode, argument):
     cmd = [shell]
     if mode == "baseline":
-        cmd.append("--no-wasm-ion")
+        cmd.append("--wasm-compiler=baseline")
     if mode == "ion":
-        cmd.append("--no-wasm-baseline")
+        cmd.append("--wasm-compiler=ion")
+    if mode == "cranelift":
+        cmd.append("--wasm-compiler=cranelift")
     cmd.append(program)
     if argument != None:
         cmd.append(str(argument))
@@ -198,19 +196,19 @@ def parse_output(text, argument, correct):
             runTime = int(t[15:])
     if do_check and not found:
         print text
-        sys.exit("Error: did not match expected output " + correct)
+        panic("Did not match expected output " + correct)
     return (compileTime, runTime)
 
 def parse_line(text, correct, fieldno):
     for t in text:
         if re.match(correct, t):
             return re.split(r" +", t)[fieldno-1]
-    sys.exit("Error: did not match expected output " + correct)
+    panic("Did not match expected output " + correct)
 
 def get_shells(mode):
     shell1 = None
     shell2 = None
-    if mode == "IonVsBaseline" or mode == "IonCheck" or mode == "BaselineCheck" or mode == "IonOnly" or mode == "BaselineOnly":
+    if uses_one_shell(mode):
         shell1 = get_shell("JS_SHELL")
         shell2 = shell1
     else:
@@ -221,8 +219,34 @@ def get_shells(mode):
 def get_shell(name):
     probe = os.getenv(name)
     if not (probe and os.path.isfile(probe) and os.access(probe, os.X_OK)):
-        sys.exit("Error: " + name + " does not name an executable shell")
+        panic(name + " does not name an executable shell")
     return probe
+
+def is_check(mode):
+    return mode == "ion_check" or mode == "baseline_check" or mode == "cranelift_check"
+
+def uses_one_shell(mode):
+    if is_check(mode) or is_only(mode):
+        return True
+    if get_system1(mode) != get_system2(mode):
+        return True
+    return False
+ 
+def get_system1(mode):
+    if re.search(r"_|\+", mode):
+        return re.split(r"_|\+", mode)[0]
+    return mode
+
+def get_system2(mode):
+    if re.search(r"\+", mode):
+        return re.split(r"\+", mode)[1]
+    panic("Mode does not have a second system: " + mode)
+
+def is_only(mode):
+    return mode == "ion_only" or mode == "baseline_only" or mode == "cranelift_only"
+
+def panic(msg):
+    sys.exit("Error: " + msg)
 
 def parse_args():
     parser = argparse.ArgumentParser(description=
@@ -235,9 +259,9 @@ def parse_args():
                         """The problem size argument. The default is 3.  With argument=0 we
                         effectively only compile the code and compilation time is reported
                         instead.  The max is 5.""")
-    parser.add_argument("-c", "--check", metavar="mode", choices=["ion", "baseline"], help=
+    parser.add_argument("-c", "--check", metavar="mode", choices=["ion", "baseline", "cranelift"], help=
                         """Run only one shell a single run, to see if it works.  `mode` must
-                        be "ion" or "baseline".""")
+                        be "ion" or "baseline" or "cranelift".""")
     parser.add_argument("-d", "--data", action="store_true", help=
                         """Print the measurement data as two comma-separated lists following
                         the normal results.""")
@@ -247,13 +271,18 @@ def parse_args():
     parser.add_argument("-j", "--range", action="store_true", help=
                         """For five or more runs, discard the high and low measurements and
                         print low and high following the standard columns.""")
-    parser.add_argument("-m", "--mode", metavar="mode", choices=["ion", "baseline"], help=
+    parser.add_argument("-m", "--mode", metavar="mode",
+                        choices=["ion", "baseline", "cranelift", "ion+ion", "ion+baseline", "ion+cranelift",
+                                 "baseline+ion", "baseline+baseline", "baseline+cranelift",
+                                 "cranelift+ion", "cranelift+baseline", "cranelift+cranelift"],
+                        help=
                         """Compare the output of two different shells.  
-                        `mode` must be "ion" or "baseline".""")
+                        `mode` must be "ion" or "baseline" or "cranelift", or "a+b" 
+                        where a and b are one of those systems.""")
     parser.add_argument("-n", "--numruns", metavar="numruns", type=int, help=
                         """The number of iterations to run.  The default is 1.  The value
                         should be odd.  We report the median time.""")
-    parser.add_argument("-o", "--only", metavar="mode", choices=["ion", "baseline"], help=
+    parser.add_argument("-o", "--only", metavar="mode", choices=["ion", "baseline", "cranelift"], help=
                         """Run only the one shell in the normal manner, and report results
                         according to any other switches""")
     parser.add_argument("-v", "--verbose", action="store_true", help=
@@ -263,48 +292,48 @@ def parse_args():
     args = parser.parse_args();
 
     if args.check and args.mode:
-        sys.exit("Error: --check and --mode are incompatible")
+        panic("--check and --mode are incompatible")
     if args.check and args.only:
-        sys.exit("Error: --check and --only are incompatible")
+        panic("--check and --only are incompatible")
     if args.mode and args.only:
-        sys.exit("Error: --mode and --only are incompatible")
+        panic("--mode and --only are incompatible")
 
-    mode = "IonVsBaseline"
+    mode = "ion+baseline"
     if args.mode:
-        mode = "BaselineVsBaseline" if args.mode == "baseline" else "IonVsIon"
+        mode = args.mode
     if args.check:
-        mode = "BaselineCheck" if args.check == "baseline" else "IonCheck"
+        mode = args.check + "_check"
     if args.only:
-        mode = "BaselineOnly" if args.only == "baseline" else "IonOnly"
+        mode = args.only + "_only"
 
     if args.check and args.variance:
-        sys.exit("Error: --check and --variance are incompatible")
+        panic("--check and --variance are incompatible")
 
     if args.check and args.range:
-        sys.exit("Error: --check and --range are incompatible")
+        panic("--check and --range are incompatible")
 
     numruns = 1
     if args.numruns != None:
         if args.numruns <= 0:
-            sys.exit("Error: --numruns requires a nonnegative integer")
+            panic("--numruns requires a nonnegative integer")
         numruns = args.numruns
 
-    if mode == "IonCheck" or mode == "BaselineCheck":
+    if is_check(mode):
         numruns = 1
 
     if not (numruns % 2):
-        sys.exit("Error: The number of runs must be odd")
+        panic("The number of runs must be odd")
 
     if args.variance and numruns < 5:
-        sys.exit("Error: At least five runs required for --variance")
+        panic("At least five runs required for --variance")
 
     if args.range and numruns < 5:
-        sys.exit("Error: At least five runs required for --range")
+        panic("At least five runs required for --range")
 
     argument = None
     if args.problem != None:
         if args.problem < 0 or args.problem > 5:
-            sys.exit("Error: --problem requires an integer between 0 and 5")
+            panic("--problem requires an integer between 0 and 5")
         argument = args.problem
 
     if args.verbose:
