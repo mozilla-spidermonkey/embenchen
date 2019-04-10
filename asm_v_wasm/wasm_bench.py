@@ -51,6 +51,8 @@ def main():
     (shell1, shell2) = get_shells(mode)
 
     print "# mode=%s, runs=%d, problem size=%s" % (mode, numruns, (str(argument) if argument != None else "default"))
+    if not is_check(mode):
+        print "# Lower score is better"
 
     for test in tests:
         (name, _, fn, _) = test
@@ -278,7 +280,7 @@ def parse_args():
                         help=
                         """Compare the output of two different shells.  
                         `mode` must be "ion" or "baseline" or "cranelift", or "a+b" 
-                        where a and b are one of those systems.""")
+                        where a and b are one of those systems.  A single system a means a+a.""")
     parser.add_argument("-n", "--numruns", metavar="numruns", type=int, help=
                         """The number of iterations to run.  The default is 1.  The value
                         should be odd.  We report the median time.""")
@@ -300,7 +302,10 @@ def parse_args():
 
     mode = "ion+baseline"
     if args.mode:
-        mode = args.mode
+        if re.search(r"\+", args.mode):
+            mode = args.mode
+        else:
+            mode = args.mode + "+" + args.mode
     if args.check:
         mode = args.check + "_check"
     if args.only:
