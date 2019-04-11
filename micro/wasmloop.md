@@ -341,17 +341,13 @@ EBB but currently does not do so, but this would at best reduce the number of
 extranous fills.  In our example it would remove the "fill v6" after the brz in
 ebb2 - that's all.)
 
-DCE runs before register allocation so regalloc should not insert any dead
-code, it needs to be careful about what it does.  (Anyway dead code uses
-registers too and increases register pressure.)
-
 ## Why are calls different?
 
 Spills for calls are not "capacity" spills, they are necessary -- the value is
 live after the call but can't be in a register during the call.  From the point
-of view of the caller, the value should be in a register unless capacity
-requires it to be on the stack.  And even then it need not be on the stack
-always.
+of view of the caller, but ignoring the call, the value should be in a register
+unless capacity requires it to be on the stack.  And even then it need not be on
+the stack always.
 
 By spilling a live range just because there is a function call, we force the
 value onto the stack completely.  The coalescing phase has some mention of
@@ -364,7 +360,7 @@ copies for the CSSA, not live range splitting.
 
 It turns out that the register allocator already behaves well if a value that's
 live across a call is introduced as a copy of the live value directly after the
-call.  This effectively /splits the live range/ of the value.  We see an
+call.  This effectively *splits the live range* of the value.  We see an
 example of this above, where CSSA construction introduces copies of v3 in ebb0;
 these turn into fill instructions (from the value spilled across the call) that
 are then properly allocated to registers for the rest of the function.  But the
@@ -404,7 +400,7 @@ at a node.  For example, if we have:
 
 ```
   ebb1():
-    bnz ebb2()
+    bnz v9, ebb2()
     jump ebb3()
   ebb2():
     call f()
@@ -417,11 +413,11 @@ we will need to rewrite this as:
 
 ```
   ebb1():
-    bnz ebb2(v0)
+    bnz v9, ebb2()
     jump ebb3(v0)
-  ebb2(v1):
+  ebb2():
     call f()
-    v2 = copy v1
+    v2 = copy v0
     jump ebb3(v2)
   ebb3(v3):
     call g(v3)
@@ -429,7 +425,7 @@ we will need to rewrite this as:
 
 since v0 at ebb3 is either the original v0 or the new value v2, restored after
 the call to f.  Clearly v0 and v2 have the same value, but they are not the
-same SSA value since they are two different definitons.
+same SSA value since they are two different definitions.
 
 ### When and how to insert copies
 
