@@ -116,7 +116,8 @@ This code has many problems:
 * At 0x35 we create and spill a zero value, in a slot that will be used for
   `$k6`, but the useful live range of `$k6` is really from after the call,
   along with the other variables, and at 0x51 et seq we can see that the
-  compiler has figure this out for the other variables.
+  compiler has figured this out for the other variables.  So `$k6` could be
+  kept in a register.
 
 * The variables `$k1` through `$k5` are being initialized by loading the zero
   from memory rather than by just setting them to zero.
