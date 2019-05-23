@@ -47,7 +47,7 @@
 import argparse, os, re, subprocess, sys
 
 def main():
-    (mode, numruns, argument, isVerbose, dumpData, dumpVariance, dumpRange, patterns) = parse_args()
+    (mode, numruns, argument, isVerbose, noThreads, dumpData, dumpVariance, dumpRange, patterns) = parse_args()
     (shell1, shell2) = get_shells(mode)
 
     print "# mode=%s, runs=%d, problem size=%s" % (mode, numruns, (str(argument) if argument != None else "default"))
@@ -66,20 +66,20 @@ def main():
         msg = name + "\t" + ("\t" if len(name) < 8 else "")
 
         if is_check(mode):
-            fn(test, isVerbose, shell1, get_system1(mode), argument)
+            fn(test, isVerbose, noThreads, shell1, get_system1(mode), argument)
             msg += "did not crash today"
         else:
             # Run back-to-back for each shell to reduce caching noise
             t1 = []
             for i in range(numruns):
-                (c, r) = fn(test, isVerbose, shell1, get_system1(mode), argument)
+                (c, r) = fn(test, isVerbose, noThreads, shell1, get_system1(mode), argument)
                 t1.append(c if argument == 0 else r)
             t1.sort()
 
             t2 = []
             if not is_only(mode):
                 for i in range(numruns):
-                    (c, r) = fn(test, isVerbose, shell2, get_system2(mode), argument)
+                    (c, r) = fn(test, isVerbose, noThreads, shell2, get_system2(mode), argument)
                     t2.append(c if argument == 0 else r)
                 t2.sort()
 
@@ -124,15 +124,15 @@ def three_places(a, b):
         return "-----"
     return str(round(float(a)/float(b)*1000)/1000)
 
-def run_std(test, isVerbose, shell, mode, argument):
+def run_std(test, isVerbose, noThreads, shell, mode, argument):
     (name, program, _, correct) = test
     if program == None:
         program = "wasm_" + name + ".js"
-    text = run_test(isVerbose, shell, program, mode, argument)
+    text = run_test(isVerbose, noThreads, shell, program, mode, argument)
     return parse_output(text, argument, correct)
 
-def run_linpack(test, isVerbose, shell, mode, argument):
-    text = run_test(isVerbose, shell, "wasm_linpack_float.c.js", mode, argument)
+def run_linpack(test, isVerbose, noThreads, shell, mode, argument):
+    text = run_test(isVerbose, noThreads, shell, "wasm_linpack_float.c.js", mode, argument)
     if argument == 0:
         return parse_output(text, 0, None)
 
@@ -140,8 +140,8 @@ def run_linpack(test, isVerbose, shell, mode, argument):
     score = int(10000000.0/mflops)
     return (0,score)
 
-def run_scimark(test, isVerbose, shell, mode, argument):
-    text = run_test(isVerbose, shell, "wasm_lua_scimark.c.js", mode, argument)
+def run_scimark(test, isVerbose, noThreads, shell, mode, argument):
+    text = run_test(isVerbose, noThreads, shell, "wasm_lua_scimark.c.js", mode, argument)
     if argument == 0:
         return parse_output(text, 0, None)
 
@@ -167,7 +167,7 @@ tests = [ ("box2d",        None, run_std, r"frame averages:.*, range:.* to "),
           ("skinning",     None, run_std, r"blah=0.000000"),
           ("zlib",         "wasm_zlib.c.js", run_std, r"sizes: 100000,25906") ]
 
-def run_test(isVerbose, shell, program, mode, argument):
+def run_test(isVerbose, noThreads, shell, program, mode, argument):
     cmd = [shell]
     if mode == "baseline":
         cmd.append("--wasm-compiler=baseline")
@@ -175,6 +175,8 @@ def run_test(isVerbose, shell, program, mode, argument):
         cmd.append("--wasm-compiler=ion")
     if mode == "cranelift":
         cmd.append("--wasm-compiler=cranelift")
+    if noThreads:
+        cmd.append("--no-threads")
     cmd.append(program)
     if argument != None:
         cmd.append(str(argument))
@@ -290,6 +292,10 @@ def parse_args():
                         according to any other switches""")
     parser.add_argument("-v", "--verbose", action="store_true", help=
                         """Verbose.  Echo commands and other information on stderr.""")
+    parser.add_argument("-t", "--no-threads", action="store_true", help=
+                        """Disable threads in the shell, for added timing stability.
+                        This will significantly impact compile times, and may impact running
+                        time since eg GC runs on the remaining thread with everything else.""")
     parser.add_argument("pattern", nargs="*", help=
                         """Regular expressions to match against test names""")
     args = parser.parse_args();
@@ -345,7 +351,7 @@ def parse_args():
     if args.verbose:
         args.data = True
 
-    return (mode, numruns, argument, args.verbose, args.data, args.variance, args.range, args.pattern)
+    return (mode, numruns, argument, args.verbose, args.no_threads, args.data, args.variance, args.range, args.pattern)
 
 if __name__ == '__main__':
     main()
