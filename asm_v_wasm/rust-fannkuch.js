@@ -1,3 +1,5 @@
+// Origin: https://github.com/lars-t-hansen/rust-fannkuch-js-and-wasm
+
 var bin = os.file.readFile('rust-fannkuch.wasm','binary');
 
 var then = new Date();
