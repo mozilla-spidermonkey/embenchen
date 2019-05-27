@@ -27,7 +27,7 @@ platforms.  It may be that division is so rare or so expensive that it doesn't
 matter.  And the traps won't affect the SSA form.
 
 ```
-;; Initially m1 = edi, m2 = esi, m3 = edx
+;; Initially edi = m1, esi = m2, edx = m3
 0000001A  b8 00 00 00 00            mov $0x00, %eax        ; eax = 0
 0000001F  b9 01 00 00 00            mov $0x01, %ecx        ; ecx = 1
 00000024  bb 03 00 00 00            mov $0x03, %ebx        ; ebx = 3
@@ -56,7 +56,7 @@ matter.  And the traps won't affect the SSA form.
 00000066  0f 0b                     ud2
 00000068  44 89 c0                  mov %r8d, %eax         ; setup k3
 0000006B  44 89 ca                  mov %r9d, %edx         ; edx = 0
-0000006E  f7 f1                     div %ecx               ; (edx, eax) <- edx:eax divrem esi
+0000006E  f7 f1                     div %ecx               ; (edx, eax) <- edx:eax divrem ecx
 00000070  01 c3                     add %eax, %ebx         ; incorporate in sum
 00000072  89 d8                     mov %ebx, %eax         ;  and move/signextend
 ```
