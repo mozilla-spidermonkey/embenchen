@@ -1,0 +1,14 @@
+<script>
+  var instance = null;
+  fetch('rust-fannkuch.wasm').then(response => response.arrayBuffer()).then(function (bin) {
+
+var then = new Date();
+var mod = new WebAssembly.Module(bin);
+var now = new Date();
+console.log("WASM COMPILE TIME: " + (now - then));
+
+instance = new WebAssembly.Instance(mod);
+
+  });
+</script>
+<button onpress="instance.exports.run_fannkuch(11)">Run</button>
