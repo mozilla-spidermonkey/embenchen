@@ -1,5 +1,4 @@
-// Could do compileStreaming?
-// Also want some kind of error handling
+// Benchmark driver for browser.  See wasm-micro.html.
 
 var modules = {};
 var instances = {};
@@ -24,56 +23,54 @@ function instantiateAll() {
     ready = true;
 }
 
+var benchmarks;
+
 function runBench() {
     if (!ready) {
         console.log("Not ready");
         return;
     }
+    benchmarks = [runCallExternal, runCallInternal, runCallDirect, runFib];
+    runNext();
+}
 
-    runCallExternal();
-    runCallInternal();
-    runCallDirect();
-    runFib();
+function runNext() {
+    if (benchmarks.length > 0) {
+        (benchmarks.shift())();
+        setTimeout(runNext, 0);
+    }
 }
 
 function log(msg) {
     document.getElementById('results').appendChild(document.createTextNode(msg + "\n"));
 }
 
+function logBenchmark(tag, thunk, iterations = 1) {
+    let times = [];
+    for ( let i=0 ; i < iterations; i++ ) {
+        let then = performance.now();
+        thunk();
+        times.push(performance.now() - then);
+    }
+    let time = times.reduce((x,y) => x+y)/times.length;
+    log(tag + ": " + time);
+}
+
 const call_iter = 100000000;
 
 function runCallExternal() {
-    var ins = instances['calls'];
-    var then = performance.now();
-    ins.exports.run_external(call_iter);
-    log("call external: " + (performance.now() - then));
+    logBenchmark("call external", () => instances.calls.exports.run_external(call_iter));
 }
 
 function runCallInternal() {
-    var ins = instances['calls'];
-    var then = performance.now();
-    ins.exports.run_internal(call_iter);
-    log("call internal: " + (performance.now() - then));
+    logBenchmark("call internal", () => instances.calls.exports.run_internal(call_iter));
 }
 
 function runCallDirect() {
-    var ins = instances['calls'];
-    var then = performance.now();
-    ins.exports.run_direct(call_iter);
-    log("call direct: " + (performance.now() - then));
+    logBenchmark("call direct", () => instances.calls.exports.run_direct(call_iter));
 }
 
 function runFib() {
-    var ins = instances['fib'];
-    var iterations = 10;
-    var argument = 37;
-    var times = [];
-
-    for ( let i=0 ; i < iterations ; i++ ) {
-        let then = new Date();
-        ins.exports.fib(argument);
-        let now = new Date();
-        times.push(now - then);
-    }
-    log(`fib ${argument}: ${times.reduce((x,y) => x+y)/times.length}`);
+    let argument = 37;
+    logBenchmark(`fib ${argument}`, () => instances.fib.exports.fib(argument), 10);
 }
