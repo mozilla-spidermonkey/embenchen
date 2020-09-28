@@ -176,7 +176,6 @@ def run_test(isVerbose, noThreads, shell, program, mode, argument):
         cmd.append("--wasm-compiler=ion")
     if mode == "cranelift":
         cmd.append("--no-wasm-simd")
-        cmd.append("--shared-memory=off")
         cmd.append("--wasm-compiler=cranelift")
     if noThreads:
         cmd.append("--no-threads")
