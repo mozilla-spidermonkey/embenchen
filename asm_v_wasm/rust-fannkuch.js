@@ -1,6 +1,6 @@
 // Origin: https://github.com/lars-t-hansen/rust-fannkuch-js-and-wasm
 
-var bin = os.file.readFile('rust-fannkuch.wasm','binary');
+var bin = read('rust-fannkuch.wasm','binary');
 
 var then = new Date();
 var mod = new WebAssembly.Module(bin);
@@ -10,7 +10,7 @@ print("WASM COMPILE TIME: " + (now - then));
 var ins = new WebAssembly.Instance(mod);
 
 var arg = 11;
-switch (scriptArgs[0]) {
+switch ((typeof scriptArgs == 'object'?scriptArgs:arguments)[0]) {
 case '0': arg = 8; break;
 case '1': arg = 9; break;
 case '2': arg = 10; break;
@@ -23,5 +23,5 @@ var now = new Date();
 print("WASM RUN TIME: " + (now - then));
 print(`fannkuch(${arg}) = ${result}`);
 if (arg == 11) {
-    assertEq(result, 556355);
+    if (result != 556355) throw "assert result";
 }
