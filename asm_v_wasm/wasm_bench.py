@@ -50,9 +50,9 @@ def main():
     (mode, numruns, argument, isVerbose, noThreads, dumpData, dumpVariance, dumpRange, patterns) = parse_args()
     (shell1, shell2) = get_shells(mode)
 
-    print "# mode=%s, runs=%d, problem size=%s" % (mode, numruns, (str(argument) if argument != None else "default"))
+    print("# mode=%s, runs=%d, problem size=%s" % (mode, numruns, (str(argument) if argument != None else "default")))
     if not is_check(mode):
-        print "# Lower score is better"
+        print("# Lower score is better")
 
     for test in tests:
         (name, _, fn, _) = test
@@ -83,10 +83,10 @@ def main():
                     t2.append(c if argument == 0 else r)
                 t2.sort()
 
-            n1 = t1[len(t1)/2]
+            n1 = t1[len(t1)//2]
             n2 = 1
             if not is_only(mode):
-                n2 = t2[len(t2)/2]
+                n2 = t2[len(t2)//2]
             score = three_places(n1, n2)
 
             msg += str(n1) + "\t"
@@ -117,7 +117,7 @@ def main():
                 if not is_only(mode):
                     msg += "\t" + str(t2)
 
-        print msg
+        print(msg)
 
 def three_places(a, b):
     if b == 0:
@@ -183,7 +183,7 @@ def run_test(isVerbose, noThreads, shell, program, mode, argument):
     if argument != None:
         cmd.append(str(argument))
     if isVerbose:
-        print "# %s" % str(cmd)
+        print("# %s" % str(cmd))
     log = open('output.tmp', 'w')
     text = subprocess.check_output(cmd, stderr=log, universal_newlines=True).split("\n")
     log.close()
@@ -202,7 +202,7 @@ def parse_output(text, argument, correct):
         elif re.match("WASM RUN TIME: ", t):
             runTime = int(t[15:])
     if do_check and not found:
-        print text
+        print(text)
         panic("Did not match expected output " + correct)
     return (compileTime, runTime)
 
