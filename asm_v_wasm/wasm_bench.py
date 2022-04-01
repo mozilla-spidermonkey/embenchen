@@ -157,6 +157,9 @@ tests = [ ("box2d",        None, run_std, r"frame averages:.*, range:.* to "),
           ("fannkuch",     None, run_std, r"4312567891011"),
           ("fasta",        None, run_std, r"CCACTGCACTCCAGCCTGGGCGACAGAGCGAGACTCCGTCTCAAAAAGGCCGGGCGCGGT"),
           ("fib",          "fib.js", run_std, r"fib.40. = 102334155"),
+          ("fib_indirect1", "fib_fixed_intramodule_privatetable_elem.js", run_std, r"fib.40. = 102334155"),
+          ("fib_indirect2", "fib_random_intramodule_privatetable_elem.js", run_std, r"fib.40. = 102334155"),
+          ("fib_indirect3", "fib_unknown_intramodule_privatetable_elem.js", run_std, r"fib.40. = 102334155"),
           ("ifs",          None, run_std, r"ok"),
           #("linpack",      None, run_linpack, None),
           ("binarytrees",  "wasm_lua_binarytrees.c.js", run_std, "843\t trees of depth 10\t check: -842"),
@@ -360,9 +363,6 @@ def parse_args():
 
     if args.verbose:
         args.data = True
-
-    if args.no_spectre_mitigations and not args.bounds_checks:
-        panic("--no-spectre-mitigations only makes sense with --bounds-checks")
 
     return (mode, numruns, argument, args.verbose, args.no_threads, args.bounds_checks, args.no_spectre_mitigations, args.data, args.variance, args.range, args.pattern)
 
